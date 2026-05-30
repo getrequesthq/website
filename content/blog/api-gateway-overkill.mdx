@@ -1,0 +1,81 @@
+---
+title: "Why API Gateways Are Overkill for Most Teams"
+description: "API gateways promise centralized control, but for most teams they deliver operational overhead before the first request ships. Here's when to skip the gateway and what to use instead."
+date: "2026-05-30"
+author: "Santosh Baggam"
+tags: ["api-reliability", "infrastructure", "gateways"]
+---
+
+Every few months a team reaches out with the same story. They've been building for six months. Traffic is under a million requests a month. They have two backend engineers and a DevOps lead who splits time across three projects. And they want to know which API gateway to deploy.
+
+My answer is almost always the same: you don't need one yet.
+
+## What API gateways actually are
+
+An API gateway is a reverse proxy layer that sits between your clients and your backend services. In theory, it handles routing, auth, rate limiting, observability, and traffic management in one place. In practice, deploying and maintaining a gateway is a full-time job.
+
+The dominant open-source options — Kong, Tyk, Traefik — are genuinely powerful. They also require Kubernetes or a dedicated VM, plugin management, a configuration DSL, and someone who actually understands them. Managed offerings like AWS API Gateway or Apigee reduce the ops surface, but they introduce vendor lock-in and can become expensive at volume.
+
+The selling point is centralization. One place to manage auth, rate limits, circuit breakers, and routing. For a large platform team running 40 microservices, this is real value. For a team with three services, it's a premature abstraction.
+
+## The actual overhead
+
+Let's be concrete. Here's what you're taking on when you deploy a self-hosted API gateway:
+
+**Provisioning.** You need a machine or a Kubernetes deployment. You need to decide how many replicas you're running, whether you're handling HA, how you're doing health checks.
+
+**Configuration management.** Every route, plugin, and upstream is a config object. You need to version this. You need to apply changes without downtime. Kong's declarative config (deck) is solid, but it's another tool with its own learning curve.
+
+**Observability for the gateway itself.** The gateway becomes infrastructure. It can fail. It can become a bottleneck. Now you're collecting metrics on the thing that's supposed to help you collect metrics.
+
+**Debugging through an extra layer.** When a request fails, you now have one more hop to check. The error could be in your service, in the gateway plugin, in the gateway config, or in the upstream. The blast radius of a misconfiguration is high.
+
+**Upgrades.** Plugins break between versions. Config formats change. If you're on Kong 2.x and the latest is 3.x, upgrading is a project, not a task.
+
+This is not a critique of API gateways as products. It's an observation that they're designed for a scale problem most teams don't have yet.
+
+## What you actually need
+
+Most teams don't need centralized routing. They need:
+
+1. **Visibility into what their systems are sending and receiving.** When an integration breaks, you want to know what the request looked like, what came back, and when it happened. This is a logging and inspection problem, not a routing problem.
+
+2. **The ability to stand up endpoints without backend work.** Mocking API behavior for frontend development, webhook receivers, and integration testing are day-one needs. You don't need a gateway for this.
+
+3. **A way to reproduce failures.** When a bug ships, you want to replay the exact request that caused it. Replay doesn't require a gateway layer.
+
+4. **Request forwarding with full visibility.** If you're proxying traffic, you want a log of every request and response before you commit to more complex routing rules.
+
+These are reliability infrastructure problems. They're not gateway problems.
+
+## The real cost of starting too early
+
+Teams that reach for a gateway before they need it end up with two problems.
+
+First, they spend weeks on setup before shipping anything. The gateway config, the routing rules, the plugin setup, the observability pipeline for the gateway — none of this is the product. It's all overhead.
+
+Second, the gateway becomes a blocker. Every new endpoint requires a route configuration. Every new auth rule requires a plugin. Engineers route around the gateway when they're in a hurry, and now the abstraction is leaky and the centralization benefit is gone anyway.
+
+The teams that avoid this are the ones who start with the minimum. They instrument with lightweight request logging. They build forwarding rules into their app code or a simple proxy. They get visibility without infrastructure.
+
+When they outgrow that — when they have 20 services, a dedicated platform team, and real traffic — they've earned the complexity of a full gateway deployment. More importantly, they know exactly what problem they're solving.
+
+## What the threshold looks like
+
+A few signals that you've actually hit the point where a gateway pays off:
+
+- You have multiple teams managing independent services and you need to enforce API contracts at the boundary
+- You're running traffic from external developers and need rate limiting at the edge before it hits your application layer
+- You have a platform team whose job is infrastructure — someone will actually own and operate the gateway
+- You're dealing with multi-cloud routing or canary deployments that need to be managed above the application layer
+- Your request volume is high enough that you're doing real traffic shaping, not just observability
+
+If you're not there yet, you don't need a gateway. You need observability and the ability to move fast.
+
+## The alternative path
+
+Start with the problem, not the solution. If you need to observe API traffic, add a forwarding proxy that logs everything. If you need to mock endpoints, stand up a response template against a URL. If you need to replay failures, capture requests and replay them against your staging environment.
+
+This approach gets you 80% of the value with 10% of the overhead. And it doesn't block you from graduating to a real gateway when you need one — because you'll have months of request logs, usage patterns, and failure data to inform exactly how to configure it.
+
+The engineers who end up deploying gateways at the right time are the ones who spent the early months being rigorous about observability, not the ones who deployed infrastructure before they had problems to solve.
