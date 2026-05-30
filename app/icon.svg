@@ -1,0 +1,9 @@
+<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark background with rounded corners -->
+  <rect width="32" height="32" rx="6" fill="#06080f"/>
+  <!-- Arrow mark scaled to fit 20×20, centered at (6,6) -->
+  <g transform="translate(6, 6) scale(1.25)">
+    <path d="M2.399 7.999L0 0C5.738 1.712 11.149 4.418 16 7.999C11.15 11.581 5.739 14.287 0.001 16L2.399 7.999ZM2.399 7.999H8.986Z" fill="#FFFF00"/>
+    <path d="M2.399 7.999L0 0C5.738 1.712 11.149 4.418 16 7.999C11.15 11.581 5.739 14.287 0.001 16L2.399 7.999ZM2.399 7.999H8.986" stroke="#1a1a00" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
