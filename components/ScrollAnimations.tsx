@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 const SCROLL_ANIMATE_SELECTORS = [
   '.animate-in',
@@ -19,9 +20,12 @@ const SCROLL_ANIMATE_SELECTORS = [
 ].join(', ')
 
 export function ScrollAnimations() {
+  const pathname = usePathname()
+
   useEffect(() => {
     const elements = document.querySelectorAll(SCROLL_ANIMATE_SELECTORS)
-    if (!elements.length) return
+    const targets = Array.from(elements).filter(el => !el.classList.contains('visible'))
+    if (!targets.length) return
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -35,9 +39,9 @@ export function ScrollAnimations() {
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     )
 
-    elements.forEach((el) => observer.observe(el))
+    targets.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
-  }, [])
+  }, [pathname])
 
   return null
 }

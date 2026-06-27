@@ -59,20 +59,17 @@ export default function HomePage() {
       </section>
 
       {/* SOCIAL PROOF */}
-      <div className="social-proof" aria-label="Used by engineering teams">
+      {/* <div className="social-proof" aria-label="Used by engineering teams">
         <div className="container">
           <div className="social-proof__inner">
             <span className="social-proof__label">Trusted by engineering teams at —</span>
             <div className="social-proof__logos">
               <span className="social-proof__name">Reelo</span>
               <span className="social-proof__name">Petpooja</span>
-              <span className="social-proof__name">Vega Foods</span>
-              <span className="social-proof__name">Dhiwise</span>
-              <span className="social-proof__name">Volopay</span>
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* STATS BAR */}
       <div className="stats-bar text-center" aria-label="Product metrics">
