@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { APP_LOGIN_URL, APP_REGISTER_URL } from '@/lib/urls'
 
 const LogoSVG = () => (
   <svg className="nav__logo-svg" viewBox="0 0 192 41" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -42,8 +43,8 @@ export function Nav() {
           </div>
 
           <div className="nav__actions">
-            <a href="#" className="btn btn-ghost btn-sm">Sign in</a>
-            <a href="#" className="btn btn-primary btn-sm">Start for free →</a>
+            <a href={APP_LOGIN_URL} className="btn btn-ghost btn-sm">Sign in</a>
+            <a href={APP_REGISTER_URL} className="btn btn-primary btn-sm">Start for free →</a>
           </div>
 
           <button
@@ -66,8 +67,8 @@ export function Nav() {
         <Link href="/pricing" className={`nav__link${isActive('/pricing') ? ' active' : ''}`} onClick={() => setMobileOpen(false)}>Pricing</Link>
         <Link href="/blog" className={`nav__link${isActive('/blog') ? ' active' : ''}`} onClick={() => setMobileOpen(false)}>Blog</Link>
         <a href="#" className="nav__link">Docs</a>
-        <a href="#" className="btn btn-ghost btn-sm">Sign in</a>
-        <a href="#" className="btn btn-primary btn-sm">Start for free →</a>
+        <a href={APP_LOGIN_URL} className="btn btn-ghost btn-sm">Sign in</a>
+        <a href={APP_REGISTER_URL} className="btn btn-primary btn-sm">Start for free →</a>
       </nav>
     </header>
   )

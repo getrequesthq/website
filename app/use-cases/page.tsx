@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildMetadata } from '@/lib/metadata'
+import { APP_REGISTER_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema } from '@/lib/jsonld'
 
@@ -65,7 +66,7 @@ export default function UseCasesPage() {
               <span className="use-case-card__plan">Pro</span>
               <h3 className="use-case-card__title">Share incident evidence across teams</h3>
               <p className="use-case-card__desc">Generate a permanent link to any captured request and paste it in the incident ticket. Your whole team sees the exact failure — headers, body, response — without needing access to your environment.</p>
-              <code className="use-case-card__code">getrequest.dev/share/req_...</code>
+              <code className="use-case-card__code">getrequest.io/share/req_...</code>
             </div>
             <div className="use-case-card">
               <span className="use-case-card__plan">Free</span>
@@ -122,7 +123,7 @@ export default function UseCasesPage() {
         <div className="container container--narrow">
           <h2 className="heading-xl cta-section__title" id="cta-heading">Your stack. Without the overhead.</h2>
           <p className="cta-section__sub">getrequest is the API reliability infrastructure your team can launch today — no gateway config, no observability pipeline, no ops team.</p>
-          <a href="#" className="btn btn-primary btn-lg">Start for free →</a>
+          <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
         </div>
       </section>
     </main>

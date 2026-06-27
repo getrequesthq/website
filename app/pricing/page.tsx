@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { buildMetadata } from '@/lib/metadata'
+import { APP_REGISTER_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema, faqSchema } from '@/lib/jsonld'
 
@@ -76,7 +77,7 @@ export default function PricingPage() {
                 <li className="pricing-card__feature">API key management</li>
               </ul>
               <div className="pricing-card__cta">
-                <a href="#" className="btn btn-ghost-light" style={{ width: '100%', justifyContent: 'center' }}>Get started free</a>
+                <a href={APP_REGISTER_URL} className="btn btn-ghost-light" style={{ width: '100%', justifyContent: 'center' }}>Get started free</a>
               </div>
             </div>
             {/* Dev */}
@@ -94,7 +95,7 @@ export default function PricingPage() {
                 <li className="pricing-card__feature">Priority support</li>
               </ul>
               <div className="pricing-card__cta">
-                <a href="#" className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Start Dev plan</a>
+                <a href={APP_REGISTER_URL} className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Start Dev plan</a>
               </div>
             </div>
             {/* Pro */}
@@ -112,7 +113,7 @@ export default function PricingPage() {
                 <li className="pricing-card__feature">Team access (coming soon)</li>
               </ul>
               <div className="pricing-card__cta">
-                <a href="#" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Start Pro plan</a>
+                <a href={APP_REGISTER_URL} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Start Pro plan</a>
               </div>
             </div>
           </div>
@@ -226,7 +227,7 @@ export default function PricingPage() {
         <div className="container container--narrow">
           <h2 className="heading-xl cta-section__title" id="cta-heading">API reliability infrastructure. Free to start.</h2>
           <p className="cta-section__sub">No gateway costs, no observability bill, no ops overhead. Up and running in under 2 minutes.</p>
-          <a href="#" className="btn btn-primary btn-lg">Get started →</a>
+          <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Get started →</a>
         </div>
       </section>
     </main>

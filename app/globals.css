@@ -820,6 +820,9 @@ table {
 }
 
 .code-window__body {
+  margin: auto;
+  max-width: 500px;
+  text-align: left;
   padding: var(--space-5);
   overflow-x: auto;
 }
@@ -1847,5 +1850,65 @@ table {
 @media (max-width: 600px) {
   .blog-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   Scroll reveal animations
+   ============================================================ */
+.animate-in,
+.section__header,
+.feature-card,
+.step,
+.pricing-card,
+.card--pain,
+.feature-section__layout,
+.use-case-card,
+.persona-card,
+.post-card,
+.faq-item,
+.cta-section .container,
+.comparison-table {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.animate-in.visible,
+.section__header.visible,
+.feature-card.visible,
+.step.visible,
+.pricing-card.visible,
+.card--pain.visible,
+.feature-section__layout.visible,
+.use-case-card.visible,
+.persona-card.visible,
+.post-card.visible,
+.faq-item.visible,
+.cta-section .container.visible,
+.comparison-table.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-in,
+  .section__header,
+  .feature-card,
+  .step,
+  .pricing-card,
+  .card--pain,
+  .feature-section__layout,
+  .use-case-card,
+  .persona-card,
+  .post-card,
+  .faq-item,
+  .cta-section .container,
+  .comparison-table {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

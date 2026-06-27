@@ -6,7 +6,7 @@ export function organizationSchema() {
     '@type': 'Organization',
     name: 'getrequest',
     url: BASE_URL,
-    logo: `${BASE_URL}/logo.svg`,
+    logo: `${BASE_URL}/icon.svg`,
     sameAs: [],
   }
 }

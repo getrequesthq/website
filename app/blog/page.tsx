@@ -1,4 +1,5 @@
 import { getAllPosts, getAllTags } from '@/lib/blog'
+import { formatPostDate } from '@/lib/format'
 import { buildMetadata } from '@/lib/metadata'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema } from '@/lib/jsonld'
@@ -50,7 +51,7 @@ export default function BlogPage() {
                     <h2 className="post-card__title">{post.title}</h2>
                     <p className="post-card__excerpt">{post.description}</p>
                     <div className="post-card__meta">
-                      <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                      <span>{formatPostDate(post.date)}</span>
                       <span>{post.readingTime}</span>
                     </div>
                   </article>

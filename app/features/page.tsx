@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
+import { APP_REGISTER_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema } from '@/lib/jsonld'
 
@@ -26,7 +27,7 @@ export default function FeaturesPage() {
             <h1 className="heading-hero hero__title" id="hero-heading">The complete stack for API reliability.</h1>
             <p className="hero__sub">Launch endpoints, observe every request, recover from failures — without managing infrastructure.</p>
             <div className="hero__ctas">
-              <a href="#" className="btn btn-primary btn-lg">Start for free →</a>
+              <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
               <Link href="/pricing" className="btn btn-ghost btn-lg">See pricing</Link>
             </div>
           </div>
@@ -53,7 +54,7 @@ export default function FeaturesPage() {
               <div className="code-window">
                 <div className="code-window__bar">
                   <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">endpoint config — getrequest.dev/proj_k8s3</span>
+                  <span className="code-window__title">endpoint config — getrequest.io/proj_k8s3</span>
                 </div>
                 <div className="code-window__body">
                   <pre><span className="tok-comment"># Define once. Live immediately.</span>{`
@@ -186,7 +187,7 @@ export default function FeaturesPage() {
               <div className="code-window code-window--light">
                 <div className="code-window__bar">
                   <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">getrequest.dev/share/req_8xm2k9p</span>
+                  <span className="code-window__title">getrequest.io/share/req_8xm2k9p</span>
                 </div>
                 <div className="code-window__body">
                   <pre><span className="tok-comment"># Shared request snapshot</span>{`
@@ -302,7 +303,7 @@ export default function FeaturesPage() {
         <div className="container container--narrow">
           <h2 className="heading-xl cta-section__title" id="cta-heading">The full stack. Available from day one.</h2>
           <p className="cta-section__sub">No gateway to configure. No observability stack to manage. No ops team required.</p>
-          <a href="#" className="btn btn-primary btn-lg">Start for free →</a>
+          <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
         </div>
       </section>
     </main>

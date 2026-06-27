@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
+import { formatPostDate } from '@/lib/format'
 import { buildMetadata } from '@/lib/metadata'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema, blogPostingSchema } from '@/lib/jsonld'
@@ -53,7 +54,7 @@ export default async function BlogPostPage({ params }: Props) {
           <h1 className="heading-hero blog-post__title">{post.title}</h1>
           <div className="blog-post__meta">
             <span>{post.author}</span>
-            <span>{new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            <span>{formatPostDate(post.date)}</span>
             <span>{post.readingTime}</span>
           </div>
         </div>

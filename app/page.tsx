@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
+import { APP_REGISTER_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { organizationSchema, webSiteSchema, softwareSchema } from '@/lib/jsonld'
 
@@ -22,11 +23,11 @@ export default function HomePage() {
         <div className="container">
           <div className="hero__inner">
             <span className="hero__label">// api reliability infrastructure</span>
-            <h1 className="heading-hero hero__title" id="hero-heading">Never miss an<br />API request.</h1>
-            <p className="hero__sub">Instantly launch, scale, and observe your API infrastructure.</p>
-            <p className="hero__detail">Create APIs, capture &amp; inspect every request, and replay failures—without managing gateways, servers, or observability stacks.</p>
+            <h1 className="heading-hero hero__title" id="hero-heading">Never miss an<br />API request</h1>
+            <p className="hero__sub">Instantly launch, scale, and observe your <br />API infrastructure</p>
+            <p className="hero__detail">Create, capture &amp; inspect every request, and replay failures—without the hassle of gateways, servers, or observability stacks</p>
             <div className="hero__ctas">
-              <a href="#" className="btn btn-primary btn-lg">Start for free →</a>
+              <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
               <a href="#" className="btn btn-ghost btn-lg">View docs</a>
             </div>
             <p className="hero__note">Free forever · No credit card required</p>
@@ -39,18 +40,16 @@ export default function HomePage() {
                     <span className="code-window__dot"></span>
                     <span className="code-window__dot"></span>
                   </div>
-                  <span className="code-window__title">live inspector — getrequest.dev/proj_k8s3</span>
+                  <span className="code-window__title">Request Logs [/proj_k8s3]</span>
                   <span className="code-window__copy">copy</span>
                 </div>
                 <div className="code-window__body">
-                  <pre>{`// live inspector — getrequest.dev/proj_k8s3
-
+                  <pre>{`Requests in the last 30 minutes\n
   `}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">/api/auth/login</span>{`        `}<span className="tok-status-ok">200 OK</span>{`  · `}<span className="tok-dim">43ms</span>{`    `}<span className="tok-dim">just now</span>{`
   `}<span className="tok-method-get">GET</span>{`   `}<span className="tok-path">/api/users/profile</span>{`     `}<span className="tok-status-ok">200 OK</span>{`  · `}<span className="tok-dim">18ms</span>{`    `}<span className="tok-dim">2s ago</span>{`
   `}<span className="tok-method-get">GET</span>{`   `}<span className="tok-path">/api/orders/99</span>{`         `}<span className="tok-status-warn">404</span>{`     · `}<span className="tok-dim">8ms</span>{`     `}<span className="tok-dim">5s ago</span>{`
   `}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">/api/webhooks/stripe</span>{`   `}<span className="tok-status-ok">201</span>{`     · `}<span className="tok-dim">67ms</span>{`    `}<span className="tok-dim">11s ago</span>{`
 `}<span className="log-row-error">{'  '}<span className="tok-method-put">PUT</span>{`   `}<span className="tok-path">/api/settings</span>{`          `}<span className="tok-status-err">500</span>{`     · `}<span className="tok-dim">203ms</span>{`   `}<span className="tok-dim">32s ago</span>{` ←`}</span>{`
-
 `}<span className="tok-dim">↺ Replay  ·  ⎘ Share link  ·  ▼ Inspect headers</span></pre>
                 </div>
               </div>
@@ -63,23 +62,22 @@ export default function HomePage() {
       <div className="social-proof" aria-label="Used by engineering teams">
         <div className="container">
           <div className="social-proof__inner">
-            <span className="social-proof__label">Used by engineering teams building on —</span>
+            <span className="social-proof__label">Trusted by engineering teams at —</span>
             <div className="social-proof__logos">
-              <span className="social-proof__name">Acme Corp</span>
-              <span className="social-proof__name">Meridian Labs</span>
-              <span className="social-proof__name">Stackform</span>
-              <span className="social-proof__name">Foundry.io</span>
-              <span className="social-proof__name">Novex API</span>
-              <span className="social-proof__name">Clearpath Dev</span>
+              <span className="social-proof__name">Reelo</span>
+              <span className="social-proof__name">Petpooja</span>
+              <span className="social-proof__name">Vega Foods</span>
+              <span className="social-proof__name">Dhiwise</span>
+              <span className="social-proof__name">Volopay</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* STATS BAR */}
-      <div className="stats-bar" aria-label="Product metrics">
+      <div className="stats-bar text-center" aria-label="Product metrics">
         <div className="stat">
-          <span className="stat__value">&lt; 60s</span>
+          <span className="stat__value">&lt; 90s</span>
           <span className="stat__label">Time to first endpoint</span>
         </div>
         <div className="stat">
@@ -101,13 +99,13 @@ export default function HomePage() {
         <div className="container">
           <div className="section__header">
             <span className="label">// getting started</span>
-            <h2 className="heading-xl" id="how-heading">Your API infrastructure, ready in minutes.</h2>
+            <h2 className="heading-xl" id="how-heading">Your API infrastructure, ready in seconds.</h2>
           </div>
           <div className="steps">
             <div className="step">
               <span className="step__num">01</span>
               <h3 className="step__title">Launch an endpoint</h3>
-              <p className="step__desc">Create a fully functional API endpoint in under 60 seconds. Return mock JSON or forward to any upstream. No gateway config, no server to provision, no deployment pipeline.</p>
+              <p className="step__desc">Create a fully functional API endpoint within seconds. Return mock JSON or forward to any upstream. No gateway config, no servers to provision, no deployment pipeline.</p>
             </div>
             <div className="step">
               <span className="step__num">02</span>
@@ -135,7 +133,7 @@ export default function HomePage() {
             <div className="feature-card">
               <div className="feature-card__icon" aria-hidden="true">⚡</div>
               <h3 className="feature-card__title">Instant endpoints</h3>
-              <p className="feature-card__desc">Launch a production-ready API endpoint in under 60 seconds. Return mock JSON or proxy any upstream. No servers, no config files, no ops work.</p>
+              <p className="feature-card__desc">Launch a production-ready API endpoint within seconds. Return mock JSON or proxy any upstream. No servers, no config files, no ops work.</p>
             </div>
             <div className="feature-card">
               <div className="feature-card__icon" aria-hidden="true">◎</div>
@@ -196,67 +194,94 @@ export default function HomePage() {
       <section className="section section--light" aria-labelledby="compare-heading">
         <div className="container">
           <div className="section__header">
-            <span className="label label--light">// vs the alternative</span>
-            <h2 className="heading-xl" id="compare-heading">getrequest vs managing your own stack.</h2>
+            <span className="label label--light">// vs the alternatives</span>
+            <h2 className="heading-xl" id="compare-heading">Why teams choose getrequest.</h2>
+            <p className="section__sub section__sub--light">Every alternative solves one piece. getrequest is the only layer that handles sync and async request flows end-to-end — with zero downtime and no infra to manage.</p>
           </div>
           <div style={{ overflowX: 'auto' }}>
             <table className="comparison-table">
               <thead>
                 <tr>
-                  <th>Feature</th>
-                  <th>Custom logging</th>
-                  <th>Postman / Insomnia</th>
+                  <th>Capability</th>
+                  <th>Hookdeck</th>
+                  <th>Requestly</th>
+                  <th>Ngrok</th>
+                  <th>Build it yourself</th>
                   <th className="col-featured">getrequest</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Live request capture</td>
+                  <td>Sync request handling</td>
                   <td><span className="cross">—</span></td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (manual)</span></td>
-                  <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(automatic)</span></td>
+                  <td><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
+                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (custom)</span></td>
+                  <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(zero-config)</span></td>
+                </tr>
+                <tr>
+                  <td>Async / webhook queuing</td>
+                  <td><span className="check">✓</span></td>
+                  <td><span className="cross">—</span></td>
+                  <td><span className="cross">—</span></td>
+                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (weeks to build)</span></td>
+                  <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(built-in)</span></td>
+                </tr>
+                <tr>
+                  <td>Live request inspector</td>
+                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (webhooks only)</span></td>
+                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (browser only)</span></td>
+                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (local tunnel)</span></td>
+                  <td><span className="cross">—</span></td>
+                  <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(all traffic)</span></td>
                 </tr>
                 <tr>
                   <td>Request replay</td>
+                  <td><span className="check">✓</span></td>
                   <td><span className="cross">—</span></td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (manual)</span></td>
+                  <td><span className="cross">—</span></td>
+                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (custom)</span></td>
                   <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(one click)</span></td>
-                </tr>
-                <tr>
-                  <td>Shareable debug links</td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td className="col-featured"><span className="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Zero-config setup</td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td className="col-featured"><span className="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Upstream forwarding</td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (code)</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td className="col-featured"><span className="check">✓</span></td>
                 </tr>
                 <tr>
                   <td>Mock endpoints</td>
                   <td><span className="cross">—</span></td>
                   <td><span className="check">✓</span></td>
+                  <td><span className="cross">—</span></td>
+                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (custom)</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
                 </tr>
                 <tr>
-                  <td>Team-visible inspector</td>
+                  <td>Production-safe (no tunnel)</td>
+                  <td><span className="check">✓</span></td>
+                  <td><span className="cross">—</span></td>
+                  <td><span className="cross">—</span></td>
+                  <td><span className="check">✓</span></td>
+                  <td className="col-featured"><span className="check">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Zero downtime on changes</td>
+                  <td><span className="cross">—</span></td>
+                  <td><span className="cross">—</span></td>
                   <td><span className="cross">—</span></td>
                   <td><span className="cross">—</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
                 </tr>
                 <tr>
-                  <td>Production-safe</td>
+                  <td>Shareable debug links</td>
+                  <td><span className="cross">—</span></td>
+                  <td><span className="cross">—</span></td>
                   <td><span className="cross">—</span></td>
                   <td><span className="cross">—</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Time to first endpoint</td>
+                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>Minutes</span></td>
+                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>Minutes</span></td>
+                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>Minutes</span></td>
+                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>Days–weeks</span></td>
+                  <td className="col-featured"><span className="check">{'< 90s'}</span></td>
                 </tr>
               </tbody>
             </table>
@@ -286,7 +311,7 @@ export default function HomePage() {
                 <li className="pricing-card__feature">Usage dashboard</li>
               </ul>
               <div className="pricing-card__cta">
-                <a href="#" className="btn btn-ghost-light" style={{ width: '100%', justifyContent: 'center' }}>Get started free</a>
+                <a href={APP_REGISTER_URL} className="btn btn-ghost-light" style={{ width: '100%', justifyContent: 'center' }}>Get started free</a>
               </div>
             </div>
             <div className="pricing-card">
@@ -300,7 +325,7 @@ export default function HomePage() {
                 <li className="pricing-card__feature">Everything in free</li>
               </ul>
               <div className="pricing-card__cta">
-                <a href="#" className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Start Dev plan</a>
+                <a href={APP_REGISTER_URL} className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Start Dev plan</a>
               </div>
             </div>
             <div className="pricing-card pricing-card--featured">
@@ -316,7 +341,7 @@ export default function HomePage() {
                 <li className="pricing-card__feature pricing-card__feature--pro">Shareable debug links ✦</li>
               </ul>
               <div className="pricing-card__cta">
-                <a href="#" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Start Pro plan</a>
+                <a href={APP_REGISTER_URL} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Start Pro plan</a>
               </div>
             </div>
           </div>
@@ -326,9 +351,9 @@ export default function HomePage() {
       {/* CTA */}
       <section className="cta-section" aria-labelledby="cta-heading">
         <div className="container container--narrow">
-          <h2 className="heading-xl cta-section__title" id="cta-heading">Your API infrastructure. Running in minutes.</h2>
+          <h2 className="heading-xl cta-section__title" id="cta-heading">Your API infrastructure. Running in seconds.</h2>
           <p className="cta-section__sub">Launch endpoints, observe every request, and recover from failures — without the overhead.</p>
-          <a href="#" className="btn btn-primary btn-lg">Start for free →</a>
+          <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
           <p className="cta-section__note">No credit card required · Free plan available · Cancel anytime</p>
         </div>
       </section>
