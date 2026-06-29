@@ -4,6 +4,7 @@ import { buildMetadata } from '@/lib/metadata'
 import { APP_REGISTER_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { organizationSchema, webSiteSchema, softwareSchema } from '@/lib/jsonld'
+import { TrafficFlow } from '@/components/TrafficFlow'
 
 export const metadata: Metadata = buildMetadata({
   title: 'The API Reliability Infrastructure for Modern Teams',
@@ -117,6 +118,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* TRAFFIC FLOW DIAGRAM */}
+      <TrafficFlow />
 
       {/* FEATURES OVERVIEW */}
       <section className="section section--dark" aria-labelledby="features-heading">
