@@ -6,7 +6,7 @@ import { breadcrumbSchema, faqSchema } from '@/lib/jsonld'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Pricing',
-  description: 'API reliability infrastructure pricing. Start free, scale with your traffic. No seat fees, no gateway costs, no observability bills on top. getrequest pricing.',
+  description: 'API Reliability Layer pricing. No seat fees, no gateway costs, no observability bills on top.',
   path: '/pricing',
 })
 
@@ -47,8 +47,8 @@ export default function PricingPage() {
         <div className="container">
           <div className="hero__inner">
             <span className="hero__label">// pricing</span>
-            <h1 className="heading-hero hero__title" id="hero-heading">Infrastructure pricing. No surprises.</h1>
-            <p className="hero__sub">Start free. Scale as your traffic grows. No seat fees, no gateway costs, no observability bills on top.</p>
+            <h1 className="heading-hero hero__title" id="hero-heading">Reliable pricing. No surprises.</h1>
+            <p className="hero__sub">Start free, scale as your traffic grows.</p>
           </div>
         </div>
       </section>
@@ -58,14 +58,14 @@ export default function PricingPage() {
         <div className="container">
           <div className="section__header section__header--center">
             <span className="label label--light">// plans</span>
-            <h2 className="heading-xl" id="plans-heading">Scale your infrastructure.</h2>
+            <h2 className="heading-xl" id="plans-heading">Scale as your traffic grows.</h2>
           </div>
           <div className="pricing-grid">
             {/* Free */}
             <div className="pricing-card">
               <div className="pricing-card__name">free</div>
               <div className="pricing-card__price">$0<span>/mo</span></div>
-              <p className="pricing-card__desc">Launch and observe APIs at zero cost. For side projects, prototypes, and integration testing.</p>
+              <p className="pricing-card__desc">Relay + Retain at zero cost. Full traffic visibility for side projects, early integrations, and prototypes.</p>
               <hr className="pricing-card__divider" />
               <ul className="pricing-card__features">
                 <li className="pricing-card__feature">10,000 requests / month</li>
@@ -77,14 +77,14 @@ export default function PricingPage() {
                 <li className="pricing-card__feature">API key management</li>
               </ul>
               <div className="pricing-card__cta">
-                <a href={APP_REGISTER_URL} className="btn btn-ghost-light" style={{ width: '100%', justifyContent: 'center' }}>Get started free</a>
+                <a href={APP_REGISTER_URL} className="btn btn-ghost-light" style={{ width: '100%', justifyContent: 'center' }}>Get started for free</a>
               </div>
             </div>
             {/* Dev */}
             <div className="pricing-card">
               <div className="pricing-card__name">dev</div>
               <div className="pricing-card__price">$9<span>/mo</span></div>
-              <p className="pricing-card__desc">For teams running real workloads who need extended retention and higher volume.</p>
+              <p className="pricing-card__desc">Extended Retain for real workloads — 30-day log retention and 10× the request volume of free.</p>
               <hr className="pricing-card__divider" />
               <ul className="pricing-card__features">
                 <li className="pricing-card__feature">100,000 requests / month</li>
@@ -95,14 +95,14 @@ export default function PricingPage() {
                 <li className="pricing-card__feature">Priority support</li>
               </ul>
               <div className="pricing-card__cta">
-                <a href={APP_REGISTER_URL} className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Start Dev plan</a>
+                <a href={APP_REGISTER_URL} className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Get started for free</a>
               </div>
             </div>
             {/* Pro */}
             <div className="pricing-card pricing-card--featured">
               <div className="pricing-card__name">pro</div>
               <div className="pricing-card__price">$99<span>/mo</span></div>
-              <p className="pricing-card__desc">Full reliability infrastructure — launch, observe, recover, and collaborate at scale.</p>
+              <p className="pricing-card__desc">Full Relay + Retain + Recover. Request replay and shareable debug links for production teams.</p>
               <hr className="pricing-card__divider" />
               <ul className="pricing-card__features">
                 <li className="pricing-card__feature">1,000,000 requests / month</li>
@@ -113,7 +113,7 @@ export default function PricingPage() {
                 <li className="pricing-card__feature">Team access (coming soon)</li>
               </ul>
               <div className="pricing-card__cta">
-                <a href={APP_REGISTER_URL} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Start Pro plan</a>
+                <a href={APP_REGISTER_URL} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Get started for free</a>
               </div>
             </div>
           </div>
@@ -225,8 +225,8 @@ export default function PricingPage() {
       {/* CTA */}
       <section className="cta-section" aria-labelledby="cta-heading">
         <div className="container container--narrow">
-          <h2 className="heading-xl cta-section__title" id="cta-heading">API reliability infrastructure. Free to start.</h2>
-          <p className="cta-section__sub">No gateway costs, no observability bill, no ops overhead. Up and running in under 2 minutes.</p>
+          <h2 className="heading-xl cta-section__title" id="cta-heading">Relay. Retain. Recover.</h2>
+          <p className="cta-section__sub">No gateway costs, no code changes, no ops overhead. The reliability layer is live in under 2 minutes.</p>
           <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Get started →</a>
         </div>
       </section>

@@ -3,12 +3,12 @@ export function TrafficFlow() {
     <section className="section section--dark tf-section" aria-labelledby="tf-heading">
       <div className="container">
         <div className="section__header">
-          <span className="label">// zero-change integration</span>
+          <span className="label">// the reliability layer</span>
           <h2 className="heading-xl" id="tf-heading">
-            Works with your existing API.<br />Change one URL.
+            Every request relayed safely.<br />Every failure recoverable.
           </h2>
           <p className="section__sub">
-            getrequest sits transparently in front of your upstream. Point any HTTP client at your getrequest URL — requests flow through in real time, every byte is captured, and any failure becomes replayable. No SDK, no agent, no code changes.
+            getrequest sits between your clients and your backend as a protective reliability layer. Requests are relayed in real time, retained in full before they reach your infrastructure, and recoverable on demand — even after downtime.
           </p>
         </div>
 
@@ -131,19 +131,19 @@ export function TrafficFlow() {
           <div className="tf__pills">
             <div className="tf__pill">
               <span className="tf__pill-icon">→</span>
-              <span>Sync requests forwarded with {'<'}5ms overhead</span>
+              <span><strong>Relay</strong> — every request passes through a controlled layer before hitting your backend</span>
             </div>
             <div className="tf__pill">
               <span className="tf__pill-icon">◎</span>
-              <span>100% capture — every header, body, and status code</span>
+              <span><strong>Retain</strong> — every request captured in full before it reaches your infrastructure</span>
             </div>
             <div className="tf__pill">
               <span className="tf__pill-icon">↺</span>
-              <span>Any failed request replayable with one click</span>
+              <span><strong>Recover</strong> — replay any retained request after downtime, with exact original payload</span>
             </div>
             <div className="tf__pill">
               <span className="tf__pill-icon">⚡</span>
-              <span>No code changes to your API, ever</span>
+              <span><strong>Zero code changes</strong> — point one URL, the reliability layer is live</span>
             </div>
           </div>
         </div>

@@ -23,10 +23,10 @@ export default function HomePage() {
       <section className="hero" aria-labelledby="hero-heading">
         <div className="container">
           <div className="hero__inner">
-            <span className="hero__label">// api reliability infrastructure</span>
-            <h1 className="heading-hero hero__title" id="hero-heading">Never miss an<br />API request</h1>
-            <p className="hero__sub">Instantly launch, scale, and observe your <br />API infrastructure</p>
-            <p className="hero__detail">Create, capture &amp; inspect every request, and replay failures—without the hassle of gateways, servers, or observability stacks</p>
+            <span className="hero__label">// api reliability layer</span>
+            <h1 className="heading-hero hero__title" id="hero-heading">Never lose an<br />API request.</h1>
+            <p className="hero__sub">Relay traffic safely. Retain every request.<br />Recover from failures.</p>
+            <p className="hero__detail">getrequest sits in front of your backend as a reliability layer — so traffic spikes, downtime, or failed deployments never result in lost requests.</p>
             <div className="hero__ctas">
               <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
               <a href="#" className="btn btn-ghost btn-lg">View docs</a>
@@ -80,7 +80,7 @@ export default function HomePage() {
         </div>
         <div className="stat">
           <span className="stat__value">100%</span>
-          <span className="stat__label">Request fidelity, nothing dropped</span>
+          <span className="stat__label">Zero requests lost, ever</span>
         </div>
         <div className="stat">
           <span className="stat__value">&lt; 5ms</span>
@@ -96,24 +96,24 @@ export default function HomePage() {
       <section className="section section--dark" id="how-it-works" aria-labelledby="how-heading">
         <div className="container">
           <div className="section__header">
-            <span className="label">// getting started</span>
-            <h2 className="heading-xl" id="how-heading">Your API infrastructure, ready in seconds.</h2>
+            <span className="label">// how it works</span>
+            <h2 className="heading-xl" id="how-heading">Three stages. Complete reliability.</h2>
           </div>
           <div className="steps">
             <div className="step">
               <span className="step__num">01</span>
-              <h3 className="step__title">Launch an endpoint</h3>
-              <p className="step__desc">Create a fully functional API endpoint within seconds. Return mock JSON or forward to any upstream. No gateway config, no servers to provision, no deployment pipeline.</p>
+              <h3 className="step__title">Relay</h3>
+              <p className="step__desc">Every incoming request passes through getrequest before reaching your backend. Traffic spikes, bad actors, and sudden load are handled at the relay layer — your infrastructure never sees raw, uncontrolled traffic again.</p>
             </div>
             <div className="step">
               <span className="step__num">02</span>
-              <h3 className="step__title">Route your traffic</h3>
-              <p className="step__desc">Point any client at your getrequest URL. Every inbound request is captured automatically — headers, body, status, and latency — with zero instrumentation on your end.</p>
+              <h3 className="step__title">Retain</h3>
+              <p className="step__desc">Every relayed request is captured in full — headers, body, status, latency — before it reaches your upstream. Downtime, failed deployments, and infrastructure outages no longer mean lost data. Every request is durably retained.</p>
             </div>
             <div className="step">
               <span className="step__num">03</span>
-              <h3 className="step__title">Observe and recover</h3>
-              <p className="step__desc">Open the live inspector. See requests the moment they land. Replay failures against a fixed build. Share evidence across your team. Never lose a request again.</p>
+              <h3 className="step__title">Recover</h3>
+              <p className="step__desc">Once your systems are back, replay any retained request with its exact original payload. No manual reconstruction, no asking users to retry. Missed traffic is restored and system consistency is recovered instantly.</p>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@ export default function HomePage() {
           <div className="section__header">
             <span className="label">// capabilities</span>
             <h2 className="heading-xl" id="features-heading">The complete API reliability stack.</h2>
-            <p className="section__sub">Launch, observe, and recover — without standing up a gateway, a logging pipeline, or an observability stack.</p>
+            <p className="section__sub">Relay traffic safely, retain every request durably, and recover from failures instantly — without managing gateways, queues, or observability pipelines.</p>
           </div>
           <div className="feature-grid">
             <div className="feature-card">
@@ -172,20 +172,20 @@ export default function HomePage() {
         <div className="container">
           <div className="section__header">
             <span className="label label--light">// the problem</span>
-            <h2 className="heading-xl" id="pain-heading">Building API reliability shouldn&apos;t require a platform team.</h2>
+            <h2 className="heading-xl" id="pain-heading">Lost requests are the hidden cost of every downtime event.</h2>
           </div>
           <div className="pain-grid">
             <div className="card--pain">
-              <h3 className="card--pain__title">&ldquo;We spent a week standing up the gateway.&rdquo;</h3>
-              <p className="card--pain__body">Kong, Nginx, AWS API Gateway — every option demands infra expertise, config management, and a deployment pipeline before you can accept a single request.</p>
+              <h3 className="card--pain__title">&ldquo;A traffic spike took us down and we lost every request that came in.&rdquo;</h3>
+              <p className="card--pain__body">When a sudden spike overwhelms your backend, requests fail silently. Webhook payloads are dropped. Customer actions never process. There is no record of what arrived during the outage.</p>
             </div>
             <div className="card--pain">
-              <h3 className="card--pain__title">&ldquo;Our observability stack is its own project.&rdquo;</h3>
-              <p className="card--pain__body">Datadog, New Relic, custom log aggregation — you&apos;re maintaining a second system just to see what the first one is doing. The overhead compounds fast.</p>
+              <h3 className="card--pain__title">&ldquo;We deployed a bad build and permanently lost two hours of incoming traffic.&rdquo;</h3>
+              <p className="card--pain__body">Deployments fail. Services go down. When your backend is unavailable, every request that arrives is gone forever — unless you have a layer that captures and holds them before they ever reach your infrastructure.</p>
             </div>
             <div className="card--pain">
-              <h3 className="card--pain__title">&ldquo;We can&apos;t reproduce production failures.&rdquo;</h3>
-              <p className="card--pain__body">The exact headers, auth token, body, and timing are gone. Your logs show what happened, not why — and there&apos;s no way to replay what you can&apos;t reconstruct.</p>
+              <h3 className="card--pain__title">&ldquo;After the incident, we had to ask customers to retry. Half of them didn&apos;t.&rdquo;</h3>
+              <p className="card--pain__body">Manual recovery is the default. Engineers reconstruct requests from partial logs, customers are asked to resend, and critical business events are simply written off. Recovery should not require human intervention.</p>
             </div>
           </div>
         </div>
@@ -352,8 +352,8 @@ export default function HomePage() {
       {/* CTA */}
       <section className="cta-section" aria-labelledby="cta-heading">
         <div className="container container--narrow">
-          <h2 className="heading-xl cta-section__title" id="cta-heading">Your API infrastructure. Running in seconds.</h2>
-          <p className="cta-section__sub">Launch endpoints, observe every request, and recover from failures — without the overhead.</p>
+          <h2 className="heading-xl cta-section__title" id="cta-heading">Relay. Retain. Recover. From day one.</h2>
+          <p className="cta-section__sub">The API Reliability Layer that ensures no incoming request is ever lost — even when your backend isn&apos;t ready to receive it.</p>
           <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
           <p className="cta-section__note">No credit card required · Free plan available · Cancel anytime</p>
         </div>

@@ -7,7 +7,7 @@ import { breadcrumbSchema } from '@/lib/jsonld'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Features',
-  description: 'Launch API endpoints, capture every request, replay failures, and share debug evidence — without managing gateways, servers, or observability stacks. getrequest features.',
+  description: 'Relay every API request safely. Retain every payload before it reaches your backend. Recover from failures with one-click replay. The API Reliability Layer — no code changes required.',
   path: '/features',
 })
 
@@ -23,9 +23,9 @@ export default function FeaturesPage() {
       <section className="hero" aria-labelledby="hero-heading">
         <div className="container">
           <div className="hero__inner">
-            <span className="hero__label">// api reliability infrastructure</span>
-            <h1 className="heading-hero hero__title" id="hero-heading">The complete stack for API reliability.</h1>
-            <p className="hero__sub">Launch endpoints, observe every request, recover from failures — without managing infrastructure.</p>
+            <span className="hero__label">// api reliability layer</span>
+            <h1 className="heading-hero hero__title" id="hero-heading">Relay. Retain. Recover.</h1>
+            <p className="hero__sub">A protective reliability layer that sits in front of your backend — relaying traffic safely, retaining every request before it reaches your infrastructure, and recovering from failures on demand.</p>
             <div className="hero__ctas">
               <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
               <Link href="/pricing" className="btn btn-ghost btn-lg">See pricing</Link>
@@ -39,7 +39,7 @@ export default function FeaturesPage() {
         <div className="container">
           <div className="feature-section__layout">
             <div>
-              <span className="feature-section__label">Feature 01</span>
+              <span className="feature-section__label">Relay — 01</span>
               <h2 className="heading-lg feature-section__title" id="f01-heading">Instant endpoints.</h2>
               <p className="feature-section__body">Launch a production-ready API endpoint in under 60 seconds. No gateway config, no server to provision, no deployment pipeline. Define your method, slug, and action — getrequest handles the rest.</p>
               <p className="feature-section__secondary">Return static JSON for mock APIs, or forward to any upstream. Switch between actions without downtime. The infrastructure layer ships with your first request.</p>
@@ -84,7 +84,7 @@ export default function FeaturesPage() {
         <div className="container">
           <div className="feature-section__layout feature-section__layout--reverse">
             <div>
-              <span className="feature-section__label">Feature 02</span>
+              <span className="feature-section__label">Retain — 01</span>
               <h2 className="heading-lg feature-section__title" id="f02-heading">Live request inspector.</h2>
               <p className="feature-section__body">Total observability into every request — headers, body, status code, latency — the moment it lands. No log aggregation pipeline. No custom instrumentation. No Datadog bill. Observability is built into the infrastructure layer.</p>
               <p className="feature-section__secondary">Whether you&apos;re validating a webhook, auditing third-party traffic, or monitoring a live integration, you have a complete picture without writing a single line of logging code.</p>
@@ -126,7 +126,7 @@ export default function FeaturesPage() {
         <div className="container">
           <div className="feature-section__layout">
             <div>
-              <span className="feature-section__label">Feature 03</span>
+              <span className="feature-section__label">Recover — 01</span>
               <span className="feature-section__badge">Pro</span>
               <h2 className="heading-lg feature-section__title" id="f03-heading">Request replay.</h2>
               <p className="feature-section__body">Recover from failures with certainty. Re-fire any captured request with one click — exact headers, body, and method preserved. Confirm a fix works before it ships. Reproduce production failures locally without reconstructing the context.</p>
@@ -171,7 +171,7 @@ export default function FeaturesPage() {
         <div className="container">
           <div className="feature-section__layout feature-section__layout--reverse">
             <div>
-              <span className="feature-section__label">Feature 04</span>
+              <span className="feature-section__label">Recover — 02</span>
               <span className="feature-section__badge">Pro</span>
               <h2 className="heading-lg feature-section__title" id="f04-heading">Shareable debug links.</h2>
               <p className="feature-section__body">Turn any captured request into a permanent, shareable URL. Paste it in a Slack message, a Jira ticket, or a PR comment. Anyone with the link sees the full request and response — no account required. Cross-team incident response, without the overhead.</p>
@@ -219,7 +219,7 @@ export default function FeaturesPage() {
         <div className="container">
           <div className="feature-section__layout">
             <div>
-              <span className="feature-section__label">Feature 05</span>
+              <span className="feature-section__label">Relay — 02</span>
               <h2 className="heading-lg feature-section__title" id="f05-heading">Smart forwarding.</h2>
               <p className="feature-section__body">A transparent proxy layer for any upstream — no SDK, no agent, no code changes required. getrequest routes traffic to your destination, captures the full exchange, and logs everything without modifying a single byte in transit. The routing layer you&apos;d otherwise have to build yourself.</p>
               <p className="feature-section__secondary">Route to staging, production, or third-party APIs. Validate what your system sends against what the upstream receives. The proxy ships with the infrastructure — there&apos;s nothing extra to configure.</p>
@@ -263,7 +263,7 @@ export default function FeaturesPage() {
         <div className="container">
           <div className="feature-section__layout feature-section__layout--reverse">
             <div>
-              <span className="feature-section__label">Feature 06</span>
+              <span className="feature-section__label">Retain — 02</span>
               <h2 className="heading-lg feature-section__title" id="f06-heading">Usage metering.</h2>
               <p className="feature-section__body">Build a reliability baseline from real traffic data. Track request volume per project, spot usage trends before they become capacity problems, and maintain a full audit trail. Get notified before you hit limits — not after traffic drops.</p>
               <p className="feature-section__secondary">Reliability starts with measurement. getrequest makes traffic data visible by default — no separate metrics pipeline, no custom dashboards to maintain.</p>
@@ -301,8 +301,8 @@ export default function FeaturesPage() {
       {/* CTA */}
       <section className="cta-section" aria-labelledby="cta-heading">
         <div className="container container--narrow">
-          <h2 className="heading-xl cta-section__title" id="cta-heading">The full stack. Available from day one.</h2>
-          <p className="cta-section__sub">No gateway to configure. No observability stack to manage. No ops team required.</p>
+          <h2 className="heading-xl cta-section__title" id="cta-heading">Relay. Retain. Recover. From day one.</h2>
+          <p className="cta-section__sub">No gateway to configure. No code to add. Point one URL and the reliability layer is live.</p>
           <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
         </div>
       </section>

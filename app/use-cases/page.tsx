@@ -6,7 +6,7 @@ import { breadcrumbSchema } from '@/lib/jsonld'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Use Cases',
-  description: 'getrequest fits wherever you need to launch, observe, or recover from API failures. Mock APIs, capture webhooks, proxy upstreams, replay failures, share debug evidence, and more.',
+  description: 'Relay every request safely. Retain every payload before it reaches your backend. Recover from failures without losing a single request. See how getrequest fits your team.',
   path: '/use-cases',
 })
 
@@ -22,9 +22,9 @@ export default function UseCasesPage() {
       <section className="hero" aria-labelledby="hero-heading">
         <div className="container">
           <div className="hero__inner">
-            <span className="hero__label">// api reliability infrastructure</span>
-            <h1 className="heading-hero hero__title" id="hero-heading">One infrastructure layer.<br />Dozens of use cases.</h1>
-            <p className="hero__sub">getrequest fits wherever teams need to launch, observe, or recover from API failures — without managing the underlying stack.</p>
+            <span className="hero__label">// api reliability layer</span>
+            <h1 className="heading-hero hero__title" id="hero-heading">One reliability layer.<br />Dozens of use cases.</h1>
+            <p className="hero__sub">Relay every request safely. Retain every payload before it reaches your backend. Recover from failures without losing a single request — without managing the underlying stack.</p>
           </div>
         </div>
       </section>
@@ -76,15 +76,15 @@ export default function UseCasesPage() {
             </div>
             <div className="use-case-card">
               <span className="use-case-card__plan">Free</span>
-              <h3 className="use-case-card__title">Replace your API gateway</h3>
-              <p className="use-case-card__desc">Route and log API traffic without running Nginx, Kong, or Kubernetes. getrequest is the gateway layer for teams that need to move fast without a platform engineer managing it.</p>
-              <code className="use-case-card__code">route: /api/* → upstream</code>
+              <h3 className="use-case-card__title">Protect against traffic spikes</h3>
+              <p className="use-case-card__desc">A sudden surge hits your API. getrequest absorbs inbound load as a controlled relay layer — so your backend isn&apos;t exposed directly to unpredictable traffic. Every request is relayed safely and retained in full.</p>
+              <code className="use-case-card__code">route: inbound spike → relay layer</code>
             </div>
             <div className="use-case-card">
-              <span className="use-case-card__plan">Free</span>
-              <h3 className="use-case-card__title">Test API reliability pre-launch</h3>
-              <p className="use-case-card__desc">Stand up a getrequest endpoint for your new API surface before wiring it to a real backend. Validate request shapes, response contracts, and failure modes under real conditions.</p>
-              <code className="use-case-card__code">action: mock_json | forward</code>
+              <span className="use-case-card__plan">Pro</span>
+              <h3 className="use-case-card__title">Recover lost requests after downtime</h3>
+              <p className="use-case-card__desc">Your backend went down. Requests kept arriving. Because getrequest retains every payload before forwarding, none of them are lost. When systems recover, replay the retained queue with exact original payloads.</p>
+              <code className="use-case-card__code">↺ replay retained queue</code>
             </div>
           </div>
         </div>
@@ -102,17 +102,17 @@ export default function UseCasesPage() {
             <div className="persona-card">
               <div className="persona-card__icon" aria-hidden="true">⌨</div>
               <h3 className="persona-card__title">Backend &amp; API engineers</h3>
-              <p className="persona-card__desc">Launch endpoints instantly, observe every request without instrumenting anything, and replay failures to confirm fixes. getrequest is the reliability layer you&apos;d otherwise have to build yourself.</p>
+              <p className="persona-card__desc">Relay traffic through a controlled layer, retain every request before it hits your backend, and recover from failures with one-click replay. The reliability layer you&apos;d otherwise have to build yourself.</p>
             </div>
             <div className="persona-card">
               <div className="persona-card__icon" aria-hidden="true">⚙</div>
               <h3 className="persona-card__title">Platform &amp; DevOps teams</h3>
-              <p className="persona-card__desc">Replace the gateway config, log aggregation pipeline, and request tracing stack with one tool. getrequest covers launch, observe, and recover — without a dedicated engineer to maintain each layer.</p>
+              <p className="persona-card__desc">Replace piecemeal gateway configs, log pipelines, and retry infrastructure with one layer. getrequest Relays, Retains, and Recovers — without a dedicated engineer maintaining three separate tools.</p>
             </div>
             <div className="persona-card">
               <div className="persona-card__icon" aria-hidden="true">✓</div>
               <h3 className="persona-card__title">QA &amp; reliability engineers</h3>
-              <p className="persona-card__desc">Validate exactly what your system sends and what the API returns. Capture inbound requests, inspect every field against expected schema, replay failures precisely, and share evidence across teams.</p>
+              <p className="persona-card__desc">Validate exactly what your system relays, inspect every retained payload against expected schema, and replay failures precisely to confirm fixes. Full request lifecycle visibility without custom instrumentation.</p>
             </div>
           </div>
         </div>
@@ -121,8 +121,8 @@ export default function UseCasesPage() {
       {/* CTA */}
       <section className="cta-section" aria-labelledby="cta-heading">
         <div className="container container--narrow">
-          <h2 className="heading-xl cta-section__title" id="cta-heading">Your stack. Without the overhead.</h2>
-          <p className="cta-section__sub">getrequest is the API reliability infrastructure your team can launch today — no gateway config, no observability pipeline, no ops team.</p>
+          <h2 className="heading-xl cta-section__title" id="cta-heading">Relay. Retain. Recover. From day one.</h2>
+          <p className="cta-section__sub">The API Reliability Layer your team can activate today — no gateway config, no code changes, no ops overhead.</p>
           <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
         </div>
       </section>

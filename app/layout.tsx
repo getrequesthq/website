@@ -20,10 +20,10 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://getrequest.io'),
   title: {
-    default: 'getrequest — API Reliability Infrastructure for Modern Teams',
+    default: 'getrequest — API Reliability Layer · Relay · Retain · Recover',
     template: '%s — getrequest',
   },
-  description: 'API reliability infrastructure for modern teams. Launch endpoints, observe every request, and replay failures — without managing gateways, servers, or observability stacks.',
+  description: 'The API Reliability Layer for modern teams. Relay traffic safely, retain every request before it hits your backend, and recover from failures without losing a single payload.',
   openGraph: {
     siteName: 'getrequest',
     type: 'website',

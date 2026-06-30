@@ -1,36 +1,57 @@
 # getrequest
 
-getrequest is API reliability infrastructure for modern teams.
+getrequest is the API Reliability Layer for modern engineering teams.
 
-It lets engineers instantly launch HTTP API endpoints, capture and inspect
-every inbound request in real time, replay failures against fixed builds,
-and share debug evidence across teams — without managing API gateways,
-servers, or observability stacks.
+It sits in front of your backend as a protective layer — relaying every
+incoming request safely, retaining every payload before it reaches your
+infrastructure, and allowing recovery from failures with exact-payload
+replay. No code changes required.
 
 ## Product
+
 - Category: API infrastructure, developer tools
-- Positioning: The API Reliability Infrastructure for modern teams
-- Tagline: Never miss an API request.
+- Positioning: The API Reliability Layer for modern teams
+- Tagline: Relay safely. Retain durably. Recover instantly.
+
+## Three stages of API reliability
+
+- Relay — every request passes through a controlled layer before hitting
+  your backend; protects against traffic spikes and cascading failures
+- Retain — every request captured in full before reaching your
+  infrastructure; zero request loss during downtime or deployment failures
+- Recover — replay any retained request with exact original headers, body,
+  and method; confirm fixes before shipping (Pro plan)
 
 ## Key capabilities
-- Instant endpoints: Launch a production-ready API endpoint in under 60 seconds (mock JSON or proxy)
-- Live inspector: Real-time stream of every request — headers, body, status, latency
-- Request replay: Re-fire any captured request with original payload intact (Pro)
-- Shareable debug links: Permanent URL to any captured request, viewable without an account (Pro)
-- Smart forwarding: Transparent proxy to any upstream API, full exchange logged
+
+- Instant endpoints: Launch a production-ready API endpoint in under 60
+  seconds (mock JSON or proxy to any upstream)
+- Live inspector: Every request captured — headers, body, status, latency —
+  searchable up to 30 days
+- Request replay: Re-fire any captured request with original payload intact
+  (Pro)
+- Shareable debug links: Permanent URL to any captured request, viewable
+  without an account (Pro)
+- Smart forwarding: Transparent proxy to any upstream API, full exchange
+  logged, zero code changes
 - Usage metering: Request volume tracking, pre-limit alerts, audit trail
 
 ## Pricing
-- Free: $0/mo — 10,000 requests/month, 7-day log retention
-- Dev: $9/mo — 100,000 requests/month, 30-day log retention
-- Pro: $99/mo — 1,000,000 requests/month, 30-day retention, request replay, shareable debug links
+
+- Free: $0/mo — 10,000 requests/month, 7-day log retention, Relay + Retain
+- Dev: $9/mo — 100,000 requests/month, 30-day log retention, Relay + Retain
+- Pro: $99/mo — 1,000,000 requests/month, 30-day retention, full Relay +
+  Retain + Recover (request replay, shareable debug links)
 
 ## Pages
+
 - / — Homepage and product overview
-- /features — Full feature documentation
+- /features — Full feature documentation (Relay / Retain / Recover stages)
 - /pricing — Pricing plans and comparison
 - /use-cases — Use case scenarios for different team types
-- /blog — Technical articles on API reliability, infrastructure, and developer tooling
+- /blog — Technical articles on API reliability, infrastructure, and
+  developer tooling
 
 ## Contact
+
 - Website: https://getrequest.io

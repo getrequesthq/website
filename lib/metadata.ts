@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 const BASE_URL = 'https://getrequest.io'
 const SITE_NAME = 'getrequest'
-const DEFAULT_DESCRIPTION = 'API reliability infrastructure for modern teams. Launch endpoints, observe every request, and replay failures — without managing gateways, servers, or observability stacks.'
+const DEFAULT_DESCRIPTION = 'The API Reliability Layer for modern teams. Relay traffic safely, retain every request before it hits your backend, and recover from failures without losing a single payload.'
 
 export function buildMetadata({
   title,
