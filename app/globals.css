@@ -486,14 +486,14 @@ table {
    Headings
    ============================================================ */
 .heading-hero {
-  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-size: clamp(2.5rem, 7vw, 4rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   line-height: 1.0;
 }
 
 .heading-xl {
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.1;
