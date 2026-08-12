@@ -106,8 +106,8 @@ export default function FeaturesPage() {
 `}<span className="tok-method-post">POST</span>{` `}<span className="tok-path">/api/auth/login</span>{`  ·  `}<span className="tok-status-ok">200 OK</span>{`  ·  `}<span className="tok-dim">43ms</span>{`
 
 `}<span className="tok-key">content-type</span><span className="tok-dim">:</span>{`   `}<span className="tok-value">application/json</span>{`
-`}<span className="tok-key">authorization</span><span className="tok-dim">:</span>{`  `}<span className="tok-string">Bearer eyJhbGc...</span>{`
 `}<span className="tok-key">x-request-id</span><span className="tok-dim">:</span>{`  `}<span className="tok-string">req_8xm2k9p</span>{`
+`}<span className="tok-key">user-agent</span><span className="tok-dim">:</span>{`    `}<span className="tok-string">okhttp/4.12.0</span>{`
 
 `}<span className="tok-comment">// Request body</span>{`
 `}<span className="tok-dim">{'{'}</span>{` `}<span className="tok-key">&quot;user&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-string">&quot;alice&quot;</span><span className="tok-dim">,</span>{` `}<span className="tok-key">&quot;action&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-string">&quot;login&quot;</span>{` `}<span className="tok-dim">{'}'}</span>{`
@@ -196,8 +196,8 @@ export default function FeaturesPage() {
 `}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">/api/webhooks/stripe</span>{`
 `}<span className="tok-key">Host</span><span className="tok-dim">:</span>{` `}<span className="tok-url">api.example.com</span>{`
 
-`}<span className="tok-key">stripe-signature</span><span className="tok-dim">:</span>{` `}<span className="tok-string">t=1714000000,...</span>{`
 `}<span className="tok-key">content-type</span><span className="tok-dim">:</span>{` `}<span className="tok-value">application/json</span>{`
+`}<span className="tok-key">user-agent</span><span className="tok-dim">:</span>{`   `}<span className="tok-value">Stripe/1.0</span>{`
 
 `}<span className="tok-dim">{'{'}</span>{`
   `}<span className="tok-key">&quot;type&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-string">&quot;payment_intent.succeeded&quot;</span><span className="tok-dim">,</span>{`

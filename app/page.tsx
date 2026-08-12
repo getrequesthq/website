@@ -80,7 +80,7 @@ export default function HomePage() {
         </div>
         <div className="stat">
           <span className="stat__value">100%</span>
-          <span className="stat__label">Zero requests lost, ever</span>
+          <span className="stat__label">Requests captured, within plan limits</span>
         </div>
         <div className="stat">
           <span className="stat__value">&lt; 5ms</span>

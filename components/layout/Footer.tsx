@@ -43,8 +43,8 @@ export function Footer() {
           <div>
             <h4 className="footer__col-title">Legal</h4>
             <ul className="footer__links">
-              <li><a href="#" className="footer__link">Privacy Policy</a></li>
-              <li><a href="#" className="footer__link">Terms of Service</a></li>
+              <li><Link href="/privacy-policy" className="footer__link">Privacy Policy</Link></li>
+              <li><Link href="/terms-of-use" className="footer__link">Terms of Use</Link></li>
               <li><a href="#" className="footer__link">Cookie Policy</a></li>
               <li><a href="#" className="footer__link">Security</a></li>
             </ul>
