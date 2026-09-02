@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { APP_LOGIN_URL, APP_REGISTER_URL } from '@/lib/urls'
+import { APP_LOGIN_URL, APP_REGISTER_URL, DOCS_URL } from '@/lib/urls'
 
 const LogoSVG = () => (
   <svg className="nav__logo-svg" viewBox="0 0 192 41" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -39,7 +39,7 @@ export function Nav() {
             <Link href="/use-cases" className={`nav__link${isActive('/use-cases') ? ' active' : ''}`} role="menuitem">Use cases</Link>
             <Link href="/pricing" className={`nav__link${isActive('/pricing') ? ' active' : ''}`} role="menuitem">Pricing</Link>
             <Link href="/blog" className={`nav__link${isActive('/blog') ? ' active' : ''}`} role="menuitem">Blog</Link>
-            <a href="#" className="nav__link" role="menuitem">Docs</a>
+            <a href={DOCS_URL} className="nav__link" role="menuitem">Docs</a>
           </div>
 
           <div className="nav__actions">
@@ -66,7 +66,7 @@ export function Nav() {
         <Link href="/use-cases" className={`nav__link${isActive('/use-cases') ? ' active' : ''}`} onClick={() => setMobileOpen(false)}>Use cases</Link>
         <Link href="/pricing" className={`nav__link${isActive('/pricing') ? ' active' : ''}`} onClick={() => setMobileOpen(false)}>Pricing</Link>
         <Link href="/blog" className={`nav__link${isActive('/blog') ? ' active' : ''}`} onClick={() => setMobileOpen(false)}>Blog</Link>
-        <a href="#" className="nav__link">Docs</a>
+        <a href={DOCS_URL} className="nav__link">Docs</a>
         <a href={APP_LOGIN_URL} className="btn btn-ghost btn-sm">Sign in</a>
         <a href={APP_REGISTER_URL} className="btn btn-primary btn-sm">Start for free →</a>
       </nav>

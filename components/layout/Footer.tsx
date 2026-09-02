@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { DOCS_URL } from '@/lib/urls'
 
 const FooterLogoSVG = () => (
   <svg className="footer__logo-svg" viewBox="0 0 192 41" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -25,9 +26,9 @@ export function Footer() {
               <li><Link href="/features" className="footer__link">Features</Link></li>
               <li><Link href="/use-cases" className="footer__link">Use cases</Link></li>
               <li><Link href="/pricing" className="footer__link">Pricing</Link></li>
+              <li><a href={DOCS_URL} className="footer__link">Documentation</a></li>
               <li><a href="#" className="footer__link">Changelog</a></li>
               <li><a href="#" className="footer__link">Status</a></li>
-              <li><a href="#" className="footer__link">API Reference</a></li>
             </ul>
           </div>
           <div>

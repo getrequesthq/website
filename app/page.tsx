@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
-import { APP_REGISTER_URL } from '@/lib/urls'
+import { APP_REGISTER_URL, DOCS_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { organizationSchema, webSiteSchema, softwareSchema } from '@/lib/jsonld'
 import { TrafficFlow } from '@/components/TrafficFlow'
@@ -29,7 +29,7 @@ export default function HomePage() {
             <p className="hero__detail">getrequest sits in front of your backend as a reliability layer — so traffic spikes, downtime, or failed deployments never result in lost requests.</p>
             <div className="hero__ctas">
               <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
-              <a href="#" className="btn btn-ghost btn-lg">View docs</a>
+              <a href={DOCS_URL} className="btn btn-ghost btn-lg">View docs</a>
             </div>
             <p className="hero__note">Free forever · No credit card required</p>
 
