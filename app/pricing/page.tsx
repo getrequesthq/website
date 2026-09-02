@@ -20,8 +20,12 @@ const faqItems = [
     answer: 'Yes. Plan changes take effect immediately. If you upgrade mid-cycle, you\'re charged the prorated difference. If you downgrade, the change takes effect at the start of your next billing cycle.',
   },
   {
-    question: 'What happens to my logs when I hit my limit?',
-    answer: 'Your endpoints continue to operate normally. New requests are still proxied and forwarded. Log capture is paused until the cycle resets or you upgrade.',
+    question: 'What happens when I go over my plan\'s request quota?',
+    answer: 'Your endpoints keep operating normally either way. On Free, log capture pauses once you hit 10,000 requests until the cycle resets or you upgrade. On Dev, Pro, and Gro, overage is billed automatically per 10,000 extra requests.',
+  },
+  {
+    question: 'Is overage capped, or can my bill spike unexpectedly?',
+    answer: 'Overage on Dev, Pro, and Gro is capped at 120% of your plan\'s quota. Once you hit that cap, we stop billing extra for the rest of the cycle — a traffic spike can\'t produce a surprise bill. Upgrade anytime for a higher included quota.',
   },
   {
     question: 'Is there a free trial for Pro?',
@@ -48,7 +52,7 @@ export default function PricingPage() {
           <div className="hero__inner">
             <span className="hero__label">// pricing</span>
             <h1 className="heading-hero hero__title" id="hero-heading">Reliable pricing. No surprises.</h1>
-            <p className="hero__sub">Start free, scale as your traffic grows.</p>
+            <p className="hero__sub">Start free, scale as your traffic grows. Every paid plan includes transparent, pay-as-you-go overage.</p>
           </div>
         </div>
       </section>
@@ -60,7 +64,7 @@ export default function PricingPage() {
             <span className="label label--light">// plans</span>
             <h2 className="heading-xl" id="plans-heading">Scale as your traffic grows.</h2>
           </div>
-          <div className="pricing-grid">
+          <div className="pricing-grid pricing-grid--4">
             {/* Free */}
             <div className="pricing-card">
               <div className="pricing-card__name">free</div>
@@ -76,6 +80,7 @@ export default function PricingPage() {
                 <li className="pricing-card__feature">Usage dashboard</li>
                 <li className="pricing-card__feature">API key management</li>
               </ul>
+              <p className="pricing-card__overage">Hard capped at quota — no overage charges.</p>
               <div className="pricing-card__cta">
                 <a href={APP_REGISTER_URL} className="btn btn-ghost-light" style={{ width: '100%', justifyContent: 'center' }}>Get started for free</a>
               </div>
@@ -83,7 +88,7 @@ export default function PricingPage() {
             {/* Dev */}
             <div className="pricing-card">
               <div className="pricing-card__name">dev</div>
-              <div className="pricing-card__price">$9<span>/mo</span></div>
+              <div className="pricing-card__price">$29<span>/mo</span></div>
               <p className="pricing-card__desc">Extended Retain for real workloads — 30-day log retention and 10× the request volume of free.</p>
               <hr className="pricing-card__divider" />
               <ul className="pricing-card__features">
@@ -94,6 +99,7 @@ export default function PricingPage() {
                 <li className="pricing-card__feature">JSON mock responses</li>
                 <li className="pricing-card__feature">Priority support</li>
               </ul>
+              <p className="pricing-card__overage">Then $2.90 per 10,000 extra requests.</p>
               <div className="pricing-card__cta">
                 <a href={APP_REGISTER_URL} className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Get started for free</a>
               </div>
@@ -112,8 +118,26 @@ export default function PricingPage() {
                 <li className="pricing-card__feature pricing-card__feature--pro">Shareable debug links ✦</li>
                 <li className="pricing-card__feature">Team access (coming soon)</li>
               </ul>
+              <p className="pricing-card__overage">Then $1.90 per 10,000 extra requests.</p>
               <div className="pricing-card__cta">
                 <a href={APP_REGISTER_URL} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Get started for free</a>
+              </div>
+            </div>
+            {/* Gro */}
+            <div className="pricing-card">
+              <div className="pricing-card__name">gro</div>
+              <div className="pricing-card__price">$399<span>/mo</span></div>
+              <p className="pricing-card__desc">High-volume Relay + Retain + Recover. 5× the throughput of Pro for teams running production traffic at scale.</p>
+              <hr className="pricing-card__divider" />
+              <ul className="pricing-card__features">
+                <li className="pricing-card__feature">5,000,000 requests / month</li>
+                <li className="pricing-card__feature">30-day log retention</li>
+                <li className="pricing-card__feature">Everything in Pro</li>
+                <li className="pricing-card__feature">Lowest per-request overage rate</li>
+              </ul>
+              <p className="pricing-card__overage">Then $0.90 per 10,000 extra requests.</p>
+              <div className="pricing-card__cta">
+                <a href={APP_REGISTER_URL} className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Get started for free</a>
               </div>
             </div>
           </div>
@@ -135,6 +159,7 @@ export default function PricingPage() {
                   <th>free</th>
                   <th>dev</th>
                   <th className="col-featured">pro</th>
+                  <th>gro</th>
                 </tr>
               </thead>
               <tbody>
@@ -143,60 +168,77 @@ export default function PricingPage() {
                   <td>10,000</td>
                   <td>100,000</td>
                   <td className="col-featured">1,000,000</td>
+                  <td>5,000,000</td>
+                </tr>
+                <tr>
+                  <td>Overage beyond quota</td>
+                  <td>—</td>
+                  <td>$2.90 / 10,000</td>
+                  <td className="col-featured">$1.90 / 10,000</td>
+                  <td>$0.90 / 10,000</td>
                 </tr>
                 <tr>
                   <td>Log retention</td>
                   <td>7 days</td>
                   <td>30 days</td>
                   <td className="col-featured">30 days</td>
+                  <td>30 days</td>
                 </tr>
                 <tr>
                   <td>Live inspector</td>
                   <td><span className="check">✓</span></td>
                   <td><span className="check">✓</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
                 </tr>
                 <tr>
                   <td>Instant endpoints</td>
                   <td><span className="check">✓</span></td>
                   <td><span className="check">✓</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
                 </tr>
                 <tr>
                   <td>Smart forwarding</td>
                   <td><span className="check">✓</span></td>
                   <td><span className="check">✓</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
                 </tr>
                 <tr>
                   <td>JSON mock responses</td>
                   <td><span className="check">✓</span></td>
                   <td><span className="check">✓</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
                 </tr>
                 <tr>
                   <td>API key management</td>
                   <td><span className="check">✓</span></td>
                   <td><span className="check">✓</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
                 </tr>
                 <tr>
                   <td>Usage dashboard</td>
                   <td><span className="check">✓</span></td>
                   <td><span className="check">✓</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
                 </tr>
                 <tr>
                   <td>Request replay</td>
                   <td><span className="cross">—</span></td>
                   <td><span className="cross">—</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
                 </tr>
                 <tr>
                   <td>Shareable debug links</td>
                   <td><span className="cross">—</span></td>
                   <td><span className="cross">—</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
                 </tr>
               </tbody>
             </table>

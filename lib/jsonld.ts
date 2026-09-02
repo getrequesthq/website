@@ -22,8 +22,9 @@ export function softwareSchema() {
     url: BASE_URL,
     offers: [
       { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
-      { '@type': 'Offer', name: 'Dev', price: '9', priceCurrency: 'USD', billingIncrement: 'P1M' },
+      { '@type': 'Offer', name: 'Dev', price: '29', priceCurrency: 'USD', billingIncrement: 'P1M' },
       { '@type': 'Offer', name: 'Pro', price: '99', priceCurrency: 'USD', billingIncrement: 'P1M' },
+      { '@type': 'Offer', name: 'Gro', price: '399', priceCurrency: 'USD', billingIncrement: 'P1M' },
     ],
   }
 }

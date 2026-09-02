@@ -297,7 +297,7 @@ export default function HomePage() {
             <span className="label label--light">// pricing</span>
             <h2 className="heading-xl" id="pricing-heading">Start free. No credit card required.</h2>
           </div>
-          <div className="pricing-grid">
+          <div className="pricing-grid pricing-grid--4">
             <div className="pricing-card">
               <div className="pricing-card__name">free</div>
               <div className="pricing-card__price">$0<span>/mo</span></div>
@@ -317,7 +317,7 @@ export default function HomePage() {
             </div>
             <div className="pricing-card">
               <div className="pricing-card__name">dev</div>
-              <div className="pricing-card__price">$9<span>/mo</span></div>
+              <div className="pricing-card__price">$29<span>/mo</span></div>
               <p className="pricing-card__desc">For active projects with real traffic.</p>
               <hr className="pricing-card__divider" />
               <ul className="pricing-card__features">
@@ -325,6 +325,7 @@ export default function HomePage() {
                 <li className="pricing-card__feature">30-day log retention</li>
                 <li className="pricing-card__feature">Everything in free</li>
               </ul>
+              <p className="pricing-card__overage">+$2.90 / 10,000 over quota</p>
               <div className="pricing-card__cta">
                 <a href={APP_REGISTER_URL} className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Start Dev plan</a>
               </div>
@@ -341,8 +342,24 @@ export default function HomePage() {
                 <li className="pricing-card__feature pricing-card__feature--pro">Request replay ✦</li>
                 <li className="pricing-card__feature pricing-card__feature--pro">Shareable debug links ✦</li>
               </ul>
+              <p className="pricing-card__overage">+$1.90 / 10,000 over quota</p>
               <div className="pricing-card__cta">
                 <a href={APP_REGISTER_URL} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Start Pro plan</a>
+              </div>
+            </div>
+            <div className="pricing-card">
+              <div className="pricing-card__name">gro</div>
+              <div className="pricing-card__price">$399<span>/mo</span></div>
+              <p className="pricing-card__desc">For high-volume production traffic.</p>
+              <hr className="pricing-card__divider" />
+              <ul className="pricing-card__features">
+                <li className="pricing-card__feature">5,000,000 requests / month</li>
+                <li className="pricing-card__feature">30-day log retention</li>
+                <li className="pricing-card__feature">Everything in Pro</li>
+              </ul>
+              <p className="pricing-card__overage">+$0.90 / 10,000 over quota</p>
+              <div className="pricing-card__cta">
+                <a href={APP_REGISTER_URL} className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Start Gro plan</a>
               </div>
             </div>
           </div>

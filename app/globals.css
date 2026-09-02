@@ -951,6 +951,19 @@ table {
   gap: var(--space-6);
 }
 
+.pricing-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.pricing-card__overage {
+  font-size: 13px;
+  color: var(--text-light-2);
+}
+
+.pricing-card--featured .pricing-card__overage {
+  color: rgba(255,255,255,0.5);
+}
+
 .pricing-card {
   border: 1px solid var(--border-light);
   border-radius: var(--radius-xl);
