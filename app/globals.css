@@ -1441,6 +1441,24 @@ table {
   color: var(--text-light-3);
 }
 
+.feature-section__link {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.15s;
+}
+
+.feature-section__link:hover {
+  opacity: 0.75;
+}
+
+.feature-section--dark .feature-section__link {
+  color: var(--text-dark);
+}
+
+.feature-section--light .feature-section__link {
+  color: var(--text-light);
+}
+
 .feature-section__list {
   list-style: none;
   padding: 0;

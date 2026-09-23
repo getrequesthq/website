@@ -42,13 +42,25 @@ export default function UseCasesPage() {
               <span className="use-case-card__plan">Free</span>
               <h3 className="use-case-card__title">Launch APIs without a backend</h3>
               <p className="use-case-card__desc">Your backend isn&apos;t ready. Launch a getrequest endpoint that returns real JSON and unblock your frontend team immediately — no server to provision, no config to manage.</p>
-              <code className="use-case-card__code">action: mock_json</code>
+              <code className="use-case-card__code">action: json</code>
             </div>
             <div className="use-case-card">
               <span className="use-case-card__plan">Free</span>
               <h3 className="use-case-card__title">Capture and inspect webhooks</h3>
               <p className="use-case-card__desc">A third-party service is firing webhooks and your handler is broken. Point the webhook URL at getrequest — every payload is captured and inspectable before you write a single handler.</p>
-              <code className="use-case-card__code">POST /webhooks/stripe → captured</code>
+              <code className="use-case-card__code">POST Stripe webhook → captured</code>
+            </div>
+            <div className="use-case-card">
+              <span className="use-case-card__plan">Free</span>
+              <h3 className="use-case-card__title">Deliver webhooks without blocking on your backend</h3>
+              <p className="use-case-card__desc">Providers expect a fast acknowledgement, not a wait on your handler. Set the endpoint to Async API — getrequest acks the caller instantly and delivers to your backend in the background, retrying automatically if it&apos;s slow or down.</p>
+              <code className="use-case-card__code">action: async_forward → 202 Accepted</code>
+            </div>
+            <div className="use-case-card">
+              <span className="use-case-card__plan">Free</span>
+              <h3 className="use-case-card__title">Authenticate endpoints and outbound calls</h3>
+              <p className="use-case-card__desc">Require a credential before getrequest processes a request, and attach a credential to the call it makes to your backend — Bearer, API Key, Basic, or HMAC, on either side, entirely independent settings.</p>
+              <code className="use-case-card__code">auth: hmac → Stripe-Signature verified</code>
             </div>
             <div className="use-case-card">
               <span className="use-case-card__plan">Free</span>
@@ -72,7 +84,7 @@ export default function UseCasesPage() {
               <span className="use-case-card__plan">Free</span>
               <h3 className="use-case-card__title">Validate integration contracts</h3>
               <p className="use-case-card__desc">Verify that a third party is sending the right fields in the right format before your handler goes live. Capture inbound requests and inspect the schema against your expectations.</p>
-              <code className="use-case-card__code">POST /webhooks/partner → inspect</code>
+              <code className="use-case-card__code">POST Partner webhook → inspect</code>
             </div>
             <div className="use-case-card">
               <span className="use-case-card__plan">Free</span>
@@ -85,6 +97,12 @@ export default function UseCasesPage() {
               <h3 className="use-case-card__title">Recover lost requests after downtime</h3>
               <p className="use-case-card__desc">Your backend went down. Requests kept arriving. Because getrequest retains every payload before forwarding, none of them are lost. When systems recover, replay the retained queue with exact original payloads.</p>
               <code className="use-case-card__code">↺ replay retained queue</code>
+            </div>
+            <div className="use-case-card">
+              <span className="use-case-card__plan">Pro</span>
+              <h3 className="use-case-card__title">Bulk-recover from a widespread outage</h3>
+              <p className="use-case-card__desc">Hundreds of requests failed while your backend was down. Select them or filter to the incident window, and retry all of them in one action — paced automatically so you don&apos;t re-overwhelm a backend that just came back up.</p>
+              <code className="use-case-card__code">⇋ bulk retry: 214 matched</code>
             </div>
           </div>
         </div>

@@ -41,16 +41,16 @@ export default function HomePage() {
                     <span className="code-window__dot"></span>
                     <span className="code-window__dot"></span>
                   </div>
-                  <span className="code-window__title">Request Logs [/proj_k8s3]</span>
+                  <span className="code-window__title">Request Logs — Production</span>
                   <span className="code-window__copy">copy</span>
                 </div>
                 <div className="code-window__body">
                   <pre>{`Requests in the last 30 minutes\n
-  `}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">/api/auth/login</span>{`        `}<span className="tok-status-ok">200 OK</span>{`  · `}<span className="tok-dim">43ms</span>{`    `}<span className="tok-dim">just now</span>{`
-  `}<span className="tok-method-get">GET</span>{`   `}<span className="tok-path">/api/users/profile</span>{`     `}<span className="tok-status-ok">200 OK</span>{`  · `}<span className="tok-dim">18ms</span>{`    `}<span className="tok-dim">2s ago</span>{`
-  `}<span className="tok-method-get">GET</span>{`   `}<span className="tok-path">/api/orders/99</span>{`         `}<span className="tok-status-warn">404</span>{`     · `}<span className="tok-dim">8ms</span>{`     `}<span className="tok-dim">5s ago</span>{`
-  `}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">/api/webhooks/stripe</span>{`   `}<span className="tok-status-ok">201</span>{`     · `}<span className="tok-dim">67ms</span>{`    `}<span className="tok-dim">11s ago</span>{`
-`}<span className="log-row-error">{'  '}<span className="tok-method-put">PUT</span>{`   `}<span className="tok-path">/api/settings</span>{`          `}<span className="tok-status-err">500</span>{`     · `}<span className="tok-dim">203ms</span>{`   `}<span className="tok-dim">32s ago</span>{` ←`}</span>{`
+  `}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">Login</span>{`              `}<span className="tok-status-ok">200 OK</span>{`  · `}<span className="tok-dim">43ms</span>{`    `}<span className="tok-dim">just now</span>{`
+  `}<span className="tok-method-get">GET</span>{`   `}<span className="tok-path">User profile</span>{`       `}<span className="tok-status-ok">200 OK</span>{`  · `}<span className="tok-dim">18ms</span>{`    `}<span className="tok-dim">2s ago</span>{`
+  `}<span className="tok-method-get">GET</span>{`   `}<span className="tok-path">Get order</span>{`          `}<span className="tok-status-warn">404</span>{`     · `}<span className="tok-dim">8ms</span>{`     `}<span className="tok-dim">5s ago</span>{`
+  `}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">Stripe webhook</span>{`     `}<span className="tok-status-ok">201</span>{`     · `}<span className="tok-dim">67ms</span>{`    `}<span className="tok-dim">11s ago</span>{`
+`}<span className="log-row-error">{'  '}<span className="tok-method-put">PUT</span>{`   `}<span className="tok-path">Settings update</span>{`    `}<span className="tok-status-err">500</span>{`     · `}<span className="tok-dim">203ms</span>{`   `}<span className="tok-dim">32s ago</span>{` ←`}</span>{`
 `}<span className="tok-dim">↺ Replay  ·  ⎘ Share link  ·  ▼ Inspect headers</span></pre>
                 </div>
               </div>
@@ -83,8 +83,8 @@ export default function HomePage() {
           <span className="stat__label">Requests captured, within plan limits</span>
         </div>
         <div className="stat">
-          <span className="stat__value">&lt; 5ms</span>
-          <span className="stat__label">Overhead per proxied request</span>
+          <span className="stat__value">6</span>
+          <span className="stat__label">Automatic retry attempts per async delivery</span>
         </div>
         <div className="stat">
           <span className="stat__value">30d</span>
@@ -134,7 +134,7 @@ export default function HomePage() {
             <div className="feature-card">
               <div className="feature-card__icon" aria-hidden="true">⚡</div>
               <h3 className="feature-card__title">Instant endpoints</h3>
-              <p className="feature-card__desc">Launch a production-ready API endpoint within seconds. Return mock JSON or proxy any upstream. No servers, no config files, no ops work.</p>
+              <p className="feature-card__desc">Launch a production-ready API endpoint within seconds. Mock a response with Static API, or proxy live with Sync or Async API. No servers, no config files, no ops work.</p>
             </div>
             <div className="feature-card">
               <div className="feature-card__icon" aria-hidden="true">◎</div>
@@ -156,12 +156,28 @@ export default function HomePage() {
             <div className="feature-card">
               <div className="feature-card__icon" aria-hidden="true">→</div>
               <h3 className="feature-card__title">Smart forwarding</h3>
-              <p className="feature-card__desc">Route traffic to any upstream transparently. getrequest proxies the request, captures the full exchange, and logs everything — zero byte modification.</p>
+              <p className="feature-card__desc">Sync API routes traffic to any upstream transparently, proxying the request body byte-for-byte and logging the full exchange — no rewriting, no reformatting.</p>
             </div>
             <div className="feature-card">
               <div className="feature-card__icon" aria-hidden="true">▤</div>
               <h3 className="feature-card__title">Usage metering</h3>
               <p className="feature-card__desc">Track request volume across projects. Get pre-limit alerts. Build a reliability baseline from real traffic data before incidents happen.</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-card__icon" aria-hidden="true">⇢</div>
+              <h3 className="feature-card__title">Async delivery</h3>
+              <p className="feature-card__desc">Async API acknowledges the caller instantly and delivers to your backend in the background — with automatic retries. Built for webhooks and any fire-and-forget traffic.</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-card__icon" aria-hidden="true">⚿</div>
+              <h3 className="feature-card__title">Built-in authentication</h3>
+              <p className="feature-card__desc">Require a credential on incoming requests, and attach one to your outbound calls — two independent settings, no code required.</p>
+            </div>
+            <div className="feature-card">
+              <div className="feature-card__icon" aria-hidden="true">⇋</div>
+              <h3 className="feature-card__title">Bulk retry</h3>
+              <p className="feature-card__desc">Recover from an outage in one action. Retry a manual selection or an entire filtered set, paced automatically so it never re-overwhelms your backend.</p>
+              <span className="feature-card__badge">Pro</span>
             </div>
           </div>
         </div>
@@ -205,7 +221,7 @@ export default function HomePage() {
                 <tr>
                   <th>Capability</th>
                   <th>Hookdeck</th>
-                  <th>Requestly</th>
+                  <th>Svix</th>
                   <th>Ngrok</th>
                   <th>Build it yourself</th>
                   <th className="col-featured">getrequest</th>
@@ -215,47 +231,47 @@ export default function HomePage() {
                 <tr>
                   <td>Sync request handling</td>
                   <td><span className="cross">—</span></td>
+                  <td><span className="cross">—</span></td>
                   <td><span className="check">✓</span></td>
-                  <td><span className="check">✓</span></td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (custom)</span></td>
+                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(custom)</span></td>
                   <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(zero-config)</span></td>
                 </tr>
                 <tr>
                   <td>Async / webhook queuing</td>
                   <td><span className="check">✓</span></td>
+                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(outbound)</span></td>
                   <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (weeks to build)</span></td>
+                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(weeks to build)</span></td>
                   <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(built-in)</span></td>
                 </tr>
                 <tr>
                   <td>Live request inspector</td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (webhooks only)</span></td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (browser only)</span></td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (local tunnel)</span></td>
+                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(webhooks only)</span></td>
+                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(sender-side logs)</span></td>
+                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(local tunnel)</span></td>
                   <td><span className="cross">—</span></td>
                   <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(all traffic)</span></td>
                 </tr>
                 <tr>
                   <td>Request replay</td>
                   <td><span className="check">✓</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (custom)</span></td>
+                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(per-message + bulk)</span></td>
+                  <td><span className="check">✓</span></td>
+                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(custom)</span></td>
                   <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(one click)</span></td>
                 </tr>
                 <tr>
                   <td>Mock endpoints</td>
+                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(custom response)</span></td>
                   <td><span className="cross">—</span></td>
-                  <td><span className="check">✓</span></td>
                   <td><span className="cross">—</span></td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>✓ (custom)</span></td>
+                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(custom)</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
                 </tr>
                 <tr>
                   <td>Production-safe (no tunnel)</td>
                   <td><span className="check">✓</span></td>
-                  <td><span className="cross">—</span></td>
+                  <td><span className="check">✓</span></td>
                   <td><span className="cross">—</span></td>
                   <td><span className="check">✓</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
@@ -276,17 +292,10 @@ export default function HomePage() {
                   <td><span className="cross">—</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
                 </tr>
-                <tr>
-                  <td>Time to first endpoint</td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>Minutes</span></td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>Minutes</span></td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>Minutes</span></td>
-                  <td><span className="tok-dim" style={{ fontSize: '13px' }}>Days–weeks</span></td>
-                  <td className="col-featured"><span className="check">{'< 90s'}</span></td>
-                </tr>
               </tbody>
             </table>
           </div>
+          <p style={{ fontSize: '13px', color: 'var(--text-light-3)', marginTop: 'var(--space-4)' }}>Svix specializes in reliable outbound webhook delivery (sending events to your customers), not inbound request capture — several rows reflect that different focus rather than a gap.</p>
         </div>
       </section>
 

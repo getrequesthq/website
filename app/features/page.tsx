@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
-import { APP_REGISTER_URL } from '@/lib/urls'
+import { APP_REGISTER_URL, DOCS_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema } from '@/lib/jsonld'
 
@@ -41,11 +41,11 @@ export default function FeaturesPage() {
             <div>
               <span className="feature-section__label">Relay — 01</span>
               <h2 className="heading-lg feature-section__title" id="f01-heading">Instant endpoints.</h2>
-              <p className="feature-section__body">Launch a production-ready API endpoint in under 60 seconds. No gateway config, no server to provision, no deployment pipeline. Define your method, slug, and action — getrequest handles the rest.</p>
-              <p className="feature-section__secondary">Return static JSON for mock APIs, or forward to any upstream. Switch between actions without downtime. The infrastructure layer ships with your first request.</p>
+              <p className="feature-section__body">Launch a production-ready API endpoint in under 60 seconds. No gateway config, no server to provision, no deployment pipeline. Define your method and action — getrequest generates a unique URL and handles the rest.</p>
+              <p className="feature-section__secondary">Every endpoint picks one of three actions: <strong>Static API</strong> for a mock JSON response, <strong>Sync API</strong> to forward and wait for the real reply, or <strong>Async API</strong> to acknowledge instantly and deliver in the background. Switch between them without downtime. The infrastructure layer ships with your first request.</p>
               <ul className="feature-section__list">
                 <li className="feature-section__list-item">Live in under 60 seconds, zero config</li>
-                <li className="feature-section__list-item">Mock JSON or proxy any upstream</li>
+                <li className="feature-section__list-item">Static, Sync, or Async — pick per endpoint</li>
                 <li className="feature-section__list-item">No servers, no gateways, no ops overhead</li>
                 <li className="feature-section__list-item">Edit or delete endpoints at any time</li>
               </ul>
@@ -54,14 +54,14 @@ export default function FeaturesPage() {
               <div className="code-window">
                 <div className="code-window__bar">
                   <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">endpoint config — getrequest.io/proj_k8s3</span>
+                  <span className="code-window__title">endpoint config — e.getrequest.io/aB3dEf7gH9jK2mN4</span>
                 </div>
                 <div className="code-window__body">
-                  <pre><span className="tok-comment"># Define once. Live immediately.</span>{`
+                  <pre><span className="tok-comment"># Define once. Live immediately — URL is auto-generated.</span>{`
 
+`}<span className="tok-key">name</span><span className="tok-dim">:</span>{`        `}<span className="tok-path">Login</span>{`
 `}<span className="tok-key">method</span><span className="tok-dim">:</span>{`      `}<span className="tok-method-post">POST</span>{`
-`}<span className="tok-key">slug</span><span className="tok-dim">:</span>{`        `}<span className="tok-path">/api/auth/login</span>{`
-`}<span className="tok-key">action</span><span className="tok-dim">:</span>{`      `}<span className="tok-value">mock_json</span>{`
+`}<span className="tok-key">action</span><span className="tok-dim">:</span>{`      `}<span className="tok-value">json</span>{` `}<span className="tok-comment"># Static API</span>{`
 `}<span className="tok-key">response</span><span className="tok-dim">:</span>{`    `}<span className="tok-status-ok">200 OK</span>{`
 
 `}<span className="tok-dim">{'{'}</span>{`
@@ -103,7 +103,7 @@ export default function FeaturesPage() {
                 </div>
                 <div className="code-window__body">
                   <pre><span className="tok-comment">// Captured 2s ago</span>{`
-`}<span className="tok-method-post">POST</span>{` `}<span className="tok-path">/api/auth/login</span>{`  ·  `}<span className="tok-status-ok">200 OK</span>{`  ·  `}<span className="tok-dim">43ms</span>{`
+`}<span className="tok-method-post">POST</span>{` `}<span className="tok-path">Login</span>{`  ·  `}<span className="tok-status-ok">200 OK</span>{`  ·  `}<span className="tok-dim">43ms</span>{`
 
 `}<span className="tok-key">content-type</span><span className="tok-dim">:</span>{`   `}<span className="tok-value">application/json</span>{`
 `}<span className="tok-key">x-request-id</span><span className="tok-dim">:</span>{`  `}<span className="tok-string">req_8xm2k9p</span>{`
@@ -221,11 +221,11 @@ export default function FeaturesPage() {
             <div>
               <span className="feature-section__label">Relay — 02</span>
               <h2 className="heading-lg feature-section__title" id="f05-heading">Smart forwarding.</h2>
-              <p className="feature-section__body">A transparent proxy layer for any upstream — no SDK, no agent, no code changes required. getrequest routes traffic to your destination, captures the full exchange, and logs everything without modifying a single byte in transit. The routing layer you&apos;d otherwise have to build yourself.</p>
+              <p className="feature-section__body"><strong>Sync API</strong> is a transparent proxy layer for any upstream — no SDK, no agent, no code changes required. getrequest routes traffic to your destination, forwards the request body byte-for-byte, and logs everything. The routing layer you&apos;d otherwise have to build yourself.</p>
               <p className="feature-section__secondary">Route to staging, production, or third-party APIs. Validate what your system sends against what the upstream receives. The proxy ships with the infrastructure — there&apos;s nothing extra to configure.</p>
               <ul className="feature-section__list">
                 <li className="feature-section__list-item">Works with any upstream, any HTTP client</li>
-                <li className="feature-section__list-item">Zero byte modification in transit</li>
+                <li className="feature-section__list-item">Request body forwarded byte-for-byte</li>
                 <li className="feature-section__list-item">Full request + response logged</li>
                 <li className="feature-section__list-item">HTTP and HTTPS supported</li>
               </ul>
@@ -238,16 +238,17 @@ export default function FeaturesPage() {
                 </div>
                 <div className="code-window__body">
                   <pre><span className="tok-comment"># Forward to your real API</span>{`
+`}<span className="tok-key">name</span><span className="tok-dim">:</span>{`         `}<span className="tok-path">Charges</span>{`
 `}<span className="tok-key">action</span><span className="tok-dim">:</span>{`       `}<span className="tok-value">forward</span>{`
-`}<span className="tok-key">destination</span><span className="tok-dim">:</span>{`  `}<span className="tok-url">api.stripe.com</span>{`
+`}<span className="tok-key">destination</span><span className="tok-dim">:</span>{`  `}<span className="tok-url">api.stripe.com/v1/charges</span>{`
 
 `}<span className="tok-comment"># Every request is proxied and logged:</span>{`
-`}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">/v1/charges</span>{`  → `}<span className="tok-url">api.stripe.com/v1/charges</span>{`
+`}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">Charges</span>{`  → `}<span className="tok-url">api.stripe.com/v1/charges</span>{`
   `}<span className="tok-key">status</span><span className="tok-dim">:</span>{`   `}<span className="tok-status-ok">200 OK</span>{`
   `}<span className="tok-key">latency</span><span className="tok-dim">:</span>{`  `}<span className="tok-dim">143ms</span>{`
   `}<span className="tok-key">logged</span><span className="tok-dim">:</span>{`   `}<span className="tok-value">yes</span>{`
 
-`}<span className="tok-method-get">GET</span>{`   `}<span className="tok-path">/v1/customers</span>{`  → `}<span className="tok-url">api.stripe.com/v1/customers</span>{`
+`}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">Charges</span>{`  → `}<span className="tok-url">api.stripe.com/v1/charges</span>{`
   `}<span className="tok-key">status</span><span className="tok-dim">:</span>{`   `}<span className="tok-status-ok">200 OK</span>{`
   `}<span className="tok-key">latency</span><span className="tok-dim">:</span>{`  `}<span className="tok-dim">67ms</span>{`
   `}<span className="tok-key">logged</span><span className="tok-dim">:</span>{`   `}<span className="tok-value">yes</span></pre>
@@ -281,16 +282,141 @@ export default function FeaturesPage() {
                   <span className="code-window__title">Usage dashboard — May 2025</span>
                 </div>
                 <div className="code-window__body">
-                  <pre><span className="tok-key">Project</span>{`         `}<span className="tok-dim">Requests   Limit    Used</span>{`
+                  <pre><span className="tok-key">Project</span>{`          `}<span className="tok-dim">Requests   Limit    Used</span>{`
 `}<span className="tok-dim">─────────────────────────────────────────</span>{`
-`}<span className="tok-path">proj_api</span>{`        `}<span className="tok-number">48,231</span>{`     `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-warn">48.2%</span>{`
-`}<span className="tok-path">proj_webhooks</span>{`   `}<span className="tok-number">12,048</span>{`     `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-ok">12.0%</span>{`
-`}<span className="tok-path">proj_staging</span>{`    `}<span className="tok-number">7,831</span>{`      `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-ok"> 7.8%</span>{`
+`}<span className="tok-path">Production</span>{`      `}<span className="tok-number">48,231</span>{`     `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-warn">48.2%</span>{`
+`}<span className="tok-path">Webhooks</span>{`        `}<span className="tok-number">12,048</span>{`     `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-ok">12.0%</span>{`
+`}<span className="tok-path">Staging</span>{`         `}<span className="tok-number">7,831</span>{`      `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-ok"> 7.8%</span>{`
 `}<span className="tok-dim">─────────────────────────────────────────</span>{`
-`}<span className="tok-key">Total</span>{`           `}<span className="tok-number">68,110</span>{`     `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-warn">68.1%</span>{`
+`}<span className="tok-key">Total</span>{`            `}<span className="tok-number">68,110</span>{`     `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-warn">68.1%</span>{`
 
-`}<span className="tok-status-warn">⚠</span>{`  `}<span className="tok-dim">proj_api on track to exceed limit</span>{`
+`}<span className="tok-status-warn">⚠</span>{`  `}<span className="tok-dim">Production on track to exceed limit</span>{`
    `}<span className="tok-dim">Upgrade to Pro for 1M requests/mo</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature 07 — Async delivery (dark) */}
+      <section className="feature-section feature-section--dark" id="async-delivery" aria-labelledby="f07-heading">
+        <div className="container">
+          <div className="feature-section__layout">
+            <div>
+              <span className="feature-section__label">Relay — 03</span>
+              <h2 className="heading-lg feature-section__title" id="f07-heading">Async delivery.</h2>
+              <p className="feature-section__body">Acknowledge the caller instantly, deliver to your backend in the background. Built for webhooks and any traffic where the caller shouldn&apos;t wait on — or be blocked by — your response.</p>
+              <p className="feature-section__secondary">A failed delivery isn&apos;t a lost one. getrequest retries automatically on a backoff schedule, re-reading your destination and auth config on every attempt, so a fix or a rotated credential takes effect on the very next try.</p>
+              <ul className="feature-section__list">
+                <li className="feature-section__list-item">Caller gets a 202 immediately, every time</li>
+                <li className="feature-section__list-item">Up to 6 automatic retry attempts, ~36 minutes</li>
+                <li className="feature-section__list-item">Live delivery status: retrying, delivered, failed</li>
+                <li className="feature-section__list-item">Available on every plan, including Free</li>
+              </ul>
+              <p className="feature-section__secondary">
+                <a href={`${DOCS_URL}/guides/async-api`} className="feature-section__link">See the exact retry schedule and delivery states →</a>
+              </p>
+            </div>
+            <div>
+              <div className="code-window">
+                <div className="code-window__bar">
+                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
+                  <span className="code-window__title">Async delivery — Stripe webhook</span>
+                </div>
+                <div className="code-window__body">
+                  <pre><span className="tok-key">name</span><span className="tok-dim">:</span>{`        `}<span className="tok-path">Stripe webhook</span>{`
+`}<span className="tok-key">action</span><span className="tok-dim">:</span>{`      `}<span className="tok-value">async_forward</span>{`
+`}<span className="tok-key">destination</span><span className="tok-dim">:</span>{` `}<span className="tok-url">api.example.com/webhooks/stripe</span>{`
+
+`}<span className="tok-comment"># Caller gets an immediate ack — no waiting on your backend</span>{`
+`}<span className="tok-method-post">POST</span>{` `}<span className="tok-path">Stripe webhook</span>{`  → `}<span className="tok-status-ok">202 Accepted</span>{`
+  `}<span className="tok-dim">{'{ "status": "Success", "request_id": "3f9c1e2a..." }'}</span>{`
+
+`}<span className="tok-comment"># Delivered in the background, retried automatically</span>{`
+attempt 1   `}<span className="tok-dim">·</span>{` immediate        `}<span className="tok-status-err">timeout</span>{`
+attempt 2   `}<span className="tok-dim">·</span>{` +15s             `}<span className="tok-status-warn">retrying</span>{`
+attempt 3   `}<span className="tok-dim">·</span>{` +60s             `}<span className="tok-status-ok">delivered ✓</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature 08 — Authentication (light) */}
+      <section className="feature-section feature-section--light" id="authentication" aria-labelledby="f08-heading">
+        <div className="container">
+          <div className="feature-section__layout feature-section__layout--reverse">
+            <div>
+              <span className="feature-section__label">Relay — 04</span>
+              <h2 className="heading-lg feature-section__title" id="f08-heading">Built-in authentication.</h2>
+              <p className="feature-section__body">Require a credential on incoming requests before getrequest processes them, and attach a credential to the outbound call it makes to your backend — two completely independent settings.</p>
+              <p className="feature-section__secondary">Bearer, API Key, Basic Auth, or HMAC signature verification on the way in. The same four options signing or authenticating the call on the way out — reapplied automatically on every retry attempt.</p>
+              <ul className="feature-section__list">
+                <li className="feature-section__list-item">Verify inbound callers — Bearer, API Key, Basic, HMAC</li>
+                <li className="feature-section__list-item">Authenticate to your own backend the same way</li>
+                <li className="feature-section__list-item">Verify webhook provider signatures for you, before your handler runs</li>
+                <li className="feature-section__list-item">Available on every plan, including Free</li>
+              </ul>
+            </div>
+            <div>
+              <div className="code-window code-window--light">
+                <div className="code-window__bar">
+                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
+                  <span className="code-window__title">Endpoint authentication</span>
+                </div>
+                <div className="code-window__body">
+                  <pre><span className="tok-comment"># Authentication — verifies the caller</span>{`
+`}<span className="tok-key">type</span><span className="tok-dim">:</span>{`    `}<span className="tok-value">hmac</span>{`
+`}<span className="tok-key">header</span><span className="tok-dim">:</span>{`  `}<span className="tok-value">Stripe-Signature</span>{`
+
+`}<span className="tok-method-post">POST</span>{` `}<span className="tok-path">Stripe webhook</span>{`
+  `}<span className="tok-status-ok">✓ signature verified</span>{` → forwarded
+
+`}<span className="tok-comment"># Destination Authentication — calls your backend</span>{`
+`}<span className="tok-key">type</span><span className="tok-dim">:</span>{`   `}<span className="tok-value">bearer</span>{`
+`}<span className="tok-key">token</span><span className="tok-dim">:</span>{`  `}<span className="tok-dim">••••••••</span>{`
+  `}<span className="tok-key">Authorization</span><span className="tok-dim">:</span>{` `}<span className="tok-value">Bearer ••••••••</span>{` → attached`}</pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Feature 09 — Bulk retry (dark) */}
+      <section className="feature-section feature-section--dark" id="bulk-retry" aria-labelledby="f09-heading">
+        <div className="container">
+          <div className="feature-section__layout">
+            <div>
+              <span className="feature-section__label">Recover — 03</span>
+              <span className="feature-section__badge">Pro</span>
+              <h2 className="heading-lg feature-section__title" id="f09-heading">Bulk retry.</h2>
+              <p className="feature-section__body">An outage doesn&apos;t fail one request — it fails hundreds. Select exactly the rows you want and retry them together, or apply a filter and let getrequest sweep up every matching request as a tracked background job, paced so it never hammers your recovering backend.</p>
+              <p className="feature-section__secondary">Recurring failures are grouped for you automatically on the Retries page — endpoint, status, and error — so recovering from an incident starts with one click, not a manual filter you have to reconstruct every time.</p>
+              <ul className="feature-section__list">
+                <li className="feature-section__list-item">Manual selection — up to 100 requests, retried instantly</li>
+                <li className="feature-section__list-item">Filter-based — unbounded size, runs as a cancellable background job</li>
+                <li className="feature-section__list-item">Paced delivery — 10 requests/sec, won&apos;t re-overwhelm your backend</li>
+                <li className="feature-section__list-item">Auto-grouped recurring failures on the Retries page</li>
+              </ul>
+            </div>
+            <div>
+              <div className="code-window">
+                <div className="code-window__bar">
+                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
+                  <span className="code-window__title">Bulk Retry Matching Requests</span>
+                </div>
+                <div className="code-window__body">
+                  <pre><span className="tok-comment"># Filter: status=5xx · endpoint=/api/charges · last 2h</span>{`
+`}<span className="tok-key">preview</span><span className="tok-dim">:</span>{` `}<span className="tok-number">214</span>{` requests match
+`}<span className="tok-comment"># Start Bulk Retry → paced at 10 req/s</span>{`
+`}<span className="tok-key">status</span><span className="tok-dim">:</span>{`     `}<span className="tok-value">running</span>{`
+`}<span className="tok-key">queued</span><span className="tok-dim">:</span>{`     `}<span className="tok-number">214</span>{`
+`}<span className="tok-key">delivered</span><span className="tok-dim">:</span>{`  `}<span className="tok-status-ok">198</span>{`
+`}<span className="tok-key">failed</span><span className="tok-dim">:</span>{`     `}<span className="tok-status-err">9</span>{`
+`}<span className="tok-key">pending</span><span className="tok-dim">:</span>{`    `}<span className="tok-status-warn">7</span></pre>
                 </div>
               </div>
             </div>

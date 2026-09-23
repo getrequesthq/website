@@ -29,7 +29,7 @@ const faqItems = [
   },
   {
     question: 'Is there a free trial for Pro?',
-    answer: 'The free plan gives you full access to core features indefinitely. Pro features (request replay, shareable debug links) require a paid plan. Contact us if you need a trial.',
+    answer: 'The free plan gives you full access to core features indefinitely, including async delivery and endpoint authentication. Pro features (request replay, bulk retry, shareable debug links) require a paid plan. Contact us if you need a trial.',
   },
   {
     question: 'Do you offer annual billing?',
@@ -77,8 +77,9 @@ export default function PricingPage() {
                 <li className="pricing-card__feature">Live request inspector</li>
                 <li className="pricing-card__feature">Instant endpoints (mock + forward)</li>
                 <li className="pricing-card__feature">Smart forwarding</li>
+                <li className="pricing-card__feature">Async delivery with auto-retry</li>
+                <li className="pricing-card__feature">Endpoint &amp; destination auth</li>
                 <li className="pricing-card__feature">Usage dashboard</li>
-                <li className="pricing-card__feature">API key management</li>
               </ul>
               <p className="pricing-card__overage">Hard capped at quota — no overage charges.</p>
               <div className="pricing-card__cta">
@@ -115,6 +116,7 @@ export default function PricingPage() {
                 <li className="pricing-card__feature">30-day log retention</li>
                 <li className="pricing-card__feature">Everything in Dev</li>
                 <li className="pricing-card__feature pricing-card__feature--pro">Request replay ✦</li>
+                <li className="pricing-card__feature pricing-card__feature--pro">Bulk retry ✦</li>
                 <li className="pricing-card__feature pricing-card__feature--pro">Shareable debug links ✦</li>
                 <li className="pricing-card__feature">Team access (coming soon)</li>
               </ul>
@@ -206,14 +208,21 @@ export default function PricingPage() {
                   <td><span className="check">✓</span></td>
                 </tr>
                 <tr>
-                  <td>JSON mock responses</td>
+                  <td>Async delivery + auto-retry</td>
                   <td><span className="check">✓</span></td>
                   <td><span className="check">✓</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
                   <td><span className="check">✓</span></td>
                 </tr>
                 <tr>
-                  <td>API key management</td>
+                  <td>Endpoint &amp; destination auth</td>
+                  <td><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
+                  <td className="col-featured"><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
+                </tr>
+                <tr>
+                  <td>JSON mock responses</td>
                   <td><span className="check">✓</span></td>
                   <td><span className="check">✓</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
@@ -228,6 +237,13 @@ export default function PricingPage() {
                 </tr>
                 <tr>
                   <td>Request replay</td>
+                  <td><span className="cross">—</span></td>
+                  <td><span className="cross">—</span></td>
+                  <td className="col-featured"><span className="check">✓</span></td>
+                  <td><span className="check">✓</span></td>
+                </tr>
+                <tr>
+                  <td>Bulk retry</td>
                   <td><span className="cross">—</span></td>
                   <td><span className="cross">—</span></td>
                   <td className="col-featured"><span className="check">✓</span></td>
