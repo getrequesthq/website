@@ -35,6 +35,14 @@ const faqItems = [
     question: 'Do you offer annual billing?',
     answer: 'Annual billing with a 20% discount is available on request. Contact support to set it up.',
   },
+  {
+    question: 'If I delete an endpoint or project, do I lose its request history?',
+    answer: 'No — if an endpoint or project has ever captured a request, deleting it removes it from your active list but keeps its historical logs fully searchable for the rest of your plan\'s retention window. An endpoint or project that never captured a single request is removed completely, since there\'s no history to preserve.',
+  },
+  {
+    question: 'Will a burst of retries to one slow destination affect my other endpoints?',
+    answer: 'No. Outbound deliveries reuse a capped, shared connection pool per destination instead of opening a new connection for every attempt. A pile-up against one slow or unresponsive destination stays contained and can\'t starve the resources your other endpoints or the log pipeline depend on.',
+  },
 ]
 
 export default function PricingPage() {

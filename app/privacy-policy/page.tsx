@@ -6,7 +6,7 @@ import PrivacyContent from '@/content/legal/privacy-policy.mdx'
 
 const TITLE = 'Privacy Policy'
 const DESCRIPTION = 'How Get Request Tech, LLC. collects, uses, stores, discloses, and protects information across getrequest\'s websites, applications, and APIs.'
-const EFFECTIVE_DATE = 'August 12, 2026'
+const EFFECTIVE_DATE = 'September 29, 2026'
 
 export const metadata = buildMetadata({
   title: TITLE,

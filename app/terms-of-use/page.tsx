@@ -6,7 +6,7 @@ import TermsContent from '@/content/legal/terms-of-use.mdx'
 
 const TITLE = 'Terms of Use'
 const DESCRIPTION = "The terms that govern your access to and use of getrequest's websites, applications, APIs, and infrastructure."
-const EFFECTIVE_DATE = 'August 12, 2026'
+const EFFECTIVE_DATE = 'September 29, 2026'
 
 export const metadata = buildMetadata({
   title: TITLE,
