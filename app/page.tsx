@@ -4,7 +4,6 @@ import { buildMetadata } from '@/lib/metadata'
 import { APP_REGISTER_URL, DOCS_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { organizationSchema, webSiteSchema, softwareSchema } from '@/lib/jsonld'
-import { TrafficFlow } from '@/components/TrafficFlow'
 import { GRMark, Crumbs } from '@/components/dashboard-mockup'
 
 export const metadata: Metadata = buildMetadata({
@@ -97,19 +96,23 @@ export default function HomePage() {
       <div className="stats-bar text-center" aria-label="Product metrics">
         <div className="stat">
           <span className="stat__value">&lt; 90s</span>
-          <span className="stat__label">Time to first endpoint</span>
+          <span className="stat__label">From signup to a live endpoint</span>
         </div>
         <div className="stat">
           <span className="stat__value">100%</span>
-          <span className="stat__label">Requests captured, within plan limits</span>
+          <span className="stat__label">Of requests captured before your backend sees them</span>
         </div>
         <div className="stat">
           <span className="stat__value">6</span>
-          <span className="stat__label">Automatic retry attempts per async delivery</span>
+          <span className="stat__label">
+            <a href={`${DOCS_URL}/guides/async-api`} className="stat__link">Automatic retries per async delivery →</a>
+          </span>
         </div>
         <div className="stat">
           <span className="stat__value">30d</span>
-          <span className="stat__label">Log retention on paid plans</span>
+          <span className="stat__label">
+            <Link href="/pricing" className="stat__link">Log retention on paid plans →</Link>
+          </span>
         </div>
       </div>
 
@@ -124,24 +127,63 @@ export default function HomePage() {
             <div className="step">
               <span className="step__num">01</span>
               <h3 className="step__title">Relay</h3>
-              <p className="step__desc">Every incoming request passes through getrequest before reaching your backend. Traffic spikes, bad actors, and sudden load are handled at the relay layer — your infrastructure never sees raw, uncontrolled traffic again.</p>
+              <p className="step__desc">Every request passes through getrequest before it reaches your backend. Spikes and bad actors never touch your infrastructure.</p>
+              <div className="dm-frame dm-frame--mini step__mock">
+                <div className="dm-frame__body">
+                  <div className="dm-row-item" style={{ paddingTop: 0, borderBottom: 'none' }}>
+                    <span className="dm-method dm-method--post">POST</span>
+                    <span className="dm-row-item__path">/checkout</span>
+                    <span className="dm-badge dm-badge--ok">relayed</span>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="step">
               <span className="step__num">02</span>
               <h3 className="step__title">Retain</h3>
-              <p className="step__desc">Every relayed request is captured in full — headers, body, status, latency — before it reaches your upstream. Downtime, failed deployments, and infrastructure outages no longer mean lost data. Every request is durably retained.</p>
+              <p className="step__desc">Headers, body, status, latency — captured before your backend ever sees it. Success or failure, both are durably retained.</p>
+              <div className="dm-frame dm-frame--mini step__mock">
+                <div className="dm-frame__body">
+                  <div className="dm-list">
+                    <div className="dm-row-item" style={{ paddingTop: 0 }}>
+                      <span className="dm-method dm-method--post">POST</span>
+                      <span className="dm-row-item__path">Stripe webhook</span>
+                      <span className="dm-badge dm-badge--ok">captured</span>
+                    </div>
+                    <div className="dm-row-item" style={{ borderBottom: 'none' }}>
+                      <span className="dm-method dm-method--put">PUT</span>
+                      <span className="dm-row-item__path">/api/settings</span>
+                      <span className="dm-badge dm-badge--err">captured</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div className="step">
               <span className="step__num">03</span>
               <h3 className="step__title">Recover</h3>
-              <p className="step__desc">Once your systems are back, replay any retained request with its exact original payload. No manual reconstruction, no asking users to retry. Missed traffic is restored and system consistency is recovered instantly.</p>
+              <p className="step__desc">Replay any retained request with its exact original payload. One click, no reconstruction.</p>
+              <div className="dm-frame dm-frame--mini step__mock">
+                <div className="dm-frame__body">
+                  <div className="dm-row-item" style={{ paddingTop: 0 }}>
+                    <span className="dm-method dm-method--put">PUT</span>
+                    <span className="dm-row-item__path">/api/settings</span>
+                    <span className="dm-badge dm-badge--err">500</span>
+                  </div>
+                  <div className="dm-btn-row" style={{ margin: '8px 0' }}>
+                    <span className="dm-btn dm-btn--primary" style={{ fontSize: 11, padding: '4px 10px' }}>↺ Replay</span>
+                  </div>
+                  <div className="dm-row-item" style={{ paddingTop: 0, borderBottom: 'none' }}>
+                    <span className="dm-method dm-method--put">PUT</span>
+                    <span className="dm-row-item__path">/api/settings</span>
+                    <span className="dm-badge dm-badge--ok">200 OK</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* TRAFFIC FLOW DIAGRAM */}
-      <TrafficFlow />
 
       {/* FEATURES OVERVIEW */}
       <section className="section section--dark" aria-labelledby="features-heading">
