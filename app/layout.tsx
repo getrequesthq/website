@@ -31,7 +31,13 @@ export const metadata: Metadata = {
     locale: 'en_US',
   },
   icons: {
-    icon: [{ url: '/icon.svg', type: 'image/svg+xml' }],
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    shortcut: [{ url: '/favicon.ico' }],
+    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
 }
 
