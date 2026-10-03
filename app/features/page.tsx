@@ -4,6 +4,7 @@ import { buildMetadata } from '@/lib/metadata'
 import { APP_REGISTER_URL, DOCS_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema } from '@/lib/jsonld'
+import { GRMark, Crumbs } from '@/components/dashboard-mockup'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Features',
@@ -51,27 +52,54 @@ export default function FeaturesPage() {
               </ul>
             </div>
             <div>
-              <div className="code-window">
-                <div className="code-window__bar">
-                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">endpoint config — e.getrequest.io/aB3dEf7gH9jK2mN4</span>
+              <div className="dm-frame">
+                <div className="dm-frame__bar">
+                  <GRMark />
+                  <Crumbs items={['Projects', 'Production', 'Endpoints', 'New']} />
                 </div>
-                <div className="code-window__body">
-                  <pre><span className="tok-comment"># Define once. Live immediately — URL is auto-generated.</span>{`
-
-`}<span className="tok-key">name</span><span className="tok-dim">:</span>{`        `}<span className="tok-path">Login</span>{`
-`}<span className="tok-key">method</span><span className="tok-dim">:</span>{`      `}<span className="tok-method-post">POST</span>{`
-`}<span className="tok-key">action</span><span className="tok-dim">:</span>{`      `}<span className="tok-value">json</span>{` `}<span className="tok-comment"># Static API</span>{`
-`}<span className="tok-key">response</span><span className="tok-dim">:</span>{`    `}<span className="tok-status-ok">200 OK</span>{`
-
-`}<span className="tok-dim">{'{'}</span>{`
-  `}<span className="tok-key">&quot;status&quot;</span><span className="tok-dim">:</span>{`  `}<span className="tok-string">&quot;success&quot;</span><span className="tok-dim">,</span>{`
-  `}<span className="tok-key">&quot;token&quot;</span><span className="tok-dim">:</span>{`   `}<span className="tok-string">&quot;eyJhbGc...&quot;</span>{`
-`}<span className="tok-dim">{'}'}</span>{`
-
-`}<span className="tok-comment"># Switch to forwarding with one edit:</span>{`
-`}<span className="tok-key">action</span><span className="tok-dim">:</span>{`      `}<span className="tok-value">forward</span>{`
-`}<span className="tok-key">destination</span><span className="tok-dim">:</span>{` `}<span className="tok-url">api.example.com/auth/login</span></pre>
+                <div className="dm-frame__body">
+                  <div className="dm-row">
+                    <label className="dm-label">API Name</label>
+                    <div className="dm-input">Login</div>
+                  </div>
+                  <div className="dm-row">
+                    <label className="dm-label">Methods</label>
+                    <div className="dm-methods">
+                      <span className="dm-method-pill">GET</span>
+                      <span className="dm-method-pill dm-method-pill--active">POST</span>
+                      <span className="dm-method-pill">PUT</span>
+                      <span className="dm-method-pill">DELETE</span>
+                    </div>
+                  </div>
+                  <div className="dm-row">
+                    <label className="dm-label">Action</label>
+                    <div className="dm-actions">
+                      <div className="dm-action dm-action--active">
+                        <div className="dm-action__title">Static API</div>
+                        <div className="dm-action__desc">Fixed JSON response</div>
+                      </div>
+                      <div className="dm-action">
+                        <div className="dm-action__title">Sync API</div>
+                        <div className="dm-action__desc">Forward &amp; wait</div>
+                      </div>
+                      <div className="dm-action">
+                        <div className="dm-action__title">Async API</div>
+                        <div className="dm-action__desc">Ack &amp; deliver later</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="dm-row">
+                    <label className="dm-label">Response — 200 OK</label>
+                    <div className="dm-json">{'{'}<br />
+                      &nbsp;&nbsp;<span className="dm-k">&quot;status&quot;</span>: <span className="dm-s">&quot;success&quot;</span>,<br />
+                      &nbsp;&nbsp;<span className="dm-k">&quot;token&quot;</span>: <span className="dm-s">&quot;eyJhbGc...&quot;</span><br />
+                      {'}'}
+                    </div>
+                  </div>
+                  <div className="dm-btn-row">
+                    <span className="dm-btn dm-btn--primary">Create</span>
+                    <span className="dm-btn dm-btn--outline">Cancel</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -96,24 +124,37 @@ export default function FeaturesPage() {
               </ul>
             </div>
             <div>
-              <div className="code-window code-window--light">
-                <div className="code-window__bar">
-                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">Live request log</span>
+              <div className="dm-frame">
+                <div className="dm-frame__bar">
+                  <GRMark />
+                  <Crumbs items={['Projects', 'Production', 'Logs']} />
+                  <span className="dm-badge dm-badge--live" style={{ marginLeft: 'auto' }}>Live</span>
                 </div>
-                <div className="code-window__body">
-                  <pre><span className="tok-comment">// Captured 2s ago</span>{`
-`}<span className="tok-method-post">POST</span>{` `}<span className="tok-path">Login</span>{`  ·  `}<span className="tok-status-ok">200 OK</span>{`  ·  `}<span className="tok-dim">43ms</span>{`
-
-`}<span className="tok-key">content-type</span><span className="tok-dim">:</span>{`   `}<span className="tok-value">application/json</span>{`
-`}<span className="tok-key">x-request-id</span><span className="tok-dim">:</span>{`  `}<span className="tok-string">req_8xm2k9p</span>{`
-`}<span className="tok-key">user-agent</span><span className="tok-dim">:</span>{`    `}<span className="tok-string">okhttp/4.12.0</span>{`
-
-`}<span className="tok-comment">// Request body</span>{`
-`}<span className="tok-dim">{'{'}</span>{` `}<span className="tok-key">&quot;user&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-string">&quot;alice&quot;</span><span className="tok-dim">,</span>{` `}<span className="tok-key">&quot;action&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-string">&quot;login&quot;</span>{` `}<span className="tok-dim">{'}'}</span>{`
-
-`}<span className="tok-comment">// Response body</span>{`
-`}<span className="tok-dim">{'{'}</span>{` `}<span className="tok-key">&quot;status&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-string">&quot;success&quot;</span><span className="tok-dim">,</span>{` `}<span className="tok-key">&quot;token&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-string">&quot;eyJhbGc...&quot;</span>{` `}<span className="tok-dim">{'}'}</span></pre>
+                <div className="dm-frame__body">
+                  <div className="dm-list">
+                    <div className="dm-row-item">
+                      <span className="dm-method dm-method--get">GET</span>
+                      <span className="dm-row-item__path">/api/users/profile</span>
+                      <span className="dm-badge dm-badge--ok">200</span>
+                      <span className="dm-row-item__meta">18ms</span>
+                    </div>
+                    <div className="dm-row-item dm-row-item--active">
+                      <span className="dm-method dm-method--post">POST</span>
+                      <span className="dm-row-item__path">/api/auth/login</span>
+                      <span className="dm-badge dm-badge--ok">200</span>
+                      <span className="dm-row-item__meta">43ms</span>
+                    </div>
+                    <div className="dm-row-item">
+                      <span className="dm-method dm-method--put">PUT</span>
+                      <span className="dm-row-item__path">/api/settings</span>
+                      <span className="dm-badge dm-badge--err">500</span>
+                      <span className="dm-row-item__meta">203ms</span>
+                    </div>
+                  </div>
+                  <div className="dm-row" style={{ marginTop: 14 }}>
+                    <label className="dm-label">Request body</label>
+                    <div className="dm-json">{'{ '}<span className="dm-k">&quot;user&quot;</span>: <span className="dm-s">&quot;alice&quot;</span>, <span className="dm-k">&quot;action&quot;</span>: <span className="dm-s">&quot;login&quot;</span>{' }'}</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -139,26 +180,37 @@ export default function FeaturesPage() {
               </ul>
             </div>
             <div>
-              <div className="code-window">
-                <div className="code-window__bar">
-                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">Replaying req_8xm2k9p</span>
+              <div className="dm-frame">
+                <div className="dm-frame__bar">
+                  <GRMark />
+                  <Crumbs items={['Projects', 'Production', 'Logs', 'req_8xm2k9p']} />
                 </div>
-                <div className="code-window__body">
-                  <pre><span className="tok-comment">// Original — captured 2 hrs ago</span>{`
-`}<span className="tok-method-put">PUT</span>{` `}<span className="tok-path">/api/settings</span>{`  ·  `}<span className="tok-status-err">500</span>{`  ·  `}<span className="tok-dim">203ms</span>{`
-
-`}<span className="tok-comment">// Replaying with original headers + body</span>{`
-`}<span className="tok-key">status</span><span className="tok-dim">:</span>{` `}<span className="tok-value">replaying...</span>{`
-
-`}<span className="tok-comment">// Result</span>{`
-`}<span className="tok-method-put">PUT</span>{` `}<span className="tok-path">/api/settings</span>{`  ·  `}<span className="tok-status-err">500</span>{`  ·  `}<span className="tok-dim">198ms</span>{`
-
-`}<span className="tok-comment">// Bug confirmed. Response diff available.</span>{`
-`}<span className="tok-key">&quot;error&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-string">&quot;Cannot read property &apos;id&apos; of null&quot;</span>{`
-
-`}<span className="tok-comment">// Fix deployed. Replaying again...</span>{`
-`}<span className="tok-method-put">PUT</span>{` `}<span className="tok-path">/api/settings</span>{`  ·  `}<span className="tok-status-ok">200 OK</span>{`  ·  `}<span className="tok-dim">31ms</span></pre>
+                <div className="dm-frame__body">
+                  <div className="dm-row">
+                    <label className="dm-label">Original — captured 2 hrs ago</label>
+                    <div className="dm-row-item" style={{ paddingTop: 0 }}>
+                      <span className="dm-method dm-method--put">PUT</span>
+                      <span className="dm-row-item__path">/api/settings</span>
+                      <span className="dm-badge dm-badge--err">500</span>
+                      <span className="dm-row-item__meta">203ms</span>
+                    </div>
+                    <div className="dm-json" style={{ marginTop: 8 }}>
+                      <span className="dm-k">&quot;error&quot;</span>: <span className="dm-s">&quot;Cannot read property &apos;id&apos; of null&quot;</span>
+                    </div>
+                  </div>
+                  <div className="dm-btn-row" style={{ margin: '14px 0' }}>
+                    <span className="dm-btn dm-btn--primary">↺ Replay</span>
+                    <span className="dm-hint">Exact original headers + body</span>
+                  </div>
+                  <div className="dm-row">
+                    <label className="dm-label">Replay result — fix deployed</label>
+                    <div className="dm-row-item" style={{ paddingTop: 0, borderBottom: 'none' }}>
+                      <span className="dm-method dm-method--put">PUT</span>
+                      <span className="dm-row-item__path">/api/settings</span>
+                      <span className="dm-badge dm-badge--ok">200 OK</span>
+                      <span className="dm-row-item__meta">31ms</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -184,29 +236,32 @@ export default function FeaturesPage() {
               </ul>
             </div>
             <div>
-              <div className="code-window code-window--light">
-                <div className="code-window__bar">
-                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">getrequest.io/share/req_8xm2k9p</span>
+              <div className="dm-browser">
+                <div className="dm-browser__bar">
+                  <div className="dm-browser__dots">
+                    <span className="dm-browser__dot"></span>
+                    <span className="dm-browser__dot"></span>
+                    <span className="dm-browser__dot"></span>
+                  </div>
+                  <span className="dm-browser__url">getrequest.io/share/req_8xm2k9p</span>
                 </div>
-                <div className="code-window__body">
-                  <pre><span className="tok-comment"># Shared request snapshot</span>{`
-`}<span className="tok-comment"># Anyone with this link can inspect it</span>{`
-
-`}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">/api/webhooks/stripe</span>{`
-`}<span className="tok-key">Host</span><span className="tok-dim">:</span>{` `}<span className="tok-url">api.example.com</span>{`
-
-`}<span className="tok-key">content-type</span><span className="tok-dim">:</span>{` `}<span className="tok-value">application/json</span>{`
-`}<span className="tok-key">user-agent</span><span className="tok-dim">:</span>{`   `}<span className="tok-value">Stripe/1.0</span>{`
-
-`}<span className="tok-dim">{'{'}</span>{`
-  `}<span className="tok-key">&quot;type&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-string">&quot;payment_intent.succeeded&quot;</span><span className="tok-dim">,</span>{`
-  `}<span className="tok-key">&quot;data&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-dim">{'{'}</span>{` `}<span className="tok-key">&quot;object&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-dim">{'{'}</span>{` `}<span className="tok-key">&quot;amount&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-number">4200</span>{` `}<span className="tok-dim">{'}'}</span>{` `}<span className="tok-dim">{'}'}</span>{`
-`}<span className="tok-dim">{'}'}</span>{`
-
-`}<span className="tok-dim">---</span>{`
-`}<span className="tok-key">Response</span><span className="tok-dim">:</span>{` `}<span className="tok-status-err">500 Internal Server Error</span>{`
-`}<span className="tok-key">Body</span><span className="tok-dim">:</span>{` `}<span className="tok-dim">{'{'}</span>{` `}<span className="tok-key">&quot;error&quot;</span><span className="tok-dim">:</span>{` `}<span className="tok-string">&quot;unhandled event type&quot;</span>{` `}<span className="tok-dim">{'}'}</span></pre>
+                <div className="dm-browser__body">
+                  <p className="dm-hint" style={{ marginBottom: 12 }}>Shared request snapshot — no account required to view</p>
+                  <div className="dm-row-item" style={{ paddingTop: 0 }}>
+                    <span className="dm-method dm-method--post">POST</span>
+                    <span className="dm-row-item__path">/api/webhooks/stripe</span>
+                    <span className="dm-badge dm-badge--err">500</span>
+                  </div>
+                  <div className="dm-row" style={{ marginTop: 10 }}>
+                    <label className="dm-label">Request body</label>
+                    <div className="dm-json">
+                      {'{ '}<span className="dm-k">&quot;type&quot;</span>: <span className="dm-s">&quot;payment_intent.succeeded&quot;</span>, <span className="dm-k">&quot;data&quot;</span>: {'{ '}<span className="dm-k">&quot;amount&quot;</span>: 4200{' }'}{' }'}
+                    </div>
+                  </div>
+                  <div className="dm-row">
+                    <label className="dm-label">Response body</label>
+                    <div className="dm-json">{'{ '}<span className="dm-k">&quot;error&quot;</span>: <span className="dm-s">&quot;unhandled event type&quot;</span>{' }'}</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -231,27 +286,47 @@ export default function FeaturesPage() {
               </ul>
             </div>
             <div>
-              <div className="code-window">
-                <div className="code-window__bar">
-                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">Forwarding config</span>
+              <div className="dm-frame">
+                <div className="dm-frame__bar">
+                  <GRMark />
+                  <Crumbs items={['Projects', 'Production', 'Endpoints', 'Charges']} />
                 </div>
-                <div className="code-window__body">
-                  <pre><span className="tok-comment"># Forward to your real API</span>{`
-`}<span className="tok-key">name</span><span className="tok-dim">:</span>{`         `}<span className="tok-path">Charges</span>{`
-`}<span className="tok-key">action</span><span className="tok-dim">:</span>{`       `}<span className="tok-value">forward</span>{`
-`}<span className="tok-key">destination</span><span className="tok-dim">:</span>{`  `}<span className="tok-url">api.stripe.com/v1/charges</span>{`
-
-`}<span className="tok-comment"># Every request is proxied and logged:</span>{`
-`}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">Charges</span>{`  → `}<span className="tok-url">api.stripe.com/v1/charges</span>{`
-  `}<span className="tok-key">status</span><span className="tok-dim">:</span>{`   `}<span className="tok-status-ok">200 OK</span>{`
-  `}<span className="tok-key">latency</span><span className="tok-dim">:</span>{`  `}<span className="tok-dim">143ms</span>{`
-  `}<span className="tok-key">logged</span><span className="tok-dim">:</span>{`   `}<span className="tok-value">yes</span>{`
-
-`}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">Charges</span>{`  → `}<span className="tok-url">api.stripe.com/v1/charges</span>{`
-  `}<span className="tok-key">status</span><span className="tok-dim">:</span>{`   `}<span className="tok-status-ok">200 OK</span>{`
-  `}<span className="tok-key">latency</span><span className="tok-dim">:</span>{`  `}<span className="tok-dim">67ms</span>{`
-  `}<span className="tok-key">logged</span><span className="tok-dim">:</span>{`   `}<span className="tok-value">yes</span></pre>
+                <div className="dm-frame__body">
+                  <div className="dm-row">
+                    <label className="dm-label">Action</label>
+                    <div className="dm-actions">
+                      <div className="dm-action">
+                        <div className="dm-action__title">Static API</div>
+                      </div>
+                      <div className="dm-action dm-action--active">
+                        <div className="dm-action__title">Sync API</div>
+                      </div>
+                      <div className="dm-action">
+                        <div className="dm-action__title">Async API</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="dm-row">
+                    <label className="dm-label">Destination URL</label>
+                    <div className="dm-input">api.stripe.com/v1/charges</div>
+                  </div>
+                  <div className="dm-row">
+                    <label className="dm-label">Proxied &amp; logged</label>
+                    <div className="dm-list">
+                      <div className="dm-row-item">
+                        <span className="dm-method dm-method--post">POST</span>
+                        <span className="dm-row-item__path">Charges → api.stripe.com/v1/charges</span>
+                        <span className="dm-badge dm-badge--ok">200</span>
+                        <span className="dm-row-item__meta">143ms</span>
+                      </div>
+                      <div className="dm-row-item" style={{ borderBottom: 'none' }}>
+                        <span className="dm-method dm-method--post">POST</span>
+                        <span className="dm-row-item__path">Charges → api.stripe.com/v1/charges</span>
+                        <span className="dm-badge dm-badge--ok">200</span>
+                        <span className="dm-row-item__meta">67ms</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -276,22 +351,45 @@ export default function FeaturesPage() {
               </ul>
             </div>
             <div>
-              <div className="code-window code-window--light">
-                <div className="code-window__bar">
-                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">Usage dashboard — May 2025</span>
+              <div className="dm-frame">
+                <div className="dm-frame__bar">
+                  <GRMark />
+                  <Crumbs items={['Settings', 'Usage']} />
                 </div>
-                <div className="code-window__body">
-                  <pre><span className="tok-key">Project</span>{`          `}<span className="tok-dim">Requests   Limit    Used</span>{`
-`}<span className="tok-dim">─────────────────────────────────────────</span>{`
-`}<span className="tok-path">Production</span>{`      `}<span className="tok-number">48,231</span>{`     `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-warn">48.2%</span>{`
-`}<span className="tok-path">Webhooks</span>{`        `}<span className="tok-number">12,048</span>{`     `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-ok">12.0%</span>{`
-`}<span className="tok-path">Staging</span>{`         `}<span className="tok-number">7,831</span>{`      `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-ok"> 7.8%</span>{`
-`}<span className="tok-dim">─────────────────────────────────────────</span>{`
-`}<span className="tok-key">Total</span>{`            `}<span className="tok-number">68,110</span>{`     `}<span className="tok-dim">100,000</span>{`  `}<span className="tok-status-warn">68.1%</span>{`
-
-`}<span className="tok-status-warn">⚠</span>{`  `}<span className="tok-dim">Production on track to exceed limit</span>{`
-   `}<span className="tok-dim">Upgrade to Pro for 1M requests/mo</span></pre>
+                <div className="dm-frame__body">
+                  <div className="dm-stats">
+                    <div className="dm-stat">
+                      <div className="dm-stat__label">Used</div>
+                      <div className="dm-stat__value">68,110</div>
+                    </div>
+                    <div className="dm-stat">
+                      <div className="dm-stat__label">Remaining</div>
+                      <div className="dm-stat__value">31,890</div>
+                    </div>
+                    <div className="dm-stat">
+                      <div className="dm-stat__label">Total quota</div>
+                      <div className="dm-stat__value">100,000</div>
+                    </div>
+                  </div>
+                  <div className="dm-row" style={{ marginTop: 14 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: '#71717a', marginBottom: 6 }}>
+                      <span>Progress</span><span>68%</span>
+                    </div>
+                    <div className="dm-progress">
+                      <div className="dm-progress__bar dm-progress__bar--warn" style={{ width: '68%' }} />
+                    </div>
+                  </div>
+                  <div className="dm-row">
+                    <label className="dm-label">Daily usage — May 2025</label>
+                    <div className="dm-chart">
+                      {[32, 48, 40, 60, 52, 70, 58, 66, 74, 54, 62, 80].map((h, i) => (
+                        <div key={i} className="dm-chart__bar" style={{ height: `${h}%` }} />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="dm-row" style={{ background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.3)', borderRadius: 8, padding: '8px 12px', fontSize: 11.5, color: '#92400e' }}>
+                    ⚠ Production is on track to exceed its monthly limit — upgrade to Pro for 1M requests/mo
+                  </div>
                 </div>
               </div>
             </div>
@@ -319,24 +417,49 @@ export default function FeaturesPage() {
               </p>
             </div>
             <div>
-              <div className="code-window">
-                <div className="code-window__bar">
-                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">Async delivery — Stripe webhook</span>
+              <div className="dm-frame">
+                <div className="dm-frame__bar">
+                  <GRMark />
+                  <Crumbs items={['Projects', 'Production', 'Endpoints', 'Stripe webhook']} />
                 </div>
-                <div className="code-window__body">
-                  <pre><span className="tok-key">name</span><span className="tok-dim">:</span>{`        `}<span className="tok-path">Stripe webhook</span>{`
-`}<span className="tok-key">action</span><span className="tok-dim">:</span>{`      `}<span className="tok-value">async_forward</span>{`
-`}<span className="tok-key">destination</span><span className="tok-dim">:</span>{` `}<span className="tok-url">api.example.com/webhooks/stripe</span>{`
-
-`}<span className="tok-comment"># Caller gets an immediate ack — no waiting on your backend</span>{`
-`}<span className="tok-method-post">POST</span>{` `}<span className="tok-path">Stripe webhook</span>{`  → `}<span className="tok-status-ok">202 Accepted</span>{`
-  `}<span className="tok-dim">{'{ "status": "Success", "request_id": "3f9c1e2a..." }'}</span>{`
-
-`}<span className="tok-comment"># Delivered in the background, retried automatically</span>{`
-attempt 1   `}<span className="tok-dim">·</span>{` immediate        `}<span className="tok-status-err">timeout</span>{`
-attempt 2   `}<span className="tok-dim">·</span>{` +15s             `}<span className="tok-status-warn">retrying</span>{`
-attempt 3   `}<span className="tok-dim">·</span>{` +60s             `}<span className="tok-status-ok">delivered ✓</span></pre>
+                <div className="dm-frame__body">
+                  <div className="dm-row">
+                    <label className="dm-label">Action</label>
+                    <div className="dm-actions">
+                      <div className="dm-action"><div className="dm-action__title">Static API</div></div>
+                      <div className="dm-action"><div className="dm-action__title">Sync API</div></div>
+                      <div className="dm-action dm-action--active"><div className="dm-action__title">Async API</div></div>
+                    </div>
+                  </div>
+                  <div className="dm-row">
+                    <label className="dm-label">Destination URL</label>
+                    <div className="dm-input">api.example.com/webhooks/stripe</div>
+                  </div>
+                  <div className="dm-row">
+                    <div className="dm-row-item" style={{ paddingTop: 0 }}>
+                      <span className="dm-method dm-method--post">POST</span>
+                      <span className="dm-row-item__path">Stripe webhook</span>
+                      <span className="dm-badge dm-badge--ok">202 Accepted</span>
+                    </div>
+                    <p className="dm-hint">Caller is acknowledged instantly — delivery continues in the background</p>
+                  </div>
+                  <div className="dm-row">
+                    <label className="dm-label">Delivery attempts</label>
+                    <div className="dm-list">
+                      <div className="dm-row-item">
+                        <span className="dm-row-item__path">attempt 1 · immediate</span>
+                        <span className="dm-badge dm-badge--err">timeout</span>
+                      </div>
+                      <div className="dm-row-item">
+                        <span className="dm-row-item__path">attempt 2 · +15s</span>
+                        <span className="dm-badge dm-badge--warn">retrying</span>
+                      </div>
+                      <div className="dm-row-item" style={{ borderBottom: 'none' }}>
+                        <span className="dm-row-item__path">attempt 3 · +60s</span>
+                        <span className="dm-badge dm-badge--ok">delivered ✓</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -361,23 +484,32 @@ attempt 3   `}<span className="tok-dim">·</span>{` +60s             `}<span cla
               </ul>
             </div>
             <div>
-              <div className="code-window code-window--light">
-                <div className="code-window__bar">
-                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">Endpoint authentication</span>
+              <div className="dm-frame">
+                <div className="dm-frame__bar">
+                  <GRMark />
+                  <Crumbs items={['Projects', 'Production', 'Endpoints', 'Stripe webhook']} />
                 </div>
-                <div className="code-window__body">
-                  <pre><span className="tok-comment"># Authentication — verifies the caller</span>{`
-`}<span className="tok-key">type</span><span className="tok-dim">:</span>{`    `}<span className="tok-value">hmac</span>{`
-`}<span className="tok-key">header</span><span className="tok-dim">:</span>{`  `}<span className="tok-value">Stripe-Signature</span>{`
-
-`}<span className="tok-method-post">POST</span>{` `}<span className="tok-path">Stripe webhook</span>{`
-  `}<span className="tok-status-ok">✓ signature verified</span>{` → forwarded
-
-`}<span className="tok-comment"># Destination Authentication — calls your backend</span>{`
-`}<span className="tok-key">type</span><span className="tok-dim">:</span>{`   `}<span className="tok-value">bearer</span>{`
-`}<span className="tok-key">token</span><span className="tok-dim">:</span>{`  `}<span className="tok-dim">••••••••</span>{`
-  `}<span className="tok-key">Authorization</span><span className="tok-dim">:</span>{` `}<span className="tok-value">Bearer ••••••••</span>{` → attached`}</pre>
+                <div className="dm-frame__body">
+                  <div className="dm-row">
+                    <label className="dm-label">Authentication — verifies the caller</label>
+                    <div style={{ display: 'flex', gap: 8 }}>
+                      <div className="dm-input" style={{ flex: 1 }}>HMAC</div>
+                      <div className="dm-input" style={{ flex: 1 }}>Stripe-Signature</div>
+                    </div>
+                    <div className="dm-row-item" style={{ paddingTop: 10 }}>
+                      <span className="dm-method dm-method--post">POST</span>
+                      <span className="dm-row-item__path">Stripe webhook</span>
+                      <span className="dm-badge dm-badge--ok">✓ verified → forwarded</span>
+                    </div>
+                  </div>
+                  <div className="dm-row">
+                    <label className="dm-label">Destination authentication — calls your backend</label>
+                    <div style={{ display: 'flex', gap: 8 }}>
+                      <div className="dm-input" style={{ flex: 1 }}>Bearer</div>
+                      <div className="dm-input" style={{ flex: 1 }}>••••••••</div>
+                    </div>
+                    <p className="dm-hint">Authorization: Bearer •••••••• → attached on every attempt</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -403,20 +535,41 @@ attempt 3   `}<span className="tok-dim">·</span>{` +60s             `}<span cla
               </ul>
             </div>
             <div>
-              <div className="code-window">
-                <div className="code-window__bar">
-                  <div className="code-window__dots"><span className="code-window__dot"></span><span className="code-window__dot"></span><span className="code-window__dot"></span></div>
-                  <span className="code-window__title">Bulk Retry Matching Requests</span>
+              <div className="dm-frame">
+                <div className="dm-frame__bar">
+                  <GRMark />
+                  <Crumbs items={['Projects', 'Production', 'Retries']} />
                 </div>
-                <div className="code-window__body">
-                  <pre><span className="tok-comment"># Filter: status=5xx · endpoint=/api/charges · last 2h</span>{`
-`}<span className="tok-key">preview</span><span className="tok-dim">:</span>{` `}<span className="tok-number">214</span>{` requests match
-`}<span className="tok-comment"># Start Bulk Retry → paced at 10 req/s</span>{`
-`}<span className="tok-key">status</span><span className="tok-dim">:</span>{`     `}<span className="tok-value">running</span>{`
-`}<span className="tok-key">queued</span><span className="tok-dim">:</span>{`     `}<span className="tok-number">214</span>{`
-`}<span className="tok-key">delivered</span><span className="tok-dim">:</span>{`  `}<span className="tok-status-ok">198</span>{`
-`}<span className="tok-key">failed</span><span className="tok-dim">:</span>{`     `}<span className="tok-status-err">9</span>{`
-`}<span className="tok-key">pending</span><span className="tok-dim">:</span>{`    `}<span className="tok-status-warn">7</span></pre>
+                <div className="dm-frame__body">
+                  <div className="dm-row">
+                    <label className="dm-label">Filter — status = 5xx · endpoint = /api/charges · last 2h</label>
+                    <div className="dm-row-item" style={{ paddingTop: 0, borderBottom: 'none' }}>
+                      <span className="dm-row-item__path">214 requests match</span>
+                      <span className="dm-btn dm-btn--primary">Start Bulk Retry</span>
+                    </div>
+                  </div>
+                  <div className="dm-row">
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: '#71717a', marginBottom: 6 }}>
+                      <span>Paced at 10 req/s</span><span>191 / 214</span>
+                    </div>
+                    <div className="dm-progress">
+                      <div className="dm-progress__bar" style={{ width: '89%' }} />
+                    </div>
+                  </div>
+                  <div className="dm-stats">
+                    <div className="dm-stat">
+                      <div className="dm-stat__label">Delivered</div>
+                      <div className="dm-stat__value" style={{ color: '#047857' }}>198</div>
+                    </div>
+                    <div className="dm-stat">
+                      <div className="dm-stat__label">Failed</div>
+                      <div className="dm-stat__value" style={{ color: '#b91c1c' }}>9</div>
+                    </div>
+                    <div className="dm-stat">
+                      <div className="dm-stat__label">Pending</div>
+                      <div className="dm-stat__value" style={{ color: '#b45309' }}>7</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

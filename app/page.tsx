@@ -5,6 +5,7 @@ import { APP_REGISTER_URL, DOCS_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { organizationSchema, webSiteSchema, softwareSchema } from '@/lib/jsonld'
 import { TrafficFlow } from '@/components/TrafficFlow'
+import { GRMark, Crumbs } from '@/components/dashboard-mockup'
 
 export const metadata: Metadata = buildMetadata({
   title: 'The API Reliability Infrastructure for Modern Teams',
@@ -34,24 +35,44 @@ export default function HomePage() {
             <p className="hero__note">Free forever · No credit card required</p>
 
             <div className="hero__window">
-              <div className="code-window">
-                <div className="code-window__bar">
-                  <div className="code-window__dots">
-                    <span className="code-window__dot"></span>
-                    <span className="code-window__dot"></span>
-                    <span className="code-window__dot"></span>
-                  </div>
-                  <span className="code-window__title">Request Logs — Production</span>
-                  <span className="code-window__copy">copy</span>
+              <div className="dm-frame dm-frame--hero">
+                <div className="dm-frame__bar">
+                  <GRMark />
+                  <Crumbs items={['Projects', 'Production', 'Logs']} />
+                  <span className="dm-badge dm-badge--live" style={{ marginLeft: 'auto' }}>Live</span>
                 </div>
-                <div className="code-window__body">
-                  <pre>{`Requests in the last 30 minutes\n
-  `}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">Login</span>{`              `}<span className="tok-status-ok">200 OK</span>{`  · `}<span className="tok-dim">43ms</span>{`    `}<span className="tok-dim">just now</span>{`
-  `}<span className="tok-method-get">GET</span>{`   `}<span className="tok-path">User profile</span>{`       `}<span className="tok-status-ok">200 OK</span>{`  · `}<span className="tok-dim">18ms</span>{`    `}<span className="tok-dim">2s ago</span>{`
-  `}<span className="tok-method-get">GET</span>{`   `}<span className="tok-path">Get order</span>{`          `}<span className="tok-status-warn">404</span>{`     · `}<span className="tok-dim">8ms</span>{`     `}<span className="tok-dim">5s ago</span>{`
-  `}<span className="tok-method-post">POST</span>{`  `}<span className="tok-path">Stripe webhook</span>{`     `}<span className="tok-status-ok">201</span>{`     · `}<span className="tok-dim">67ms</span>{`    `}<span className="tok-dim">11s ago</span>{`
-`}<span className="log-row-error">{'  '}<span className="tok-method-put">PUT</span>{`   `}<span className="tok-path">Settings update</span>{`    `}<span className="tok-status-err">500</span>{`     · `}<span className="tok-dim">203ms</span>{`   `}<span className="tok-dim">32s ago</span>{` ←`}</span>{`
-`}<span className="tok-dim">↺ Replay  ·  ⎘ Share link  ·  ▼ Inspect headers</span></pre>
+                <div className="dm-frame__body">
+                  <p className="dm-hint" style={{ marginBottom: 10 }}>Requests in the last 30 minutes</p>
+                  <div className="dm-list">
+                    <div className="dm-row-item">
+                      <span className="dm-method dm-method--post">POST</span>
+                      <span className="dm-row-item__path">HubSpot sync</span>
+                      <span className="dm-badge dm-badge--ok">200 OK</span>
+                      <span className="dm-row-item__meta">43ms · just now</span>
+                    </div>
+                    <div className="dm-row-item">
+                      <span className="dm-method dm-method--post">POST</span>
+                      <span className="dm-row-item__path">Message delivery</span>
+                      <span className="dm-badge dm-badge--ok">200 OK</span>
+                      <span className="dm-row-item__meta">18ms · 2s ago</span>
+                    </div>
+                    <div className="dm-row-item">
+                      <span className="dm-method dm-method--get">GET</span>
+                      <span className="dm-row-item__path">Get order</span>
+                      <span className="dm-badge dm-badge--warn">404</span>
+                      <span className="dm-row-item__meta">8ms · 5s ago</span>
+                    </div>
+                    <div className="dm-row-item dm-row-item--active" style={{ borderBottom: 'none' }}>
+                      <span className="dm-method dm-method--post">POST</span>
+                      <span className="dm-row-item__path">Stripe webhook</span>
+                      <span className="dm-badge dm-badge--ok">201</span>
+                      <span className="dm-row-item__meta">67ms · 11s ago</span>
+                    </div>
+                  </div>
+                  <div className="dm-btn-row" style={{ marginTop: 14 }}>
+                    <span className="dm-btn dm-btn--outline">↺ Replay</span>
+                    <span className="dm-btn dm-btn--outline">⎘ Share link</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -178,30 +199,6 @@ export default function HomePage() {
               <h3 className="feature-card__title">Bulk retry</h3>
               <p className="feature-card__desc">Recover from an outage in one action. Retry a manual selection or an entire filtered set, paced automatically so it never re-overwhelms your backend.</p>
               <span className="feature-card__badge">Pro</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* PAIN POINTS */}
-      <section className="section section--light" aria-labelledby="pain-heading">
-        <div className="container">
-          <div className="section__header">
-            <span className="label label--light">// the problem</span>
-            <h2 className="heading-xl" id="pain-heading">Lost requests are the hidden cost of every downtime event.</h2>
-          </div>
-          <div className="pain-grid">
-            <div className="card--pain">
-              <h3 className="card--pain__title">&ldquo;A traffic spike took us down and we lost every request that came in.&rdquo;</h3>
-              <p className="card--pain__body">When a sudden spike overwhelms your backend, requests fail silently. Webhook payloads are dropped. Customer actions never process. There is no record of what arrived during the outage.</p>
-            </div>
-            <div className="card--pain">
-              <h3 className="card--pain__title">&ldquo;We deployed a bad build and permanently lost two hours of incoming traffic.&rdquo;</h3>
-              <p className="card--pain__body">Deployments fail. Services go down. When your backend is unavailable, every request that arrives is gone forever — unless you have a layer that captures and holds them before they ever reach your infrastructure.</p>
-            </div>
-            <div className="card--pain">
-              <h3 className="card--pain__title">&ldquo;After the incident, we had to ask customers to retry. Half of them didn&apos;t.&rdquo;</h3>
-              <p className="card--pain__body">Manual recovery is the default. Engineers reconstruct requests from partial logs, customers are asked to resend, and critical business events are simply written off. Recovery should not require human intervention.</p>
             </div>
           </div>
         </div>

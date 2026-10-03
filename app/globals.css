@@ -759,6 +759,394 @@ table {
 }
 
 /* ============================================================
+   Dashboard Mockups (accurate recreations of the real app UI —
+   shadcn/zinc theme: light surface, near-black primary, emerald/
+   amber/red status colors. Used on /features in place of fake
+   terminal windows, since the product is a dashboard, not a CLI.)
+   ============================================================ */
+.dm-frame {
+  background: #ffffff;
+  color: #18181b;
+  border: 1px solid #e5e5e5;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 24px 64px -24px rgba(0,0,0,0.45);
+  font-family: var(--font-sans);
+  width: 100%;
+}
+
+.dm-frame__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fafafa;
+}
+
+.dm-frame__mark {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+}
+
+.dm-frame__crumbs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #a3a3a3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dm-frame__crumbs b {
+  color: #52525b;
+  font-weight: 500;
+}
+
+.dm-frame__body {
+  padding: 20px;
+}
+
+/* Larger, more prominent treatment for the hero's flagship mockup */
+.dm-frame--hero {
+  box-shadow: 0 40px 100px -32px rgba(0,0,0,0.55);
+}
+
+.dm-frame--hero .dm-frame__bar {
+  padding: 13px 20px;
+}
+
+.dm-frame--hero .dm-frame__body {
+  padding: 26px;
+}
+
+.dm-frame--hero .dm-row-item {
+  font-size: 13px;
+  padding: 12px 0;
+}
+
+/* Browser frame — for the one section (shareable debug links)
+   that is an actual public webpage, not an internal dashboard view */
+.dm-browser {
+  background: #ffffff;
+  color: #18181b;
+  border: 1px solid #e5e5e5;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 24px 64px -24px rgba(0,0,0,0.45);
+  font-family: var(--font-sans);
+  width: 100%;
+}
+
+.dm-browser__bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.dm-browser__dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.dm-browser__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #e5e5e5;
+}
+
+.dm-browser__url {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 11px;
+  color: #737373;
+  font-family: var(--font-mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dm-browser__body {
+  padding: 20px;
+}
+
+/* Form bits */
+.dm-row {
+  margin-bottom: 16px;
+}
+
+.dm-row:last-child {
+  margin-bottom: 0;
+}
+
+.dm-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: #27272a;
+  margin-bottom: 6px;
+}
+
+.dm-input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #e4e4e7;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 13px;
+  color: #27272a;
+  background: #ffffff;
+}
+
+.dm-hint {
+  font-size: 11px;
+  color: #a1a1aa;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.dm-methods {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.dm-method-pill {
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid #e4e4e7;
+  font-size: 11px;
+  font-weight: 600;
+  color: #a1a1aa;
+  font-family: var(--font-mono);
+}
+
+.dm-method-pill--active {
+  background: #18181b;
+  border-color: #18181b;
+  color: #ffffff;
+}
+
+.dm-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.dm-action {
+  flex: 1;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.dm-action--active {
+  border-color: #18181b;
+  background: #fafafa;
+  box-shadow: inset 0 0 0 1px #18181b;
+}
+
+.dm-action__title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #18181b;
+}
+
+.dm-action__desc {
+  font-size: 10.5px;
+  color: #a1a1aa;
+  margin-top: 2px;
+}
+
+.dm-json {
+  background: #fafafa;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.7;
+  color: #3f3f46;
+  overflow-x: auto;
+}
+
+.dm-json .dm-k { color: #0891b2; }
+.dm-json .dm-s { color: #15803d; }
+.dm-json .dm-d { color: #a1a1aa; }
+
+.dm-btn-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.dm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.dm-btn--primary {
+  background: #18181b;
+  color: #ffffff;
+}
+
+.dm-btn--outline {
+  border: 1px solid #e4e4e7;
+  color: #27272a;
+  background: #ffffff;
+}
+
+/* Badges & status */
+.dm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10.5px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.dm-badge--ok { background: rgba(16,185,129,0.12); color: #047857; }
+.dm-badge--err { background: rgba(239,68,68,0.12); color: #b91c1c; }
+.dm-badge--warn { background: rgba(245,158,11,0.14); color: #b45309; }
+
+.dm-badge--live {
+  background: rgba(16,185,129,0.12);
+  color: #047857;
+}
+
+.dm-badge--live::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  flex-shrink: 0;
+}
+
+.dm-method {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.dm-method--get { background: #d1fae5; color: #065f46; }
+.dm-method--post { background: #fce7f3; color: #9d174d; }
+.dm-method--put { background: #fef3c7; color: #92400e; }
+
+/* Rows / lists */
+.dm-list {
+  border-top: 1px solid #f4f4f5;
+}
+
+.dm-row-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f4f4f5;
+  font-size: 12px;
+}
+
+.dm-row-item--active {
+  background: #fafafa;
+  margin: 0 -20px;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+.dm-row-item__path {
+  flex: 1;
+  min-width: 0;
+  color: #27272a;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dm-row-item__meta {
+  color: #a1a1aa;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* Stat cards, progress bar, bar chart */
+.dm-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.dm-stat {
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.dm-stat__label {
+  font-size: 10.5px;
+  color: #a1a1aa;
+}
+
+.dm-stat__value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #18181b;
+  margin-top: 2px;
+}
+
+.dm-progress {
+  height: 8px;
+  border-radius: 999px;
+  background: #f4f4f5;
+  overflow: hidden;
+}
+
+.dm-progress__bar {
+  height: 100%;
+  background: #18181b;
+  border-radius: 999px;
+}
+
+.dm-progress__bar--warn { background: #f59e0b; }
+
+.dm-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 84px;
+}
+
+.dm-chart__bar {
+  flex: 1;
+  background: #18181b;
+  border-radius: 3px 3px 0 0;
+  opacity: 0.88;
+}
+
+/* ============================================================
    Code Windows
    ============================================================ */
 .code-window {
@@ -863,35 +1251,6 @@ table {
   padding: 1px 6px;
   margin: 0 -6px;
   display: block;
-}
-
-/* ============================================================
-   Pain Point Cards
-   ============================================================ */
-.pain-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-6);
-}
-
-.card--pain {
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: var(--space-8);
-  background: var(--bg-light);
-}
-
-.card--pain__title {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-light);
-  margin-bottom: var(--space-3);
-}
-
-.card--pain__body {
-  font-size: 14px;
-  color: var(--text-light-2);
-  line-height: 1.7;
 }
 
 /* ============================================================
@@ -1541,10 +1900,6 @@ table {
   .feature-section__layout {
     gap: var(--space-10);
   }
-
-  .pain-grid {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 /* ============================================================
@@ -1573,10 +1928,6 @@ table {
   .pricing-grid {
     grid-template-columns: 1fr;
     max-width: 100%;
-  }
-
-  .pain-grid {
-    grid-template-columns: 1fr;
   }
 
   .use-case-grid {
@@ -1958,9 +2309,7 @@ table {
 .animate-in,
 .section__header,
 .feature-card,
-.step,
 .pricing-card,
-.card--pain,
 .feature-section__layout,
 .use-case-card,
 .persona-card,
@@ -1978,9 +2327,7 @@ table {
 .animate-in.visible,
 .section__header.visible,
 .feature-card.visible,
-.step.visible,
 .pricing-card.visible,
-.card--pain.visible,
 .feature-section__layout.visible,
 .use-case-card.visible,
 .persona-card.visible,
@@ -1996,9 +2343,7 @@ table {
   .animate-in,
   .section__header,
   .feature-card,
-  .step,
   .pricing-card,
-  .card--pain,
   .feature-section__layout,
   .use-case-card,
   .persona-card,
