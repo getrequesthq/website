@@ -4,8 +4,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
     h1: ({ children }) => <h1 className="heading-hero">{children}</h1>,
-    h2: ({ children }) => <h2 className="heading-xl">{children}</h2>,
-    h3: ({ children }) => <h3 className="heading-lg">{children}</h3>,
+    h2: ({ children }) => <h2 className="heading-lg">{children}</h2>,
+    h3: ({ children }) => <h3 className="heading-md">{children}</h3>,
     p: ({ children }) => <p className="prose-p">{children}</p>,
     pre: ({ children }) => <pre className="code-block">{children}</pre>,
     code: ({ children, className }) => <code className={className}>{children}</code>,

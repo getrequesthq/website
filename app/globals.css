@@ -2065,6 +2065,18 @@ table {
   color: var(--text-light-2);
 }
 
+.prose h1,
+.prose h2,
+.prose h3 {
+  margin: 1.75em 0 0.75em;
+}
+
+.prose h1:first-child,
+.prose h2:first-child,
+.prose h3:first-child {
+  margin-top: 0;
+}
+
 .prose-link {
   color: var(--text-light);
   text-decoration: underline;

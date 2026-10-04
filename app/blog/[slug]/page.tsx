@@ -1,9 +1,12 @@
 import { notFound } from 'next/navigation'
+import { evaluate } from '@mdx-js/mdx'
+import * as runtime from 'react/jsx-runtime'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 import { formatPostDate } from '@/lib/format'
 import { buildMetadata } from '@/lib/metadata'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { breadcrumbSchema, blogPostingSchema } from '@/lib/jsonld'
+import { useMDXComponents } from '@/mdx-components'
 import Link from 'next/link'
 
 interface Props {
@@ -31,8 +34,17 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(slug)
   if (!post) notFound()
 
-  // Dynamically import the MDX file
-  const { default: MDXContent } = await import(`@/content/blog/${slug}.mdx`)
+  // Compile the post body at runtime. post.content already has its
+  // frontmatter stripped (by gray-matter in getPostBySlug) — statically
+  // importing the raw .mdx file instead would feed the unstripped
+  // frontmatter block into the MDX compiler, which has no YAML-frontmatter
+  // awareness and renders it as literal content (a stray `---` reads as a
+  // thematic break, and the frontmatter's key: value lines get swallowed
+  // into the heading that follows via Markdown's setext-heading syntax).
+  const { default: MDXContent } = await evaluate(post.content, {
+    ...runtime,
+    useMDXComponents: () => useMDXComponents({}),
+  })
 
   return (
     <main id="main" className="blog-post">
