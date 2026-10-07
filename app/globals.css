@@ -1484,7 +1484,7 @@ table {
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr;
   gap: var(--space-8);
   margin-bottom: var(--space-12);
   padding-bottom: var(--space-12);
@@ -1557,10 +1557,14 @@ table {
 }
 
 .footer__social-link {
-  font-size: 13px;
+  display: flex;
   color: var(--text-dark-3);
-  text-decoration: none;
   transition: color 0.15s;
+}
+
+.footer__social-link svg {
+  width: 18px;
+  height: 18px;
 }
 
 .footer__social-link:hover {
@@ -1897,7 +1901,7 @@ table {
   }
 
   .footer__grid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .footer__grid > :first-child {
