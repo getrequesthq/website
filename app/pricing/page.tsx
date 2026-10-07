@@ -33,7 +33,7 @@ const faqItems = [
   },
   {
     question: 'Do you offer annual billing?',
-    answer: 'Annual billing with a 20% discount is available on request. Contact support to set it up.',
+    answer: 'Annual billing with a 20% discount is available on request. Contact support (support@getrequest.io) to set it up.',
   },
   {
     question: 'If I delete an endpoint or project, do I lose its request history?',
