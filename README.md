@@ -1,6 +1,6 @@
 # getrequest marketing website
 
-Marketing site for [getrequest.io](https://getrequest.io) — API reliability infrastructure for modern teams.
+Marketing site for [getrequest.io](https://getrequest.io) — API reliability layer for modern teams.
 
 Built with [Next.js 16](https://nextjs.org) (App Router), React 19, TypeScript, and MDX for the blog.
 

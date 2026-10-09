@@ -6,7 +6,7 @@ export const runtime = 'edge'
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const title = searchParams.get('title') ?? 'getrequest'
-  const desc = searchParams.get('desc') ?? 'API reliability infrastructure for modern teams.'
+  const desc = searchParams.get('desc') ?? 'API reliability layer for modern teams.'
 
   return new ImageResponse(
     (
@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
             marginBottom: '20px',
           }}
         >
-          // api reliability infrastructure
+          // api reliability layer
         </div>
         {/* Title */}
         <div

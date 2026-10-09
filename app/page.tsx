@@ -7,8 +7,8 @@ import { organizationSchema, webSiteSchema, softwareSchema } from '@/lib/jsonld'
 import { GRMark, Crumbs } from '@/components/dashboard-mockup'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'The API Reliability Infrastructure for Modern Teams',
-  description: 'API reliability infrastructure for modern teams. Launch endpoints, observe every request, and replay failures — without managing gateways, servers, or observability stacks.',
+  title: 'The API Reliability Layer for Modern Teams',
+  description: 'API reliability layer for modern teams. Launch endpoints, observe every request, and replay failures — without managing gateways, servers, or observability stacks.',
   path: '/',
 })
 

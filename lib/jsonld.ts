@@ -18,7 +18,7 @@ export function softwareSchema() {
     name: 'getrequest',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Web',
-    description: 'API reliability infrastructure for modern teams. Launch endpoints, observe every request, replay failures.',
+    description: 'API reliability layer for modern teams. Launch endpoints, observe every request, replay failures.',
     url: BASE_URL,
     offers: [
       { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },
