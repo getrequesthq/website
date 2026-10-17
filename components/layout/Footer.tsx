@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { DOCS_URL } from '@/lib/urls'
+import { CookieSettingsButton } from '@/components/CookieConsent'
 
 const FooterLogoSVG = () => (
   <svg className="footer__logo-svg" viewBox="0 0 192 41" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -36,6 +37,7 @@ export function Footer() {
               <li><Link href="/blog" className="footer__link">Blog</Link></li>
               <li><Link href="/privacy-policy" className="footer__link">Privacy Policy</Link></li>
               <li><Link href="/terms-of-use" className="footer__link">Terms of Use</Link></li>
+              <li><CookieSettingsButton /></li>
             </ul>
           </div>
         </div>
