@@ -2176,7 +2176,7 @@ table {
 }
 
 .cookie-banner__link {
-  color: var(--text-dark);
+  color: inherit;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
