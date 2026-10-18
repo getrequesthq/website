@@ -522,7 +522,7 @@ table {
 .hero {
   background-color: #06080f;
   background-image:
-    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(99, 102, 241, 0.22) 0%, rgba(59, 130, 246, 0.08) 40%, transparent 70%),
+    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(255, 216, 74, 0.14) 0%, rgba(255, 216, 74, 0.05) 40%, transparent 70%),
     radial-gradient(circle at 1px 1px, rgba(255,255,255,0.055) 1px, transparent 0);
   background-size: 100% 100%, 28px 28px;
   color: var(--text-dark);
