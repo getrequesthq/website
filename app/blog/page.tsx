@@ -17,8 +17,8 @@ export default function BlogPage() {
   return (
     <main id="main">
       <JsonLd data={breadcrumbSchema([
-        { name: 'Home', url: 'https://getrequest.io' },
-        { name: 'Blog', url: 'https://getrequest.io/blog' },
+        { name: 'Home', url: 'https://www.getrequest.io' },
+        { name: 'Blog', url: 'https://www.getrequest.io/blog' },
       ])} />
 
       <section className="hero" aria-labelledby="blog-heading">

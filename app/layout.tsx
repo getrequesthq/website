@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { OG_IMAGE } from '@/lib/metadata'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import './flight.css'
@@ -20,7 +21,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://getrequest.io'),
+  metadataBase: new URL('https://www.getrequest.io'),
   title: {
     default: 'getrequest — API Reliability Layer · Relay · Retain · Recover',
     template: '%s — getrequest',
@@ -30,6 +31,11 @@ export const metadata: Metadata = {
     siteName: 'getrequest',
     type: 'website',
     locale: 'en_US',
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [OG_IMAGE],
   },
   icons: {
     icon: [

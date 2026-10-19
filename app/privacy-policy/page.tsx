@@ -18,8 +18,8 @@ export default function PrivacyPolicyPage() {
   return (
     <main id="main" className="blog-post">
       <JsonLd data={breadcrumbSchema([
-        { name: 'Home', url: 'https://getrequest.io' },
-        { name: 'Privacy Policy', url: 'https://getrequest.io/privacy-policy' },
+        { name: 'Home', url: 'https://www.getrequest.io' },
+        { name: 'Privacy Policy', url: 'https://www.getrequest.io/privacy-policy' },
       ])} />
 
       <header className="blog-post__header">

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getAllPosts } from '@/lib/blog'
 
-const BASE_URL = 'https://getrequest.io'
+const BASE_URL = 'https://www.getrequest.io'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts()

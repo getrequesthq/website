@@ -1,4 +1,4 @@
-const BASE_URL = 'https://getrequest.io'
+const BASE_URL = 'https://www.getrequest.io'
 
 export function organizationSchema() {
   return {
@@ -73,11 +73,11 @@ export function blogPostingSchema(post: {
     publisher: {
       '@type': 'Organization',
       name: 'getrequest',
-      url: 'https://getrequest.io',
+      url: 'https://www.getrequest.io',
     },
-    url: `https://getrequest.io/blog/${post.slug}`,
+    url: `https://www.getrequest.io/blog/${post.slug}`,
     keywords: post.tags.join(', '),
-    mainEntityOfPage: `https://getrequest.io/blog/${post.slug}`,
+    mainEntityOfPage: `https://www.getrequest.io/blog/${post.slug}`,
   }
 }
 

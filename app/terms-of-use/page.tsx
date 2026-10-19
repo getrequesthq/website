@@ -18,8 +18,8 @@ export default function TermsOfUsePage() {
   return (
     <main id="main" className="blog-post">
       <JsonLd data={breadcrumbSchema([
-        { name: 'Home', url: 'https://getrequest.io' },
-        { name: 'Terms of Use', url: 'https://getrequest.io/terms-of-use' },
+        { name: 'Home', url: 'https://www.getrequest.io' },
+        { name: 'Terms of Use', url: 'https://www.getrequest.io/terms-of-use' },
       ])} />
 
       <header className="blog-post__header">

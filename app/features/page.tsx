@@ -16,8 +16,8 @@ export default function FeaturesPage() {
   return (
     <main id="main">
       <JsonLd data={breadcrumbSchema([
-        { name: 'Home', url: 'https://getrequest.io' },
-        { name: 'Features', url: 'https://getrequest.io/features' },
+        { name: 'Home', url: 'https://www.getrequest.io' },
+        { name: 'Features', url: 'https://www.getrequest.io/features' },
       ])} />
 
       {/* HERO */}

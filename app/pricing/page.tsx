@@ -49,8 +49,8 @@ export default function PricingPage() {
   return (
     <main id="main">
       <JsonLd data={breadcrumbSchema([
-        { name: 'Home', url: 'https://getrequest.io' },
-        { name: 'Pricing', url: 'https://getrequest.io/pricing' },
+        { name: 'Home', url: 'https://www.getrequest.io' },
+        { name: 'Pricing', url: 'https://www.getrequest.io/pricing' },
       ])} />
       <JsonLd data={faqSchema(faqItems)} />
 

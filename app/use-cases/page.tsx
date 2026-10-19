@@ -14,8 +14,8 @@ export default function UseCasesPage() {
   return (
     <main id="main">
       <JsonLd data={breadcrumbSchema([
-        { name: 'Home', url: 'https://getrequest.io' },
-        { name: 'Use Cases', url: 'https://getrequest.io/use-cases' },
+        { name: 'Home', url: 'https://www.getrequest.io' },
+        { name: 'Use Cases', url: 'https://www.getrequest.io/use-cases' },
       ])} />
 
       {/* HERO */}

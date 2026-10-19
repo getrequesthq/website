@@ -49,9 +49,9 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <main id="main" className="blog-post">
       <JsonLd data={breadcrumbSchema([
-        { name: 'Home', url: 'https://getrequest.io' },
-        { name: 'Blog', url: 'https://getrequest.io/blog' },
-        { name: post.title, url: `https://getrequest.io/blog/${slug}` },
+        { name: 'Home', url: 'https://www.getrequest.io' },
+        { name: 'Blog', url: 'https://www.getrequest.io/blog' },
+        { name: post.title, url: `https://www.getrequest.io/blog/${slug}` },
       ])} />
       <JsonLd data={blogPostingSchema(post)} />
 
