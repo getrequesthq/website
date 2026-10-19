@@ -21,7 +21,7 @@ const faqItems = [
   },
   {
     question: 'What happens when I go over my plan\'s request quota?',
-    answer: 'Your endpoints keep operating normally either way. On Free, log capture pauses once you hit 10,000 requests until the cycle resets or you upgrade. On Dev, Pro, and Gro, overage is billed automatically per 10,000 extra requests.',
+    answer: 'On Free, requests past 10,000 are blocked with a 429 until the cycle resets or you upgrade. Blocked requests are still logged, so you can see what was affected. On Dev, Pro, and Gro, overage is billed automatically per 10,000 extra requests.',
   },
   {
     question: 'Is overage capped, or can my bill spike unexpectedly?',
@@ -58,7 +58,7 @@ export default function PricingPage() {
       <section className="hero" aria-labelledby="hero-heading">
         <div className="container">
           <div className="hero__inner">
-            <span className="hero__label">// pricing</span>
+            <span className="hero__label eyebrow">Pricing</span>
             <h1 className="heading-hero hero__title" id="hero-heading">Reliable pricing. No surprises.</h1>
             <p className="hero__sub">Start free, scale as your traffic grows. Every paid plan includes transparent, pay-as-you-go overage.</p>
           </div>
@@ -69,7 +69,7 @@ export default function PricingPage() {
       <section className="section section--light" id="plans" aria-labelledby="plans-heading">
         <div className="container">
           <div className="section__header section__header--center">
-            <span className="label label--light">// plans</span>
+            <span className="label label--light eyebrow">Plans</span>
             <h2 className="heading-xl" id="plans-heading">Scale as your traffic grows.</h2>
           </div>
           <div className="pricing-grid pricing-grid--4">
@@ -158,7 +158,7 @@ export default function PricingPage() {
       <section className="section section--light" aria-labelledby="compare-heading">
         <div className="container">
           <div className="section__header section__header--center">
-            <span className="label label--light">// compare plans</span>
+            <span className="label label--light eyebrow">Compare plans</span>
             <h2 className="heading-xl" id="compare-heading">Everything side by side.</h2>
           </div>
           <div style={{ overflowX: 'auto' }}>
@@ -274,7 +274,7 @@ export default function PricingPage() {
       <section className="section section--light" aria-labelledby="faq-heading">
         <div className="container container--narrow">
           <div className="section__header">
-            <span className="label label--light">// common questions</span>
+            <span className="label label--light eyebrow">Common questions</span>
             <h2 className="heading-xl" id="faq-heading">Common questions.</h2>
           </div>
           <div className="faq-list">

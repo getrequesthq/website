@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
+import './flight.css'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { ScrollAnimations } from '@/components/ScrollAnimations'
 import { CookieConsent } from '@/components/CookieConsent'
 
-const inter = Inter({
+const geist = Geist({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-geist',
   display: 'swap',
 })
 
-const jetbrainsMono = JetBrains_Mono({
+const geistMono = Geist_Mono({
   subsets: ['latin'],
-  variable: '--font-jetbrains',
+  variable: '--font-geist-mono',
   display: 'swap',
 })
 
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     default: 'getrequest — API Reliability Layer · Relay · Retain · Recover',
     template: '%s — getrequest',
   },
-  description: 'The API Reliability Layer for modern teams. Relay traffic safely, retain every request before it hits your backend, and recover from failures without losing a single payload.',
+  description: 'getrequest sits between your callers and your API. It relays every request, records the full exchange, retries async deliveries automatically, and lets you replay what failed.',
   openGraph: {
     siteName: 'getrequest',
     type: 'website',
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`} data-scroll-behavior="smooth">
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`} data-scroll-behavior="smooth">
       <body>
         <a className="skip-link" href="#main">Skip to content</a>
         <Nav />

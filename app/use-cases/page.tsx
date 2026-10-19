@@ -22,7 +22,7 @@ export default function UseCasesPage() {
       <section className="hero" aria-labelledby="hero-heading">
         <div className="container">
           <div className="hero__inner">
-            <span className="hero__label">// api reliability layer</span>
+            <span className="hero__label eyebrow">API reliability layer</span>
             <h1 className="heading-hero hero__title" id="hero-heading">One reliability layer.<br />Dozens of use cases.</h1>
             <p className="hero__sub">Relay every request safely. Retain every payload before it reaches your backend. Recover from failures without losing a single request — without managing the underlying stack.</p>
           </div>
@@ -33,7 +33,7 @@ export default function UseCasesPage() {
       <section className="section section--light" id="scenarios" aria-labelledby="scenarios-heading">
         <div className="container">
           <div className="section__header section__header--center">
-            <span className="label label--light">// scenarios</span>
+            <span className="label label--light eyebrow">Scenarios</span>
             <h2 className="heading-xl" id="scenarios-heading">Pick your scenario.</h2>
             <p className="section__sub section__sub--light section__sub--center">Every scenario below is a real situation teams face when building on APIs. getrequest covers all of them.</p>
           </div>
@@ -77,7 +77,7 @@ export default function UseCasesPage() {
             <div className="use-case-card">
               <span className="use-case-card__plan">Pro</span>
               <h3 className="use-case-card__title">Share incident evidence across teams</h3>
-              <p className="use-case-card__desc">Generate a permanent link to any captured request and paste it in the incident ticket. Your whole team sees the exact failure — headers, body, response — without needing access to your environment.</p>
+              <p className="use-case-card__desc">Generate a share link to any captured request and paste it in the incident ticket. Links expire after 30 days and can be revoked. Your whole team sees the exact failure — headers, body, response — without needing access to your environment.</p>
               <code className="use-case-card__code">getrequest.io/share/req_...</code>
             </div>
             <div className="use-case-card">
@@ -88,14 +88,14 @@ export default function UseCasesPage() {
             </div>
             <div className="use-case-card">
               <span className="use-case-card__plan">Free</span>
-              <h3 className="use-case-card__title">Protect against traffic spikes</h3>
-              <p className="use-case-card__desc">A sudden surge hits your API. getrequest absorbs inbound load as a controlled relay layer — so your backend isn&apos;t exposed directly to unpredictable traffic. Every request is relayed safely and retained in full.</p>
-              <code className="use-case-card__code">route: inbound spike → relay layer</code>
+              <h3 className="use-case-card__title">Ride out webhook bursts</h3>
+              <p className="use-case-card__desc">A provider sends a burst and your API slows down. With Async API, each sender gets a 202 right away and delivery happens in the background, retried up to 6 times, so a slow or failing backend doesn&apos;t bounce back to the sender. Requests past your plan&apos;s quota get a 429 and are still logged.</p>
+              <code className="use-case-card__code">action: Async API → 202, retried delivery</code>
             </div>
             <div className="use-case-card">
               <span className="use-case-card__plan">Pro</span>
               <h3 className="use-case-card__title">Recover lost requests after downtime</h3>
-              <p className="use-case-card__desc">Your backend went down. Requests kept arriving. Because getrequest retains every payload before forwarding, none of them are lost. When systems recover, replay the retained queue with exact original payloads.</p>
+              <p className="use-case-card__desc">Your backend went down and requests kept arriving. Sync callers got a 502 or 504, and each request was logged with its full payload. Async deliveries kept retrying for about 36 minutes. When your systems recover, replay whatever still failed with the exact original payloads.</p>
               <code className="use-case-card__code">↺ replay retained queue</code>
             </div>
             <div className="use-case-card">
@@ -112,7 +112,7 @@ export default function UseCasesPage() {
       <section className="section section--light" aria-labelledby="persona-heading">
         <div className="container">
           <div className="section__header section__header--center">
-            <span className="label label--light">// who uses getrequest</span>
+            <span className="label label--light eyebrow">Who uses getrequest</span>
             <h2 className="heading-xl" id="persona-heading">Built for every team that builds on APIs.</h2>
             <p className="section__sub section__sub--light section__sub--center">getrequest scales from a solo side project to a platform team managing production API traffic.</p>
           </div>

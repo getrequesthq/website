@@ -4,11 +4,32 @@ import { buildMetadata } from '@/lib/metadata'
 import { APP_REGISTER_URL, DOCS_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
 import { organizationSchema, webSiteSchema, softwareSchema } from '@/lib/jsonld'
-import { GRMark, Crumbs } from '@/components/dashboard-mockup'
+import { FlightRecorder } from '@/components/home/FlightRecorder'
+import { ReliabilityStory } from '@/components/home/ReliabilityStory'
+import { ProductTour } from '@/components/home/ProductTour'
+import { Quickstart } from '@/components/home/Quickstart'
+
+// [capability, hookdeck, svix, ngrok, diy, getrequest] — null = no, '' = yes, text = yes with qualifier
+const COMPARE: [string, ...(string | null)[]][] = [
+  ['Sync request handling', null, null, '', 'custom', 'no config'],
+  ['Async delivery with retries', '', 'outbound', null, 'weeks to build', 'built in'],
+  ['Live request inspector', 'webhooks only', 'sender-side logs', 'local tunnel', null, 'all traffic'],
+  ['Request replay', '', 'per message + bulk', '', 'custom', 'single + bulk'],
+  ['Mock endpoints', 'custom response', null, null, 'custom', ''],
+  ['Production-safe (no tunnel)', '', '', null, '', ''],
+  ['Shareable debug links', null, null, null, null, '30-day links'],
+]
+
+const PLANS = [
+  { name: 'Free', price: '$0', quota: '10,000 / mo', retention: '7 days', over: 'Hard cap (429)', desc: 'Inspector, all three actions, endpoint auth.', cta: 'Start free' },
+  { name: 'Dev', price: '$29', quota: '100,000 / mo', retention: '30 days', over: '$2.90 / 10k', desc: 'Everything in Free, plus priority support.', cta: 'Start Dev' },
+  { name: 'Pro', price: '$99', quota: '1,000,000 / mo', retention: '30 days', over: '$1.90 / 10k', desc: 'Adds replay, bulk retry, and share links.', cta: 'Start Pro', featured: true },
+  { name: 'Gro', price: '$399', quota: '5,000,000 / mo', retention: '30 days', over: '$0.90 / 10k', desc: 'Everything in Pro at high volume.', cta: 'Start Gro' },
+]
 
 export const metadata: Metadata = buildMetadata({
   title: 'The API Reliability Layer for Modern Teams',
-  description: 'API reliability layer for modern teams. Launch endpoints, observe every request, and replay failures — without managing gateways, servers, or observability stacks.',
+  description: 'getrequest sits between your callers and your API. It relays every request, records the full exchange, retries async deliveries automatically, and lets you replay what failed.',
   path: '/',
 })
 
@@ -20,407 +41,165 @@ export default function HomePage() {
       <JsonLd data={softwareSchema()} />
 
       {/* HERO */}
-      <section className="hero" aria-labelledby="hero-heading">
+      <section className="hx" aria-labelledby="hero-heading">
         <div className="container">
-          <div className="hero__inner">
-            <span className="hero__label">// api reliability layer</span>
-            <h1 className="heading-hero hero__title" id="hero-heading">Never lose an<br />API request.</h1>
-            <p className="hero__sub">Relay traffic safely. Retain every request.<br />Recover from failures.</p>
-            <p className="hero__detail">getrequest sits in front of your backend as a reliability layer — so traffic spikes, downtime, or failed deployments never result in lost requests.</p>
-            <div className="hero__ctas">
-              <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
-              <a href={DOCS_URL} className="btn btn-ghost btn-lg">View docs</a>
-            </div>
-            <p className="hero__note">Free forever · No credit card required</p>
-
-            <div className="hero__window">
-              <div className="dm-frame dm-frame--hero">
-                <div className="dm-frame__bar">
-                  <GRMark />
-                  <Crumbs items={['Projects', 'Production', 'Logs']} />
-                  <span className="dm-badge dm-badge--live" style={{ marginLeft: 'auto' }}>Live</span>
+          <div className="hx__head">
+            <span className="eyebrow">API Reliability Layer</span>
+            <h1 className="hx__title" id="hero-heading">Your backend can fail.<br /><span>Not your business integrations.</span></h1>
+            <div className="hx__aside">
+              <p className="hx__sub">getrequest sits in front of your backend as a reliability layer — so traffic spikes, downtime, or failed deployments never result in lost requests.</p>
+              <div>
+                <div className="hx__ctas">
+                  <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
+                  <a href={DOCS_URL} className="btn btn-ghost btn-lg">Documentation</a>
                 </div>
-                <div className="dm-frame__body">
-                  <p className="dm-hint" style={{ marginBottom: 10 }}>Requests in the last 30 minutes</p>
-                  <div className="dm-list">
-                    <div className="dm-row-item">
-                      <span className="dm-method dm-method--post">POST</span>
-                      <span className="dm-row-item__path">HubSpot sync</span>
-                      <span className="dm-badge dm-badge--ok">200 OK</span>
-                      <span className="dm-row-item__meta">43ms · just now</span>
-                    </div>
-                    <div className="dm-row-item">
-                      <span className="dm-method dm-method--post">POST</span>
-                      <span className="dm-row-item__path">Message delivery</span>
-                      <span className="dm-badge dm-badge--ok">200 OK</span>
-                      <span className="dm-row-item__meta">18ms · 2s ago</span>
-                    </div>
-                    <div className="dm-row-item">
-                      <span className="dm-method dm-method--get">GET</span>
-                      <span className="dm-row-item__path">Get order</span>
-                      <span className="dm-badge dm-badge--warn">404</span>
-                      <span className="dm-row-item__meta">8ms · 5s ago</span>
-                    </div>
-                    <div className="dm-row-item dm-row-item--active" style={{ borderBottom: 'none' }}>
-                      <span className="dm-method dm-method--post">POST</span>
-                      <span className="dm-row-item__path">Stripe webhook</span>
-                      <span className="dm-badge dm-badge--ok">201</span>
-                      <span className="dm-row-item__meta">67ms · 11s ago</span>
-                    </div>
-                  </div>
-                  <div className="dm-btn-row" style={{ marginTop: 14 }}>
-                    <span className="dm-btn dm-btn--outline">↺ Replay</span>
-                    <span className="dm-btn dm-btn--outline">⎘ Share link</span>
-                  </div>
-                </div>
+                <p className="hx__note">Free plan · 10,000 requests/month · no card</p>
               </div>
             </div>
           </div>
+          <FlightRecorder />
         </div>
       </section>
 
-      {/* SOCIAL PROOF */}
-      {/* <div className="social-proof" aria-label="Used by engineering teams">
-        <div className="container">
-          <div className="social-proof__inner">
-            <span className="social-proof__label">Trusted by engineering teams at —</span>
-            <div className="social-proof__logos">
-              <span className="social-proof__name">Reelo</span>
-              <span className="social-proof__name">Petpooja</span>
-            </div>
+      <div className="spec" aria-label="Product facts">
+        <div className="container spec__grid">
+          <div className="spec__item">
+            <div className="spec__v">&lt; 2<small>min</small></div>
+            <div className="spec__k">From signup to your first logged request</div>
           </div>
-        </div>
-      </div> */}
-
-      {/* STATS BAR */}
-      <div className="stats-bar text-center" aria-label="Product metrics">
-        <div className="stat">
-          <span className="stat__value">&lt; 90s</span>
-          <span className="stat__label">From signup to a live endpoint</span>
-        </div>
-        <div className="stat">
-          <span className="stat__value">100%</span>
-          <span className="stat__label">Of requests captured before your backend sees them</span>
-        </div>
-        <div className="stat">
-          <span className="stat__value">6</span>
-          <span className="stat__label">
-            <a href={`${DOCS_URL}/guides/async-api`} className="stat__link">Automatic retries per async delivery →</a>
-          </span>
-        </div>
-        <div className="stat">
-          <span className="stat__value">30d</span>
-          <span className="stat__label">
-            <Link href="/pricing" className="stat__link">Log retention on paid plans →</Link>
-          </span>
+          <div className="spec__item">
+            <div className="spec__v">6<small>attempts</small></div>
+            <div className="spec__k"><a href={`${DOCS_URL}/guides/async-api`}>Per async delivery, over about 36 minutes</a></div>
+          </div>
+          <div className="spec__item">
+            <div className="spec__v">4<small>auth types</small></div>
+            <div className="spec__k"><a href={`${DOCS_URL}/guides/authentication`}>Bearer, API key, Basic, HMAC, both directions</a></div>
+          </div>
+          <div className="spec__item">
+            <div className="spec__v">7–30<small>days</small></div>
+            <div className="spec__k"><Link href="/pricing">Searchable log retention, by plan</Link></div>
+          </div>
         </div>
       </div>
 
-      {/* HOW IT WORKS */}
-      <section className="section section--dark" id="how-it-works" aria-labelledby="how-heading">
-        <div className="container">
-          <div className="section__header">
-            <span className="label">// how it works</span>
-            <h2 className="heading-xl" id="how-heading">Three stages. Complete reliability.</h2>
-          </div>
-          <div className="steps">
-            <div className="step">
-              <span className="step__num">01</span>
-              <h3 className="step__title">Relay</h3>
-              <p className="step__desc">Every request passes through getrequest before it reaches your backend. Spikes and bad actors never touch your infrastructure.</p>
-              <div className="dm-frame dm-frame--mini step__mock">
-                <div className="dm-frame__body">
-                  <div className="dm-row-item" style={{ paddingTop: 0, borderBottom: 'none' }}>
-                    <span className="dm-method dm-method--post">POST</span>
-                    <span className="dm-row-item__path">/checkout</span>
-                    <span className="dm-badge dm-badge--ok">relayed</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="step">
-              <span className="step__num">02</span>
-              <h3 className="step__title">Retain</h3>
-              <p className="step__desc">Headers, body, status, latency — captured before your backend ever sees it. Success or failure, both are durably retained.</p>
-              <div className="dm-frame dm-frame--mini step__mock">
-                <div className="dm-frame__body">
-                  <div className="dm-list">
-                    <div className="dm-row-item" style={{ paddingTop: 0 }}>
-                      <span className="dm-method dm-method--post">POST</span>
-                      <span className="dm-row-item__path">Stripe webhook</span>
-                      <span className="dm-badge dm-badge--ok">captured</span>
-                    </div>
-                    <div className="dm-row-item" style={{ borderBottom: 'none' }}>
-                      <span className="dm-method dm-method--put">PUT</span>
-                      <span className="dm-row-item__path">/api/settings</span>
-                      <span className="dm-badge dm-badge--err">captured</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="step">
-              <span className="step__num">03</span>
-              <h3 className="step__title">Recover</h3>
-              <p className="step__desc">Replay any retained request with its exact original payload. One click, no reconstruction.</p>
-              <div className="dm-frame dm-frame--mini step__mock">
-                <div className="dm-frame__body">
-                  <div className="dm-row-item" style={{ paddingTop: 0 }}>
-                    <span className="dm-method dm-method--put">PUT</span>
-                    <span className="dm-row-item__path">/api/settings</span>
-                    <span className="dm-badge dm-badge--err">500</span>
-                  </div>
-                  <div className="dm-btn-row" style={{ margin: '8px 0' }}>
-                    <span className="dm-btn dm-btn--primary" style={{ fontSize: 11, padding: '4px 10px' }}>↺ Replay</span>
-                  </div>
-                  <div className="dm-row-item" style={{ paddingTop: 0, borderBottom: 'none' }}>
-                    <span className="dm-method dm-method--put">PUT</span>
-                    <span className="dm-row-item__path">/api/settings</span>
-                    <span className="dm-badge dm-badge--ok">200 OK</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ReliabilityStory />
+      <ProductTour />
+      <Quickstart />
 
-      {/* FEATURES OVERVIEW */}
-      <section className="section section--dark" aria-labelledby="features-heading">
+      {/* SHIPPING TODAY */}
+      <section className="section section--dark ship" aria-labelledby="ship-heading">
         <div className="container">
-          <div className="section__header">
-            <span className="label">// capabilities</span>
-            <h2 className="heading-xl" id="features-heading">The complete API reliability stack.</h2>
-            <p className="section__sub">Relay traffic safely, retain every request durably, and recover from failures instantly — without managing gateways, queues, or observability pipelines.</p>
+          <div className="sx-head">
+            <span className="eyebrow">Built for how you ship now</span>
+            <h2 className="heading-xl" id="ship-heading">You ship faster with AI tools. Your safety net should keep up.</h2>
+            <p className="sx-head__lede">More of your code is generated, reviewed fast, and deployed the same day. getrequest is a plain HTTP URL, so it works with whatever you or your tools write. No SDK, no framework, no agent integration to set up.</p>
           </div>
-          <div className="feature-grid">
-            <div className="feature-card">
-              <div className="feature-card__icon" aria-hidden="true">⚡</div>
-              <h3 className="feature-card__title">Instant endpoints</h3>
-              <p className="feature-card__desc">Launch a production-ready API endpoint within seconds. Mock a response with Static API, or proxy live with Sync or Async API. No servers, no config files, no ops work.</p>
+          <div className="ship__grid">
+            <div className="ship__item">
+              <span className="ship__k">Static API</span>
+              <h3 className="ship__t">Ship the frontend before the backend.</h3>
+              <p className="ship__d">Your generated UI needs an API today. Return the exact JSON shape it expects, then switch the action to Sync API when the real handler lands. The URL never changes.</p>
             </div>
-            <div className="feature-card">
-              <div className="feature-card__icon" aria-hidden="true">◎</div>
-              <h3 className="feature-card__title">Live inspector</h3>
-              <p className="feature-card__desc">Total visibility into every request the moment it lands. Headers, body, status, latency — your observability layer, included by default.</p>
+            <div className="ship__item">
+              <span className="ship__k">Inspector</span>
+              <h3 className="ship__t">See what the generated client actually sent.</h3>
+              <p className="ship__d">When an assistant writes the integration, the log shows the headers and body that really arrived, not the ones you assumed. Search them to find the malformed field.</p>
             </div>
-            <div className="feature-card">
-              <div className="feature-card__icon" aria-hidden="true">↺</div>
-              <h3 className="feature-card__title">Request replay</h3>
-              <p className="feature-card__desc">Re-fire any captured request with original headers and body intact. Confirm a fix, reproduce a failure, validate a change — with one click.</p>
-              <span className="feature-card__badge">Pro</span>
+            <div className="ship__item">
+              <span className="ship__k">Authentication</span>
+              <h3 className="ship__t">Keep a record of what your agents call.</h3>
+              <p className="ship__d">Put an endpoint in front of the API an agent’s tool calls. Every call is logged with its response. Calls with a missing or wrong credential get a 401 and are logged too.</p>
             </div>
-            <div className="feature-card">
-              <div className="feature-card__icon" aria-hidden="true">⎘</div>
-              <h3 className="feature-card__title">Shareable debug links</h3>
-              <p className="feature-card__desc">Generate a permanent link to any captured request. Paste it in Slack, a Jira ticket, or a PR. Full request and response — no account required to view.</p>
-              <span className="feature-card__badge">Pro</span>
-            </div>
-            <div className="feature-card">
-              <div className="feature-card__icon" aria-hidden="true">→</div>
-              <h3 className="feature-card__title">Smart forwarding</h3>
-              <p className="feature-card__desc">Sync API routes traffic to any upstream transparently, proxying the request body byte-for-byte and logging the full exchange — no rewriting, no reformatting.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-card__icon" aria-hidden="true">▤</div>
-              <h3 className="feature-card__title">Usage metering</h3>
-              <p className="feature-card__desc">Track request volume across projects. Get pre-limit alerts. Build a reliability baseline from real traffic data before incidents happen.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-card__icon" aria-hidden="true">⇢</div>
-              <h3 className="feature-card__title">Async delivery</h3>
-              <p className="feature-card__desc">Async API acknowledges the caller instantly and delivers to your backend in the background — with automatic retries. Built for webhooks and any fire-and-forget traffic.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-card__icon" aria-hidden="true">⚿</div>
-              <h3 className="feature-card__title">Built-in authentication</h3>
-              <p className="feature-card__desc">Require a credential on incoming requests, and attach one to your outbound calls — two independent settings, no code required.</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-card__icon" aria-hidden="true">⇋</div>
-              <h3 className="feature-card__title">Bulk retry</h3>
-              <p className="feature-card__desc">Recover from an outage in one action. Retry a manual selection or an entire filtered set, paced automatically so it never re-overwhelms your backend.</p>
-              <span className="feature-card__badge">Pro</span>
+            <div className="ship__item">
+              <span className="ship__k">Replay</span>
+              <h3 className="ship__t">Deploy fast. Recover what the bad deploy dropped.</h3>
+              <p className="ship__d">When a handler breaks in production, failed requests stay on record. Async deliveries keep retrying while you fix it. Then replay the rest, one at a time or in bulk.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* COMPARISON TABLE */}
-      <section className="section section--light" aria-labelledby="compare-heading">
+      <section className="section section--dark cmp" aria-labelledby="compare-heading">
         <div className="container">
-          <div className="section__header">
-            <span className="label label--light">// vs the alternatives</span>
-            <h2 className="heading-xl" id="compare-heading">Why teams choose getrequest.</h2>
-            <p className="section__sub section__sub--light">Every alternative solves one piece. getrequest is the only layer that handles sync and async request flows end-to-end — with zero downtime and no infra to manage.</p>
+          <div className="sx-head">
+            <span className="eyebrow">Alternatives</span>
+            <h2 className="heading-xl" id="compare-heading">Where getrequest fits.</h2>
+            <p className="sx-head__lede">Each of these tools does part of the job well. getrequest covers sync and async request flows in one place, with nothing to host.</p>
           </div>
-          <div style={{ overflowX: 'auto' }}>
-            <table className="comparison-table">
+          <div className="cmp__wrap" tabIndex={0} role="region" aria-label="Comparison table">
+            <table className="comparison-table cmp__table">
               <thead>
                 <tr>
-                  <th>Capability</th>
-                  <th>Hookdeck</th>
-                  <th>Svix</th>
-                  <th>Ngrok</th>
-                  <th>Build it yourself</th>
-                  <th className="col-featured">getrequest</th>
+                  <th scope="col">Capability</th>
+                  <th scope="col">Hookdeck</th>
+                  <th scope="col">Svix</th>
+                  <th scope="col">Ngrok</th>
+                  <th scope="col">Build it yourself</th>
+                  <th scope="col" className="col-featured">getrequest</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Sync request handling</td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="check">✓</span></td>
-                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(custom)</span></td>
-                  <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(zero-config)</span></td>
-                </tr>
-                <tr>
-                  <td>Async / webhook queuing</td>
-                  <td><span className="check">✓</span></td>
-                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(outbound)</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(weeks to build)</span></td>
-                  <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(built-in)</span></td>
-                </tr>
-                <tr>
-                  <td>Live request inspector</td>
-                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(webhooks only)</span></td>
-                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(sender-side logs)</span></td>
-                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(local tunnel)</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(all traffic)</span></td>
-                </tr>
-                <tr>
-                  <td>Request replay</td>
-                  <td><span className="check">✓</span></td>
-                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(per-message + bulk)</span></td>
-                  <td><span className="check">✓</span></td>
-                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(custom)</span></td>
-                  <td className="col-featured"><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(one click)</span></td>
-                </tr>
-                <tr>
-                  <td>Mock endpoints</td>
-                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(custom response)</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="check">✓</span> <span style={{ fontSize: '12px', color: 'var(--text-light-3)' }}>(custom)</span></td>
-                  <td className="col-featured"><span className="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Production-safe (no tunnel)</td>
-                  <td><span className="check">✓</span></td>
-                  <td><span className="check">✓</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="check">✓</span></td>
-                  <td className="col-featured"><span className="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Zero downtime on changes</td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td className="col-featured"><span className="check">✓</span></td>
-                </tr>
-                <tr>
-                  <td>Shareable debug links</td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td><span className="cross">—</span></td>
-                  <td className="col-featured"><span className="check">✓</span></td>
-                </tr>
+                {COMPARE.map(([cap, ...cells]) => (
+                  <tr key={cap}>
+                    <th scope="row">{cap}</th>
+                    {cells.map((c, i) => (
+                      <td key={i} className={i === cells.length - 1 ? 'col-featured' : undefined}>
+                        {c === null ? <span className="cross" aria-label="No">—</span> : <><span className="check" aria-label="Yes">✓</span>{c && <span className="cmp__q">{c}</span>}</>}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
-          <p style={{ fontSize: '13px', color: 'var(--text-light-3)', marginTop: 'var(--space-4)' }}>Svix specializes in reliable outbound webhook delivery (sending events to your customers), not inbound request capture — several rows reflect that different focus rather than a gap.</p>
+          <p className="cmp__note">Svix focuses on outbound webhook delivery (sending events to your customers), not inbound request capture, so several rows reflect a different focus rather than a gap. Based on public documentation as of October 2026.</p>
         </div>
       </section>
 
-      {/* PRICING TEASER */}
-      <section className="section section--light" aria-labelledby="pricing-heading">
+      {/* PRICING */}
+      <section className="section section--dark px" aria-labelledby="pricing-heading">
         <div className="container">
-          <div className="section__header section__header--center">
-            <span className="label label--light">// pricing</span>
-            <h2 className="heading-xl" id="pricing-heading">Start free. No credit card required.</h2>
+          <div className="px__head">
+            <div className="sx-head" style={{ marginBottom: 0 }}>
+              <span className="eyebrow">Pricing</span>
+              <h2 className="heading-xl" id="pricing-heading">Priced by requests. Every plan logs every one.</h2>
+            </div>
+            <Link href="/pricing" className="btn btn-ghost">Compare all plans →</Link>
           </div>
-          <div className="pricing-grid pricing-grid--4">
-            <div className="pricing-card">
-              <div className="pricing-card__name">free</div>
-              <div className="pricing-card__price">$0<span>/mo</span></div>
-              <p className="pricing-card__desc">For side projects, prototyping, and exploration.</p>
-              <hr className="pricing-card__divider" />
-              <ul className="pricing-card__features">
-                <li className="pricing-card__feature">10,000 requests / month</li>
-                <li className="pricing-card__feature">7-day log retention</li>
-                <li className="pricing-card__feature">Live inspector</li>
-                <li className="pricing-card__feature">Instant endpoints</li>
-                <li className="pricing-card__feature">Smart forwarding</li>
-                <li className="pricing-card__feature">Usage dashboard</li>
-              </ul>
-              <div className="pricing-card__cta">
-                <a href={APP_REGISTER_URL} className="btn btn-ghost-light" style={{ width: '100%', justifyContent: 'center' }}>Get started free</a>
+          <div className="px__grid">
+            {PLANS.map((p) => (
+              <div key={p.name} className={`px__plan${p.featured ? ' px__plan--featured' : ''}`}>
+                <div className="px__top">
+                  <span className="px__name">{p.name}</span>
+                  {p.featured && <span className="px__tag">Replay &amp; bulk retry</span>}
+                </div>
+                <div className="px__price">{p.price}<span>/mo</span></div>
+                <dl className="px__facts">
+                  <div><dt>Requests</dt><dd>{p.quota}</dd></div>
+                  <div><dt>Retention</dt><dd>{p.retention}</dd></div>
+                  <div><dt>Over quota</dt><dd>{p.over}</dd></div>
+                </dl>
+                <p className="px__desc">{p.desc}</p>
+                <a href={APP_REGISTER_URL} className={`btn ${p.featured ? 'btn-primary' : 'btn-ghost'} px__cta`}>{p.cta}</a>
               </div>
-            </div>
-            <div className="pricing-card">
-              <div className="pricing-card__name">dev</div>
-              <div className="pricing-card__price">$29<span>/mo</span></div>
-              <p className="pricing-card__desc">For active projects with real traffic.</p>
-              <hr className="pricing-card__divider" />
-              <ul className="pricing-card__features">
-                <li className="pricing-card__feature">100,000 requests / month</li>
-                <li className="pricing-card__feature">30-day log retention</li>
-                <li className="pricing-card__feature">Everything in free</li>
-              </ul>
-              <p className="pricing-card__overage">+$2.90 / 10,000 over quota</p>
-              <div className="pricing-card__cta">
-                <a href={APP_REGISTER_URL} className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Start Dev plan</a>
-              </div>
-            </div>
-            <div className="pricing-card pricing-card--featured">
-              <div className="pricing-card__name">pro</div>
-              <div className="pricing-card__price">$99<span>/mo</span></div>
-              <p className="pricing-card__desc">For teams that need the full stack.</p>
-              <hr className="pricing-card__divider" />
-              <ul className="pricing-card__features">
-                <li className="pricing-card__feature">1,000,000 requests / month</li>
-                <li className="pricing-card__feature">30-day log retention</li>
-                <li className="pricing-card__feature">Everything in Dev</li>
-                <li className="pricing-card__feature pricing-card__feature--pro">Request replay ✦</li>
-                <li className="pricing-card__feature pricing-card__feature--pro">Shareable debug links ✦</li>
-              </ul>
-              <p className="pricing-card__overage">+$1.90 / 10,000 over quota</p>
-              <div className="pricing-card__cta">
-                <a href={APP_REGISTER_URL} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Start Pro plan</a>
-              </div>
-            </div>
-            <div className="pricing-card">
-              <div className="pricing-card__name">gro</div>
-              <div className="pricing-card__price">$399<span>/mo</span></div>
-              <p className="pricing-card__desc">For high-volume production traffic.</p>
-              <hr className="pricing-card__divider" />
-              <ul className="pricing-card__features">
-                <li className="pricing-card__feature">5,000,000 requests / month</li>
-                <li className="pricing-card__feature">30-day log retention</li>
-                <li className="pricing-card__feature">Everything in Pro</li>
-              </ul>
-              <p className="pricing-card__overage">+$0.90 / 10,000 over quota</p>
-              <div className="pricing-card__cta">
-                <a href={APP_REGISTER_URL} className="btn btn-primary-dark" style={{ width: '100%', justifyContent: 'center' }}>Start Gro plan</a>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="cta-section" aria-labelledby="cta-heading">
-        <div className="container container--narrow">
-          <h2 className="heading-xl cta-section__title" id="cta-heading">Relay. Retain. Recover. From day one.</h2>
-          <p className="cta-section__sub">The API Reliability Layer that ensures no incoming request is ever lost — even when your backend isn&apos;t ready to receive it.</p>
-          <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
-          <p className="cta-section__note">No credit card required · Free plan available · Cancel anytime</p>
+      <section className="fx" aria-labelledby="cta-heading">
+        <div className="container fx__inner">
+          <p className="fx__log" aria-hidden="true">
+            <span className="fx__m">POST</span> e.getrequest.io/aB3dEf7gH9jK2mN4 <span className="fx__err">502</span> <span className="fx__arrow">→ kept</span> <span className="fx__arrow">→ replayed</span> <span className="fx__ok">201</span>
+          </p>
+          <h2 className="fx__title" id="cta-heading">The next outage is already on someone’s calendar.<br /><span>Have the requests on record when it happens.</span></h2>
+          <div className="hx__ctas fx__ctas">
+            <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
+            <a href={DOCS_URL} className="btn btn-ghost btn-lg">Documentation</a>
+          </div>
+          <p className="hx__note">Free plan · 10,000 requests/month · no card</p>
         </div>
       </section>
     </main>

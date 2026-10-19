@@ -13,7 +13,7 @@ export default function NotFound() {
       <section className="hero" aria-labelledby="not-found-heading">
         <div className="container">
           <div className="hero__inner">
-            <span className="hero__label">// 404</span>
+            <span className="hero__label eyebrow">404</span>
             <h1 className="heading-hero hero__title" id="not-found-heading">This endpoint<br />doesn&apos;t exist.</h1>
             <p className="hero__detail">The page you&apos;re looking for was moved, renamed, or never existed. Check the URL, or head back to a page that does.</p>
             <div className="hero__ctas">

@@ -33,7 +33,6 @@ export function Footer() {
           <div>
             <h4 className="footer__col-title">Company</h4>
             <ul className="footer__links">
-              <li><a href="#" className="footer__link">About</a></li>
               <li><Link href="/blog" className="footer__link">Blog</Link></li>
               <li><Link href="/privacy-policy" className="footer__link">Privacy Policy</Link></li>
               <li><Link href="/terms-of-use" className="footer__link">Terms of Use</Link></li>
@@ -42,7 +41,7 @@ export function Footer() {
           </div>
         </div>
         <div className="footer__bottom">
-          <span className="footer__copy">© 2026 Get Request, Inc.</span>
+          <span className="footer__copy">© 2026 Get Request Tech, LLC.</span>
           <div className="footer__social">
             <a
               href="https://www.linkedin.com/company/getrequesthq"

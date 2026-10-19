@@ -15,6 +15,9 @@ const SCROLL_ANIMATE_SELECTORS = [
   '.faq-item',
   '.cta-section .container',
   '.comparison-table',
+  '.sx-head',
+  '.ship__item',
+  '.px__plan',
 ].join(', ')
 
 export function ScrollAnimations() {

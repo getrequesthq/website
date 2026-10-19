@@ -24,9 +24,9 @@ export default function FeaturesPage() {
       <section className="hero" aria-labelledby="hero-heading">
         <div className="container">
           <div className="hero__inner">
-            <span className="hero__label">// api reliability layer</span>
+            <span className="hero__label eyebrow">API reliability layer</span>
             <h1 className="heading-hero hero__title" id="hero-heading">Relay. Retain. Recover.</h1>
-            <p className="hero__sub">A protective reliability layer that sits in front of your backend — relaying traffic safely, retaining every request before it reaches your infrastructure, and recovering from failures on demand.</p>
+            <p className="hero__sub">A protective reliability layer that sits in front of your backend — relaying every request to your API, recording the full exchange, and recovering what failed on demand.</p>
             <div className="hero__ctas">
               <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
               <Link href="/pricing" className="btn btn-ghost btn-lg">See pricing</Link>
@@ -117,7 +117,7 @@ export default function FeaturesPage() {
               <p className="feature-section__body">Total observability into every request — headers, body, status code, latency — the moment it lands. No log aggregation pipeline. No custom instrumentation. No Datadog bill. Observability is built into the infrastructure layer.</p>
               <p className="feature-section__secondary">Whether you&apos;re validating a webhook, auditing third-party traffic, or monitoring a live integration, you have a complete picture without writing a single line of logging code.</p>
               <ul className="feature-section__list">
-                <li className="feature-section__list-item">100% request capture, nothing dropped</li>
+                <li className="feature-section__list-item">Every request logged, including 401s and 429s</li>
                 <li className="feature-section__list-item">Full headers, body, and response</li>
                 <li className="feature-section__list-item">Real-time stream, no refresh</li>
                 <li className="feature-section__list-item">Searchable log history up to 30 days</li>
@@ -226,10 +226,10 @@ export default function FeaturesPage() {
               <span className="feature-section__label">Recover — 02</span>
               <span className="feature-section__badge">Pro</span>
               <h2 className="heading-lg feature-section__title" id="f04-heading">Shareable debug links.</h2>
-              <p className="feature-section__body">Turn any captured request into a permanent, shareable URL. Paste it in a Slack message, a Jira ticket, or a PR comment. Anyone with the link sees the full request and response — no account required. Cross-team incident response, without the overhead.</p>
+              <p className="feature-section__body">Turn any captured request into a shareable URL that expires after 30 days. Paste it in a Slack message, a Jira ticket, or a PR comment. Anyone with the link sees the full request and response — no account required. Cross-team incident response, without the overhead.</p>
               <p className="feature-section__secondary">Incident resolution slows down when context lives in one engineer&apos;s terminal. Shareable links make every failure a shared artifact — visible, referenceable, and linkable across your entire org.</p>
               <ul className="feature-section__list">
-                <li className="feature-section__list-item">Permanent link to exact request snapshot</li>
+                <li className="feature-section__list-item">Exact request snapshot, revocable anytime</li>
                 <li className="feature-section__list-item">Full headers, body, and response visible</li>
                 <li className="feature-section__list-item">No account required to view</li>
                 <li className="feature-section__list-item">Works across environments and teams</li>

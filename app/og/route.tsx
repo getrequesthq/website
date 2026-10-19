@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
             marginBottom: '20px',
           }}
         >
-          // api reliability layer
+          {'// api reliability layer'}
         </div>
         {/* Title */}
         <div

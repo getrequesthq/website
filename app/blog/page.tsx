@@ -1,4 +1,4 @@
-import { getAllPosts, getAllTags } from '@/lib/blog'
+import { getAllPosts } from '@/lib/blog'
 import { formatPostDate } from '@/lib/format'
 import { buildMetadata } from '@/lib/metadata'
 import { JsonLd } from '@/components/seo/JsonLd'
@@ -13,7 +13,6 @@ export const metadata = buildMetadata({
 
 export default function BlogPage() {
   const posts = getAllPosts()
-  const tags = getAllTags()
 
   return (
     <main id="main">
@@ -25,7 +24,7 @@ export default function BlogPage() {
       <section className="hero" aria-labelledby="blog-heading">
         <div className="container">
           <div className="hero__inner">
-            <span className="hero__label">// blog</span>
+            <span className="hero__label eyebrow">Blog</span>
             <h1 className="heading-hero hero__title" id="blog-heading">API reliability,<br />in depth.</h1>
             <p className="hero__sub">Technical writing on API infrastructure, developer tooling, and building reliable systems.</p>
           </div>
