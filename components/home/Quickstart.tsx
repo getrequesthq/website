@@ -16,7 +16,7 @@ const CURL = `curl -X POST ${URL} \\
 const MODES = {
   sync: {
     label: 'Sync API',
-    blurb: 'Forwards to your destination and returns its exact response. 3 second timeout, no automatic retries.',
+    blurb: 'Forwards to your destination and returns its exact response. No automatic retries.',
     status: 'HTTP/2 200',
     tone: 'ok',
     body: `{
@@ -32,7 +32,7 @@ const MODES = {
   },
   async: {
     label: 'Async API',
-    blurb: 'Answers 202 right away and delivers in the background: up to 6 attempts over about 36 minutes.',
+    blurb: 'Responds 202 right away and delivers in the background: up to 6 attempts over 36 minutes.',
     status: 'HTTP/2 202',
     tone: 'ack',
     body: `{ "status": "Success", "request_id": "3f9c1e2a-…" }`,
@@ -41,7 +41,7 @@ const MODES = {
   },
   static: {
     label: 'Static API',
-    blurb: 'Returns a JSON body you define. No destination, so it works before your backend exists.',
+    blurb: 'Returns a mock JSON body you define.',
     status: 'HTTP/2 200',
     tone: 'ok',
     body: `{

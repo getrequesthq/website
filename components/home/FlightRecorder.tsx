@@ -32,15 +32,16 @@ const SOURCES: Record<Src, {
   ua: string
   body: (n: number) => string
 }> = {
+  // High-volume stream: every agent run emits a token-usage event for billing and analytics.
   app: {
-    label: 'Checkout app',
-    sub: 'POST · Sync API',
-    endpoint: 'Order checkout',
+    label: 'Event stream',
+    sub: 'POST · Async API',
+    endpoint: 'Usage events',
     endpointId: 'aB3dEf7gH9jK2mN4',
-    action: 'sync',
-    okStatus: 201,
-    ua: 'checkout-web/3.2',
-    body: (n) => `{ "order_id": "ord_${8800 + n}", "total": 59.98 }`,
+    action: 'async',
+    okStatus: 202,
+    ua: 'agent-runtime/2.4',
+    body: (n) => `{ "event": "llm.call", "run_id": "run_${8800 + n}", "tokens": ${1800 + ((n * 137) % 900)} }`,
   },
   agent: {
     label: 'Support agent',
@@ -54,7 +55,7 @@ const SOURCES: Record<Src, {
   },
   stripe: {
     label: 'Stripe',
-    sub: 'webhook · Async API',
+    sub: 'POST · Async API',
     endpoint: 'Stripe webhook',
     endpointId: 'Hn7Cv3Ks9Df2Tg5B',
     action: 'async',
@@ -70,10 +71,10 @@ const RETRY_DELAYS = ['15s', '60s', '5m', '15m', '15m']
 const RETRY_SPACING_MS = [2600, 3400, 4600, 5600, 5600]
 
 const SEED: Row[] = ([
-  { id: 'req_7f3a21', src: 'app', t: -9.4, done: true, status: 201, ms: 84, orderRef: 1 },
+  { id: 'req_7f3a21', src: 'app', t: -9.4, done: true, status: 202, ms: 18, delivery: 'delivered', attempts: 1, orderRef: 1 },
   { id: 'req_2c91e8', src: 'stripe', t: -7.1, done: true, status: 202, ms: 21, delivery: 'delivered', attempts: 1, orderRef: 2 },
   { id: 'req_b40d17', src: 'agent', t: -5.6, done: true, status: 200, ms: 112, orderRef: 3 },
-  { id: 'req_e8a3f0', src: 'app', t: -3.2, done: true, status: 201, ms: 77, orderRef: 4 },
+  { id: 'req_e8a3f0', src: 'app', t: -3.2, done: true, status: 202, ms: 16, delivery: 'delivered', attempts: 1, orderRef: 4 },
   { id: 'req_51fd9c', src: 'stripe', t: -1.4, done: true, status: 202, ms: 19, delivery: 'delivered', attempts: 1, orderRef: 5 },
 ] as Row[]).reverse()
 
@@ -253,7 +254,7 @@ export function FlightRecorder() {
     const loop = () => {
       if (visible.current && !document.hidden) {
         const r = Math.random()
-        runRequest(r < 0.4 ? 'app' : r < 0.68 ? 'agent' : 'stripe')
+        runRequest(r < 0.45 ? 'app' : r < 0.75 ? 'agent' : 'stripe')
       }
       timer = setTimeout(loop, reduced.current ? 2600 : rand(1000, 1500))
     }
@@ -339,7 +340,7 @@ export function FlightRecorder() {
 
       <div className="fr__body">
         <div className="fr__diagram">
-          <svg viewBox="0 0 560 320" className="fr-svg" role="img" aria-label="Requests from a checkout app, a support agent, and Stripe pass through getrequest, which logs each one and forwards it to your API.">
+          <svg viewBox="0 0 560 320" className="fr-svg" role="img" aria-label="An event stream, a support agent, and Stripe webhooks pass through getrequest, which logs each one and forwards it to your API.">
             <defs>
               <pattern id="fr-grid" width="20" height="20" patternUnits="userSpaceOnUse">
                 <path d="M20 0H0V20" fill="none" stroke="rgba(255,255,255,0.035)" strokeWidth="1" />
@@ -461,7 +462,7 @@ function Detail({ row }: { row: Row }) {
     body = `{ "error": "${row.error}" }`
   } else {
     outcome = `${row.status} ${row.status === 201 ? 'Created' : 'OK'}`
-    body = row.src === 'app' ?'{ "id": "ord_…", "status": "confirmed" }' : '{ "ticket": "T-4821", "state": "open" }'
+    body = '{ "ticket": "T-4821", "state": "open" }'
   }
 
   const origTone = !row.done ? 'pending' : row.status === 202 ? 'ok' : row.error ? 'err' : 'ok'
