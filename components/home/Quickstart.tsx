@@ -102,7 +102,7 @@ export function Quickstart() {
             </ol>
             <div className="hx__ctas">
               <a href={APP_REGISTER_URL} className="btn btn-primary">Create an endpoint →</a>
-              <a href={`${DOCS_URL}${m.doc}`} className="btn btn-ghost">Read the {m.label} guide</a>
+              <a href={`${DOCS_URL}${m.doc}`} className="btn btn-ghost">Read {m.label} guide</a>
             </div>
           </div>
 

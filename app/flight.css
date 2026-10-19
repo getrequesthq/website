@@ -742,7 +742,8 @@ p { text-wrap: pretty; }
 /* ---------- product tour: pinned, scroll-driven tabs ---------- */
 .pt { --pt-pin-h: 600px; }
 .pt__track { position: relative; }
-.pt__pin { position: sticky; top: calc(var(--nav-height) + 32px); }
+/* pinned in the vertical centre of the space below the nav (never tucked under it on short screens) */
+.pt__pin { position: sticky; top: max(calc(var(--nav-height) + 24px), calc(var(--nav-height) + (100vh - var(--nav-height) - var(--pt-frame-h)) / 2)); }
 .pt__tabs { position: relative; }
 .pt__progress { position: absolute; left: -1px; top: 0; bottom: 0; width: 1px; pointer-events: none; }
 .pt__progress i { position: absolute; inset: 0; background: var(--accent-line); transform-origin: top; transition: transform 400ms var(--ease-out); }
