@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'getrequest',
     short_name: 'getrequest',
-    description: 'API reliability layer for modern teams.',
+    description: 'Scalability as a Service. Setup in minutes. Scale to millions.',
     start_url: '/',
     display: 'browser',
     background_color: '#06080f',

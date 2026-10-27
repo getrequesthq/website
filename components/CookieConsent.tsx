@@ -84,7 +84,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div className="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie notice">
           <div className="cookie-banner__inner">
             <p className="cookie-banner__text">
-              We use cookies to run and improve this site and to understand where visitors come from. See our{' '}
+              We use cookies to run and improve this site. See our{' '}
               <Link href="/privacy-policy" className="cookie-banner__link">Privacy Policy</Link> for details.
             </p>
             <div className="cookie-banner__actions">

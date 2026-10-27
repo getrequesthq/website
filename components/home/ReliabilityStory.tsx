@@ -25,7 +25,7 @@ const CHAPTERS = [
     name: 'Recover',
     title: 'Fix the deploy. Replay what it missed.',
     body: 'Replay re-sends the exact original request to the endpoint’s destination. The result is stored next to the original, which stays untouched. After a wide outage, bulk retry takes a hand-picked selection of up to 100, or sweeps a whole filtered set at a steady 10 requests per second.',
-    facts: ['Original payload, original headers', 'Original record preserved', 'Bulk retry on Pro and Gro'],
+    facts: ['Original payload, original headers', 'Original record preserved', 'Replay and bulk retry on Pro and Gro'],
   },
 ]
 
@@ -129,8 +129,8 @@ export function ReliabilityStory() {
       <div className="container">
         <div className="sx-head">
           <span className="eyebrow">How it works</span>
-          <h2 className="heading-xl" id="story-heading">Follow one request through a bad deploy.</h2>
-          <p className="sx-head__lede">Relay, Retain, Recover is what happens to every request that reaches a getrequest endpoint. Here is a single checkout call living through all three.</p>
+          <h2 className="heading-xl" id="story-heading">Handle every request. Replay every failure.</h2>
+          <p className="sx-head__lede">Relay, Retain, Recover is what happens to every request that reaches a getrequest endpoint. Here is a single checkout call living through a bad deploy.</p>
         </div>
 
         <div className="story__grid">

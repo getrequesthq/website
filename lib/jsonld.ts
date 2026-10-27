@@ -18,7 +18,7 @@ export function softwareSchema() {
     name: 'getrequest',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Web',
-    description: 'API reliability layer for modern teams. Launch endpoints, observe every request, replay failures.',
+    description: 'Scalability as a Service. Put getrequest in front of your API and skip building the infrastructure: queuing, automatic retries, and a full request log, ready for millions of requests.',
     url: BASE_URL,
     offers: [
       { '@type': 'Offer', name: 'Free', price: '0', priceCurrency: 'USD' },

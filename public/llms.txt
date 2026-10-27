@@ -1,56 +1,65 @@
 # getrequest
 
-getrequest is the API Reliability Layer for modern engineering teams.
+getrequest is Scalability as a Service for your API. Setup in minutes.
+Scale to millions.
 
-It sits in front of your backend as a protective layer — relaying every
-incoming request safely, retaining every payload before it reaches your
-infrastructure, and allowing recovery from failures with exact-payload
-replay. No code changes required.
+Put getrequest in front of your API and skip building the infrastructure:
+queuing, automatic retries, and a full request log, ready for millions of
+requests. Callers change one base URL; there is nothing to host and no code
+to add to your backend.
 
 ## Product
 
 - Category: API infrastructure, developer tools
-- Positioning: The API Reliability Layer for modern teams
-- Tagline: Relay safely. Retain durably. Recover instantly.
+- Positioning: Scalability as a Service
+- Tagline: Setup in minutes. Scale to millions.
+- Promise: Handle every request. Replay every failure.
 
-## Three stages of API reliability
+## How it works: Relay, Retain, Recover
 
-- Relay — every request passes through a controlled layer before hitting
-  your backend; protects against traffic spikes and cascading failures
-- Retain — every request captured in full before reaching your
-  infrastructure; zero request loss during downtime or deployment failures
-- Recover — replay any retained request with exact original headers, body,
-  and method; confirm fixes before shipping (Pro plan)
+- Relay — each endpoint gets one URL (https://e.getrequest.io/{id}) and
+  answers in one of three ways:
+  - Sync API: forwards to your destination and returns its exact status,
+    headers, and body. If your backend is down, the caller gets a real 502
+    or 504.
+  - Async API: answers 202 immediately, then delivers to your destination
+    in the background with automatic retries (6 attempts over about 36
+    minutes: 15s, 60s, 5m, 15m, 15m).
+  - Static API: returns a JSON body you define (mock endpoints).
+- Retain — every request is logged with headers, body, response, status, and
+  timing, searchable for 7 to 30 days depending on plan.
+- Recover — replay any logged request with its original headers and body,
+  or bulk retry a selected or filtered set (Pro and Gro).
 
 ## Key capabilities
 
-- Instant endpoints: Launch a production-ready API endpoint in under 60
-  seconds (mock JSON or proxy to any upstream)
-- Live inspector: Every request captured — headers, body, status, latency —
-  searchable up to 30 days
-- Request replay: Re-fire any captured request with original payload intact
-  (Pro)
-- Shareable debug links: Permanent URL to any captured request, viewable
-  without an account (Pro)
-- Smart forwarding: Transparent proxy to any upstream API, full exchange
-  logged, zero code changes
-- Usage metering: Request volume tracking, pre-limit alerts, audit trail
+- Endpoints live in under 2 minutes from signup
+- Live request inspector with search and filters
+- Request replay and bulk retry (Pro, Gro)
+- Shareable debug links, valid for 30 days, viewable without an account (Pro,
+  Gro)
+- Built-in authentication: Bearer, API key, Basic, HMAC, on both the
+  endpoint and the destination
+- Usage metering with pre-limit alerts
 
 ## Pricing
 
-- Free: $0/mo — 10,000 requests/month, 7-day log retention, Relay + Retain
-- Dev: $9/mo — 100,000 requests/month, 30-day log retention, Relay + Retain
-- Pro: $99/mo — 1,000,000 requests/month, 30-day retention, full Relay +
-  Retain + Recover (request replay, shareable debug links)
+- Free: $0/mo — 10,000 requests/month, 7-day log retention
+- Dev: $29/mo — 100,000 requests/month, 30-day log retention
+- Pro: $99/mo — 1,000,000 requests/month, 30-day retention, replay, bulk
+  retry, share links
+- Gro: $399/mo — 5,000,000 requests/month, 30-day retention, everything in
+  Pro at high volume
 
 ## Pages
 
 - / — Homepage and product overview
-- /features — Full feature documentation (Relay / Retain / Recover stages)
+- /features — Full feature documentation
 - /pricing — Pricing plans and comparison
 - /use-cases — Use case scenarios for different team types
 - /blog — Technical articles on API reliability, infrastructure, and
   developer tooling
+- Docs: https://docs.getrequest.io
 
 ## Contact
 

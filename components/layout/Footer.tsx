@@ -19,7 +19,7 @@ export function Footer() {
             <Link href="/" className="footer__logo" aria-label="getrequest home">
               <FooterLogoSVG />
             </Link>
-            <p className="footer__brand-desc">The API Reliability Layer for modern teams.</p>
+            <p className="footer__brand-desc">Scalability as a Service. Setup in minutes. Scale to millions.</p>
           </div>
           <div>
             <h4 className="footer__col-title">Product</h4>

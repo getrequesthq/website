@@ -23,10 +23,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.getrequest.io'),
   title: {
-    default: 'getrequest — API Reliability Layer · Relay · Retain · Recover',
+    default: 'getrequest — Scalability as a Service · Setup in minutes. Scale to millions.',
     template: '%s — getrequest',
   },
-  description: 'getrequest sits between your callers and your API. It relays every request, records the full exchange, retries async deliveries automatically, and lets you replay what failed.',
+  description: 'Put getrequest in front of your API and skip building the infrastructure: queuing, automatic retries, and a full request log, ready for millions of requests.',
   openGraph: {
     siteName: 'getrequest',
     type: 'website',

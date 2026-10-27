@@ -28,8 +28,9 @@ const PLANS = [
 ]
 
 export const metadata: Metadata = buildMetadata({
-  title: 'The API Reliability Layer for Modern Teams',
-  description: 'getrequest sits between your callers and your API. It relays every request, records the full exchange, retries async deliveries automatically, and lets you replay what failed.',
+  title: 'Scalability as a Service for Your API',
+  ogTitle: 'Setup in minutes. Scale to millions.',
+  description: 'Put getrequest in front of your API and skip building the infrastructure: queuing, automatic retries, and a full request log, ready for millions of requests.',
   path: '/',
 })
 
@@ -44,10 +45,10 @@ export default function HomePage() {
       <section className="hx" aria-labelledby="hero-heading">
         <div className="container">
           <div className="hx__head">
-            <span className="eyebrow">API Reliability Layer</span>
-            <h1 className="hx__title" id="hero-heading">Your backend can fail.<br /><span>Not your business integrations.</span></h1>
+            <span className="eyebrow">Scalability as a Service</span>
+            <h1 className="hx__title" id="hero-heading">Setup in minutes.<br /><span>Scale to millions.</span></h1>
             <div className="hx__aside">
-              <p className="hx__sub">getrequest sits in front of your backend as a reliability layer — so traffic spikes, downtime, or failed deployments never result in lost requests.</p>
+              <p className="hx__sub">Put getrequest in front of your API and skip building the infrastructure: queuing, automatic retries, and a full request log, ready for millions of requests.</p>
               <div>
                 <div className="hx__ctas">
                   <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>

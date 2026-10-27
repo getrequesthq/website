@@ -7,8 +7,9 @@ import { breadcrumbSchema } from '@/lib/jsonld'
 import { GRMark, Crumbs } from '@/components/dashboard-mockup'
 
 export const metadata: Metadata = buildMetadata({
-  title: 'Features',
-  description: 'Relay every API request safely. Retain every payload before it reaches your backend. Recover from failures with one-click replay. The API Reliability Layer — no code changes required.',
+  title: 'Features: Queuing, Retries, Request Logs & Replay',
+  ogTitle: 'getrequest features: the infrastructure you don\'t have to build',
+  description: 'Everything getrequest runs in front of your API: Sync, Async and Static endpoints, automatic retries, a searchable request log, replay, bulk retry, and built-in auth. Nothing to build or host.',
   path: '/features',
 })
 
@@ -24,9 +25,9 @@ export default function FeaturesPage() {
       <section className="hero" aria-labelledby="hero-heading">
         <div className="container">
           <div className="hero__inner">
-            <span className="hero__label eyebrow">API reliability layer</span>
-            <h1 className="heading-hero hero__title" id="hero-heading">Relay. Retain. Recover.</h1>
-            <p className="hero__sub">A protective reliability layer that sits in front of your backend — relaying every request to your API, recording the full exchange, and recovering what failed on demand.</p>
+            <span className="hero__label eyebrow">Scalability as a Service</span>
+            <h1 className="heading-hero hero__title" id="hero-heading">The infrastructure you&apos;d otherwise build.</h1>
+            <p className="hero__sub">getrequest sits in front of your API and handles every request: it relays it, retains the full exchange, and lets you recover what failed. Here&apos;s everything that does it.</p>
             <div className="hero__ctas">
               <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
               <Link href="/pricing" className="btn btn-ghost btn-lg">See pricing</Link>
@@ -42,12 +43,12 @@ export default function FeaturesPage() {
             <div>
               <span className="feature-section__label">Relay — 01</span>
               <h2 className="heading-lg feature-section__title" id="f01-heading">Instant endpoints.</h2>
-              <p className="feature-section__body">Launch a production-ready API endpoint in under 60 seconds. No gateway config, no server to provision, no deployment pipeline. Define your method and action — getrequest generates a unique URL and handles the rest.</p>
+              <p className="feature-section__body">Launch a production-ready API endpoint in under 2 minutes. No server to provision, no deployment pipeline, nothing to host. Define your method and action — getrequest generates a unique URL and handles the rest.</p>
               <p className="feature-section__secondary">Every endpoint picks one of three actions: <strong>Static API</strong> for a mock JSON response, <strong>Sync API</strong> to forward and wait for the real reply, or <strong>Async API</strong> to acknowledge instantly and deliver in the background. Switch between them without downtime. The infrastructure layer ships with your first request.</p>
               <ul className="feature-section__list">
-                <li className="feature-section__list-item">Live in under 60 seconds, zero config</li>
+                <li className="feature-section__list-item">Live in under 2 minutes, zero config</li>
                 <li className="feature-section__list-item">Static, Sync, or Async — pick per endpoint</li>
-                <li className="feature-section__list-item">No servers, no gateways, no ops overhead</li>
+                <li className="feature-section__list-item">No servers to host, no ops overhead</li>
                 <li className="feature-section__list-item">Edit or delete endpoints at any time</li>
               </ul>
             </div>
@@ -114,7 +115,7 @@ export default function FeaturesPage() {
             <div>
               <span className="feature-section__label">Retain — 01</span>
               <h2 className="heading-lg feature-section__title" id="f02-heading">Live request inspector.</h2>
-              <p className="feature-section__body">Total observability into every request — headers, body, status code, latency — the moment it lands. No log aggregation pipeline. No custom instrumentation. No Datadog bill. Observability is built into the infrastructure layer.</p>
+              <p className="feature-section__body">Every request&apos;s headers, body, status code, and latency, the moment it lands. No log pipeline to build and no instrumentation to add: logging is built into the layer your traffic already passes through.</p>
               <p className="feature-section__secondary">Whether you&apos;re validating a webhook, auditing third-party traffic, or monitoring a live integration, you have a complete picture without writing a single line of logging code.</p>
               <ul className="feature-section__list">
                 <li className="feature-section__list-item">Every request logged, including 401s and 429s</li>
@@ -405,7 +406,7 @@ export default function FeaturesPage() {
               <span className="feature-section__label">Relay — 03</span>
               <h2 className="heading-lg feature-section__title" id="f07-heading">Async delivery.</h2>
               <p className="feature-section__body">Acknowledge the caller instantly, deliver to your backend in the background. Built for webhooks and any traffic where the caller shouldn&apos;t wait on — or be blocked by — your response.</p>
-              <p className="feature-section__secondary">A failed delivery isn&apos;t a lost one. getrequest retries automatically on a backoff schedule, re-reading your destination and auth config on every attempt, so a fix or a rotated credential takes effect on the very next try.</p>
+              <p className="feature-section__secondary">When a delivery fails, getrequest keeps trying. It retries automatically on a backoff schedule, re-reading your destination and auth config on every attempt, so a fix or a rotated credential takes effect on the very next try.</p>
               <ul className="feature-section__list">
                 <li className="feature-section__list-item">Caller gets a 202 immediately, every time</li>
                 <li className="feature-section__list-item">Up to 6 automatic retry attempts, ~36 minutes</li>
@@ -580,8 +581,8 @@ export default function FeaturesPage() {
       {/* CTA */}
       <section className="cta-section" aria-labelledby="cta-heading">
         <div className="container container--narrow">
-          <h2 className="heading-xl cta-section__title" id="cta-heading">Relay. Retain. Recover. From day one.</h2>
-          <p className="cta-section__sub">No gateway to configure. No code to add. Point one URL and the reliability layer is live.</p>
+          <h2 className="heading-xl cta-section__title" id="cta-heading">Handle every request. Replay every failure.</h2>
+          <p className="cta-section__sub">Nothing to host, no code to add. Point your traffic at one URL and you&apos;re live in minutes.</p>
           <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
         </div>
       </section>

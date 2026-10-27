@@ -6,7 +6,8 @@ import { breadcrumbSchema } from '@/lib/jsonld'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Use Cases',
-  description: 'Relay every request safely. Retain every payload before it reaches your backend. Recover from failures without losing a single request. See how getrequest fits your team.',
+  ogTitle: 'How teams use getrequest in front of their APIs',
+  description: 'How startup teams use getrequest in front of their APIs: capture and inspect webhooks, absorb traffic bursts, deliver asynchronously with retries, mock APIs before the backend exists, and replay what failed.',
   path: '/use-cases',
 })
 
@@ -22,9 +23,9 @@ export default function UseCasesPage() {
       <section className="hero" aria-labelledby="hero-heading">
         <div className="container">
           <div className="hero__inner">
-            <span className="hero__label eyebrow">API reliability layer</span>
-            <h1 className="heading-hero hero__title" id="hero-heading">One reliability layer.<br />Dozens of use cases.</h1>
-            <p className="hero__sub">Relay every request safely. Retain every payload before it reaches your backend. Recover from failures without losing a single request — without managing the underlying stack.</p>
+            <span className="hero__label eyebrow">Use cases</span>
+            <h1 className="heading-hero hero__title" id="hero-heading">One URL.<br />Every scenario your API will face.</h1>
+            <p className="hero__sub">From mocking an API before the backend exists to replaying what a bad deploy dropped, here&apos;s how teams use getrequest instead of building the infrastructure themselves.</p>
           </div>
         </div>
       </section>
@@ -94,7 +95,7 @@ export default function UseCasesPage() {
             </div>
             <div className="use-case-card">
               <span className="use-case-card__plan">Pro</span>
-              <h3 className="use-case-card__title">Recover lost requests after downtime</h3>
+              <h3 className="use-case-card__title">Replay what your backend missed during downtime</h3>
               <p className="use-case-card__desc">Your backend went down and requests kept arriving. Sync callers got a 502 or 504, and each request was logged with its full payload. Async deliveries kept retrying for about 36 minutes. When your systems recover, replay whatever still failed with the exact original payloads.</p>
               <code className="use-case-card__code">↺ replay retained queue</code>
             </div>
@@ -120,12 +121,12 @@ export default function UseCasesPage() {
             <div className="persona-card">
               <div className="persona-card__icon" aria-hidden="true">⌨</div>
               <h3 className="persona-card__title">Backend &amp; API engineers</h3>
-              <p className="persona-card__desc">Relay traffic through a controlled layer, retain every request before it hits your backend, and recover from failures with one-click replay. The reliability layer you&apos;d otherwise have to build yourself.</p>
+              <p className="persona-card__desc">Relay traffic through a controlled layer, retain every request before it hits your backend, and recover from failures with one-click replay. The infrastructure you&apos;d otherwise have to build yourself.</p>
             </div>
             <div className="persona-card">
               <div className="persona-card__icon" aria-hidden="true">⚙</div>
               <h3 className="persona-card__title">Platform &amp; DevOps teams</h3>
-              <p className="persona-card__desc">Replace piecemeal gateway configs, log pipelines, and retry infrastructure with one layer. getrequest Relays, Retains, and Recovers — without a dedicated engineer maintaining three separate tools.</p>
+              <p className="persona-card__desc">Replace a home-grown queue, retry workers, and log pipeline with one URL, without a dedicated engineer maintaining three separate tools.</p>
             </div>
             <div className="persona-card">
               <div className="persona-card__icon" aria-hidden="true">✓</div>
@@ -139,8 +140,8 @@ export default function UseCasesPage() {
       {/* CTA */}
       <section className="cta-section" aria-labelledby="cta-heading">
         <div className="container container--narrow">
-          <h2 className="heading-xl cta-section__title" id="cta-heading">Relay. Retain. Recover. From day one.</h2>
-          <p className="cta-section__sub">The API Reliability Layer your team can activate today — no gateway config, no code changes, no ops overhead.</p>
+          <h2 className="heading-xl cta-section__title" id="cta-heading">Handle every request. Replay every failure.</h2>
+          <p className="cta-section__sub">Setup in minutes. No code changes, nothing to host, no ops overhead.</p>
           <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Start for free →</a>
         </div>
       </section>

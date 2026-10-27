@@ -6,7 +6,8 @@ import { breadcrumbSchema, faqSchema } from '@/lib/jsonld'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Pricing',
-  description: 'API Reliability Layer pricing. No seat fees, no gateway costs, no observability bills on top.',
+  ogTitle: 'getrequest pricing: pay for requests, not infrastructure',
+  description: 'Start free with 10,000 requests a month. getrequest is priced by requests, with no seat fees and no infrastructure to run. Every plan logs every request.',
   path: '/pricing',
 })
 
@@ -59,7 +60,7 @@ export default function PricingPage() {
         <div className="container">
           <div className="hero__inner">
             <span className="hero__label eyebrow">Pricing</span>
-            <h1 className="heading-hero hero__title" id="hero-heading">Reliable pricing. No surprises.</h1>
+            <h1 className="heading-hero hero__title" id="hero-heading">Pay for requests, not infrastructure.</h1>
             <p className="hero__sub">Start free, scale as your traffic grows. Every paid plan includes transparent, pay-as-you-go overage.</p>
           </div>
         </div>
@@ -77,7 +78,7 @@ export default function PricingPage() {
             <div className="pricing-card">
               <div className="pricing-card__name">free</div>
               <div className="pricing-card__price">$0<span>/mo</span></div>
-              <p className="pricing-card__desc">Relay + Retain at zero cost. Full traffic visibility for side projects, early integrations, and prototypes.</p>
+              <p className="pricing-card__desc">Every request logged, at zero cost. For side projects, early integrations, and prototypes.</p>
               <hr className="pricing-card__divider" />
               <ul className="pricing-card__features">
                 <li className="pricing-card__feature">10,000 requests / month</li>
@@ -98,14 +99,13 @@ export default function PricingPage() {
             <div className="pricing-card">
               <div className="pricing-card__name">dev</div>
               <div className="pricing-card__price">$29<span>/mo</span></div>
-              <p className="pricing-card__desc">Extended Retain for real workloads — 30-day log retention and 10× the request volume of free.</p>
+              <p className="pricing-card__desc">For real workloads: 30-day log retention and 10× the request volume of Free.</p>
               <hr className="pricing-card__divider" />
               <ul className="pricing-card__features">
                 <li className="pricing-card__feature">100,000 requests / month</li>
                 <li className="pricing-card__feature">30-day log retention</li>
                 <li className="pricing-card__feature">Everything in free</li>
-                <li className="pricing-card__feature">Endpoint management UI</li>
-                <li className="pricing-card__feature">JSON mock responses</li>
+                <li className="pricing-card__feature">Overage instead of a hard cap (up to 120%)</li>
                 <li className="pricing-card__feature">Priority support</li>
               </ul>
               <p className="pricing-card__overage">Then $2.90 per 10,000 extra requests.</p>
@@ -117,7 +117,7 @@ export default function PricingPage() {
             <div className="pricing-card pricing-card--featured">
               <div className="pricing-card__name">pro</div>
               <div className="pricing-card__price">$99<span>/mo</span></div>
-              <p className="pricing-card__desc">Full Relay + Retain + Recover. Request replay and shareable debug links for production teams.</p>
+              <p className="pricing-card__desc">Adds request replay, bulk retry, and shareable debug links for production teams.</p>
               <hr className="pricing-card__divider" />
               <ul className="pricing-card__features">
                 <li className="pricing-card__feature">1,000,000 requests / month</li>
@@ -137,7 +137,7 @@ export default function PricingPage() {
             <div className="pricing-card">
               <div className="pricing-card__name">gro</div>
               <div className="pricing-card__price">$399<span>/mo</span></div>
-              <p className="pricing-card__desc">High-volume Relay + Retain + Recover. 5× the throughput of Pro for teams running production traffic at scale.</p>
+              <p className="pricing-card__desc">Everything in Pro, with 5× the request volume for teams running production traffic at scale.</p>
               <hr className="pricing-card__divider" />
               <ul className="pricing-card__features">
                 <li className="pricing-card__feature">5,000,000 requests / month</li>
@@ -291,8 +291,8 @@ export default function PricingPage() {
       {/* CTA */}
       <section className="cta-section" aria-labelledby="cta-heading">
         <div className="container container--narrow">
-          <h2 className="heading-xl cta-section__title" id="cta-heading">Relay. Retain. Recover.</h2>
-          <p className="cta-section__sub">No gateway costs, no code changes, no ops overhead. The reliability layer is live in under 2 minutes.</p>
+          <h2 className="heading-xl cta-section__title" id="cta-heading">Setup in minutes. Scale to millions.</h2>
+          <p className="cta-section__sub">No infrastructure to build, no code changes, no ops overhead. Start free and you&apos;re live in under 2 minutes.</p>
           <a href={APP_REGISTER_URL} className="btn btn-primary btn-lg">Get started →</a>
         </div>
       </section>

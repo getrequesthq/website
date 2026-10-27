@@ -4,8 +4,8 @@ const BASE_URL = 'https://www.getrequest.io'
 const SITE_NAME = 'getrequest'
 
 // Static share image (the getrequest mark), served as a plain file so every crawler gets a 200 PNG with no redirect.
-export const OG_IMAGE = { url: '/og.png', width: 1200, height: 630, type: 'image/png', alt: 'getrequest' }
-const DEFAULT_DESCRIPTION = 'The API Reliability Layer for modern teams. Relay traffic safely, retain every request before it hits your backend, and recover from failures without losing a single payload.'
+export const OG_IMAGE = { url: '/og.png', width: 1200, height: 630, type: 'image/png', alt: 'getrequest — Scalability as a Service' }
+const DEFAULT_DESCRIPTION = 'Put getrequest in front of your API and skip building the infrastructure: queuing, automatic retries, and a full request log, ready for millions of requests.'
 
 export function buildMetadata({
   title,
