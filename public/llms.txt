@@ -1,66 +1,52 @@
 # getrequest
 
-getrequest is Scalability as a Service for your API. Setup in minutes.
-Scale to millions.
+> getrequest is Scalability as a Service for your API. Setup in minutes. Scale to millions. Put getrequest in front of your API and skip building the infrastructure: queuing, automatic retries, and a full request log, ready for millions of requests. Callers change one base URL; there is nothing to host and no code to add to your backend.
 
-Put getrequest in front of your API and skip building the infrastructure:
-queuing, automatic retries, and a full request log, ready for millions of
-requests. Callers change one base URL; there is nothing to host and no code
-to add to your backend.
+Each endpoint gets one URL (`https://e.getrequest.io/{endpoint_id}`) and answers as a Sync API (transparent proxy returning your destination's exact response), an Async API (immediate `202`, background delivery with 6 attempts over ~36 minutes), or a Static API (fixed JSON). Every request is logged and can be replayed. Endpoints are managed in the dashboard; there is no public management API yet.
+
+Every page below has a markdown version: append `.md` to its URL or send `Accept: text/markdown`.
 
 ## Product
 
-- Category: API infrastructure, developer tools
-- Positioning: Scalability as a Service
-- Tagline: Setup in minutes. Scale to millions.
-- Promise: Handle every request. Replay every failure.
+- [Homepage](https://www.getrequest.io/index.md): product overview, how it works (Relay, Retain, Recover), quickstart, comparison with alternatives
+- [Features](https://www.getrequest.io/features.md): Sync/Async/Static API, request inspector, replay, bulk retry, share links, authentication, usage alerts
+- [Use cases](https://www.getrequest.io/use-cases.md): scenarios by team type
+- [Pricing](https://www.getrequest.io/pricing.md): Free $0 (10k req/mo), Dev $29 (100k), Pro $99 (1M, replay + bulk retry + share links), Gro $399 (5M); overage and FAQ
+- [For AI agents](https://www.getrequest.io/agents.md): machine-readable overview: endpoint URL format, status codes, authentication, discovery files
 
-## How it works: Relay, Retain, Recover
+## Docs
 
-- Relay — each endpoint gets one URL (https://e.getrequest.io/{id}) and
-  answers in one of three ways:
-  - Sync API: forwards to your destination and returns its exact status,
-    headers, and body. If your backend is down, the caller gets a real 502
-    or 504.
-  - Async API: answers 202 immediately, then delivers to your destination
-    in the background with automatic retries (6 attempts over about 36
-    minutes: 15s, 60s, 5m, 15m, 15m).
-  - Static API: returns a JSON body you define (mock endpoints).
-- Retain — every request is logged with headers, body, response, status, and
-  timing, searchable for 7 to 30 days depending on plan.
-- Recover — replay any logged request with its original headers and body,
-  or bulk retry a selected or filtered set (Pro and Gro).
+- [Documentation](https://docs.getrequest.io): full product documentation
+- [Docs llms.txt](https://docs.getrequest.io/llms.txt): index of every docs page
+- [Quickstart](https://docs.getrequest.io/quickstart): first endpoint and request in under 2 minutes
+- [Sync vs. Async endpoints](https://docs.getrequest.io/guides/async-api): delivery, retry schedule, delivery status
+- [Authentication](https://docs.getrequest.io/guides/authentication): Bearer, API key, Basic, HMAC on endpoint and destination
+- [Capture webhooks](https://docs.getrequest.io/guides/capture-webhooks): Stripe/GitHub webhooks and signature verification
+- [Limits, timeouts & error responses](https://docs.getrequest.io/guides/reference): every status code and size cap
+- [Recover from failures](https://docs.getrequest.io/guides/recover-failures): replay and bulk retry
 
-## Key capabilities
+## Agent resources
 
-- Endpoints live in under 2 minutes from signup
-- Live request inspector with search and filters
-- Request replay and bulk retry (Pro, Gro)
-- Shareable debug links, valid for 30 days, viewable without an account (Pro,
-  Gro)
-- Built-in authentication: Bearer, API key, Basic, HMAC, on both the
-  endpoint and the destination
-- Usage metering with pre-limit alerts
+- [Docs MCP server](https://docs.getrequest.io/mcp): streamable HTTP MCP server for searching the docs
+- [MCP server card](https://www.getrequest.io/.well-known/mcp/server-card.json)
+- [Agent skills index](https://www.getrequest.io/.well-known/agent-skills/index.json): integrate, webhooks, troubleshoot
+- [Agent skills repo](https://github.com/getrequesthq/agent-skills): SKILL.md files, AGENTS.md, Agent Plugin manifest
+- [AI catalog](https://www.getrequest.io/.well-known/ai-catalog.json): also served at /.well-known/ard.json
+- [API catalog (RFC 9727)](https://www.getrequest.io/.well-known/api-catalog)
 
-## Pricing
+## Blog
 
-- Free: $0/mo — 10,000 requests/month, 7-day log retention
-- Dev: $29/mo — 100,000 requests/month, 30-day log retention
-- Pro: $99/mo — 1,000,000 requests/month, 30-day retention, replay, bulk
-  retry, share links
-- Gro: $399/mo — 5,000,000 requests/month, 30-day retention, everything in
-  Pro at high volume
+- [Blog index](https://www.getrequest.io/blog/llms.txt): technical articles on API reliability and infrastructure
+- [RSS feed](https://www.getrequest.io/feed.xml)
 
-## Pages
+## Company
 
-- / — Homepage and product overview
-- /features — Full feature documentation
-- /pricing — Pricing plans and comparison
-- /use-cases — Use case scenarios for different team types
-- /blog — Technical articles on API reliability, infrastructure, and
-  developer tooling
-- Docs: https://docs.getrequest.io
+Contact: support@getrequest.io (support), hello@getrequest.io (general)
 
-## Contact
+- [Privacy Policy](https://www.getrequest.io/privacy-policy.md)
+- [Terms of Use](https://www.getrequest.io/terms-of-use.md)
 
-- Website: https://www.getrequest.io
+## Optional
+
+- [Full site content](https://www.getrequest.io/llms-full.txt): every page above in one file
+- [Sitemap](https://www.getrequest.io/sitemap.xml)

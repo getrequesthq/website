@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { buildMetadata } from '@/lib/metadata'
 import { APP_REGISTER_URL, DOCS_URL } from '@/lib/urls'
 import { JsonLd } from '@/components/seo/JsonLd'
-import { organizationSchema, webSiteSchema, softwareSchema } from '@/lib/jsonld'
+import { organizationSchema, webSiteSchema, softwareSchema, quickstartHowToSchema } from '@/lib/jsonld'
 import { FlightRecorder } from '@/components/home/FlightRecorder'
 import { ReliabilityStory } from '@/components/home/ReliabilityStory'
 import { ProductTour } from '@/components/home/ProductTour'
@@ -27,12 +27,16 @@ const PLANS = [
   { name: 'Gro', price: '$399', quota: '5,000,000 / mo', retention: '30 days', over: '$0.90 / 10k', desc: 'Everything in Pro at high volume.', cta: 'Start Gro' },
 ]
 
-export const metadata: Metadata = buildMetadata({
-  title: 'Scalability as a Service for Your API',
-  ogTitle: 'Setup in minutes. Scale to millions.',
-  description: 'Put getrequest in front of your API and skip building the infrastructure: queuing, automatic retries, and a full request log, ready for millions of requests.',
-  path: '/',
-})
+export const metadata: Metadata = {
+  ...buildMetadata({
+    title: 'Scalability as a Service for Your API',
+    ogTitle: 'Setup in minutes. Scale to millions.',
+    description: 'Put getrequest in front of your API and skip building the infrastructure: queuing, automatic retries, and a full request log, ready for millions of requests.',
+    path: '/',
+  }),
+  // Brand first plus "webhooks" so the homepage ranks for brand + product searches.
+  title: { absolute: 'getrequest: Scalability as a Service for APIs and Webhooks' },
+}
 
 export default function HomePage() {
   return (
@@ -40,6 +44,7 @@ export default function HomePage() {
       <JsonLd data={organizationSchema()} />
       <JsonLd data={webSiteSchema()} />
       <JsonLd data={softwareSchema()} />
+      <JsonLd data={quickstartHowToSchema()} />
 
       {/* HERO */}
       <section className="hx" aria-labelledby="hero-heading">

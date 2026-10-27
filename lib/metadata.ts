@@ -27,7 +27,11 @@ export function buildMetadata({
     title: `${title} — ${SITE_NAME}`,
     description,
     metadataBase: new URL(BASE_URL),
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      // Markdown twin served by proxy.ts / app/markdown
+      types: { 'text/markdown': `${BASE_URL}${path === '/' || path === '' ? '/index' : path}.md` },
+    },
     openGraph: {
       title: resolvedOgTitle,
       description,
